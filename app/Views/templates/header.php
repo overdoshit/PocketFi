@@ -5,29 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title; ?></title>
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <style>
-        .nav-link.active {
-            font-weight: bold;
-        }
-
-        @media screen and (min-width:992px) {
-            .nav-link.active {
-                border-bottom: 2px solid #0d6efd;
-            }
-        }
-
-        .show,
-        .showing,
-        .hidding {
-            transition: 0.3s ease-in-out;
-        }
-
-        .offcanvas-start {
-            max-width: 80% !important;
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <!-- Swiper js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script defer src="/assets/js/main.js"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -58,8 +45,16 @@
                     <div class="offcanvas-body">
                         <nav class="navbar-nav justify-content-center flex-grow-1 pe-3">
                             <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/')) ? 'active' : ''; ?>" href="/">Home</a></li>
-                            <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/mobile-wifi')) ? 'active' : ''; ?>" href="#">Mobile Wifi</a></li>
-                            <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/sim-card')) ? 'active' : ''; ?>" href="#">Sim Card & E-Sim</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Mobile Wifi
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Indonesia</a></li>
+                                    <li><a class="dropdown-item" href="#">International</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/sim-card')) ? 'active' : ''; ?>" href="#">SIM Card & E-SIM</a></li>
                             <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/how-it-works')) ? 'active' : ''; ?>" href="#">How it Works</a></li>
                             <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/contact')) ? 'active' : ''; ?>" href="/contact">Contact Us</a></li>
                             <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/faq')) ? 'active' : ''; ?>" href="#">FAQ</a></li>
