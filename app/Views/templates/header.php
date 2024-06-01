@@ -40,30 +40,32 @@
                         </a>
                         <button type="button" class="btn-close fs-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-
+                    
                     <!-- Navbar Menu -->
                     <div class="offcanvas-body">
                         <nav class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                            <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/')) ? 'active' : ''; ?>" href="/">Home</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <li class="nav-item mx-2">
+                                <a class="nav-link <?= (current_url() == base_url('/')) ? 'active' : ''; ?>" href="/">Home</a>
+                            </li>
+                            <li class="nav-item dropdown dropdown-hover mx-2">
+                                <a class="nav-link dropdown-toggle <?= (current_url() == base_url('/mobile-wifi/indonesia') || current_url() == base_url('/mobile-wifi/international')) ? 'active' : ''; ?>" href="/mobile-wifi/indonesia">
                                     Mobile Wifi
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Indonesia</a></li>
-                                    <li><a class="dropdown-item" href="#">International</a></li>
+                                    <li><a class="dropdown-item <?= (current_url() == base_url('/mobile-wifi/indonesia')) ? 'active' : ''; ?>" href="/mobile-wifi/indonesia">Indonesia</a></li>
+                                    <li><a class="dropdown-item <?= (current_url() == base_url('/mobile-wifi/international')) ? 'active' : ''; ?>" href="/mobile-wifi/international">International</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/sim-card')) ? 'active' : ''; ?>" href="#">SIM Card & E-SIM</a></li>
-                            <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/how-it-works')) ? 'active' : ''; ?>" href="#">How it Works</a></li>
+                            <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/sim-card')) ? 'active' : ''; ?>" href="/sim-card">SIM Card & E-SIM</a></li>
+                            <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/how-it-works')) ? 'active' : ''; ?>" href="/how-it-works">How it Works</a></li>
                             <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/contact')) ? 'active' : ''; ?>" href="/contact">Contact Us</a></li>
-                            <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/faq')) ? 'active' : ''; ?>" href="#">FAQ</a></li>
+                            <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/faq')) ? 'active' : ''; ?>" href="/faq">FAQ</a></li>
                         </nav>
                         <?php if (session('email')) : ?>
                             <div class="dropdown">
-                                <a class="btn btn-success px-3 d-flex justify-content-between align-items-center" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <small class="me-2 truncate"><?= session('name'); ?></small>
-                                    <img src="assets/images/<?= session('imageUrl'); ?>" alt="Profile" width="30" height="30" class="rounded-circle">
+                                <a class="profile btn btn-success px-2 d-flex justify-content-between align-items-center" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="<?= session('imageUrl'); ?>" alt="Profile" width="32" height="32" class="rounded-circle">
+                                    <i class="fa-solid fa-bars ms-2 fs-5"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="userDropdown">
                                     <li><a class="dropdown-item" href="#">Profile</a></li>
