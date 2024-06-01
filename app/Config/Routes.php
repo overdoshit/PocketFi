@@ -30,3 +30,5 @@ $routes->add('/auth/google/callback', 'Authentication::googleCallBack');
 $routes->get('/logout', 'Authentication::Logout');
 $routes->post('/register', 'Authentication::register');
 $routes->post('/login', 'Authentication::login');
+$routes->get('/mobile-wifi/indonesia', 'MobileWifi::Indonesia');
+$routes->get('/mobile-wifi/international', 'MobileWifi::International');
