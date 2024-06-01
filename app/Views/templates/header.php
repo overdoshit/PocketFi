@@ -59,10 +59,23 @@
                             <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/contact')) ? 'active' : ''; ?>" href="/contact">Contact Us</a></li>
                             <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/faq')) ? 'active' : ''; ?>" href="#">FAQ</a></li>
                         </nav>
-                        <div class="d-flex justify-content-center align-items-center gap-2">
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
-                        </div>
+                        <?php if (session('email')) : ?>
+                            <div class="dropdown">
+                                <a class="btn btn-success px-3 d-flex justify-content-between align-items-center" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <small class="me-2 truncate"><?= session('name'); ?></small>
+                                    <img src="assets/images/<?= session('imageUrl'); ?>" alt="Profile" width="30" height="30" class="rounded-circle">
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                </ul>
+                            </div>
+                        <?php else : ?>
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
