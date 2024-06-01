@@ -1,7 +1,7 @@
 // Home Review Swiper Start
 var swiper = new Swiper(".slider-content", {
-	slidesPerView: 3,
-	spaceBetween: 25,
+	slidesPerView: 4,
+	spaceBetween: 20,
 	loop: true,
 	centerSlide: "true",
 	fade: "true",
@@ -24,6 +24,9 @@ var swiper = new Swiper(".slider-content", {
 		},
 		950: {
 			slidesPerView: 3,
+		},
+		1300: {
+			slidesPerView: 4,
 		},
 	},
 });
