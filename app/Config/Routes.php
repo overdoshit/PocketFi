@@ -24,3 +24,7 @@ $routes->setAutoRoute(true);
  * Route Definitions
  * --------------------------------------------------------------------
  */
+$routes->get('/auth', 'Authentication::index');
+$routes->get('/auth/google', 'Authentication::google');
+$routes->add('/auth/google/callback', 'Authentication::googleCallBack');
+$routes->get('/logout', 'Authentication::Logout');

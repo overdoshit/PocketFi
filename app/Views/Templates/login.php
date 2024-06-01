@@ -23,7 +23,7 @@
                     <small class="text-body-secondary">Don't have an account yet?</small> <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register here</a>
                     <hr class="my-3">
                     <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
-                    <button class="w-100 py-2 mb-3 btn btn-outline-primary rounded-3" type="button">
+                    <button class="w-100 py-2 mb-3 btn btn-outline-primary rounded-3" type="button" onclick="continueWithGoogle()">
                     <div class="bg-icon bg-white d-inline-flex me-1"><i class="bi bi-google"></i></div>Continue with Google Account
                     </button>
                 </form>

@@ -30,6 +30,13 @@ var swiper = new Swiper(".slider-content", {
 
 // Home Review Swiper End
 
+// Modal Start
+function continueWithGoogle() {
+	window.location.href = "/auth/google";
+}
+
+// Modal End
+
 // Toggle Password Visibility Start
 function togglePasswordVisibility(inputId) {
 	const input = document.getElementById(inputId);
