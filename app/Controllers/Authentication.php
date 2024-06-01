@@ -155,7 +155,7 @@ class Authentication extends BaseController
             session()->set($usersData);
 
             $data = [
-                'title' => 'Registered | Pocket Fi'
+                'title' => 'Registered · Pocket Fi'
             ];
             return view('/Users/berhasil', $data);
         }

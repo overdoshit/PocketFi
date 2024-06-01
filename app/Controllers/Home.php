@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index() {
         $data = [
-            'title' => 'Home | Pocket Fi'
+            'title' => 'Pocket Fi'
         ];
         return view("Users/home", $data);
     }
