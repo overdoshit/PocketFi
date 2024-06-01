@@ -38,10 +38,9 @@ function continueWithGoogle() {
 // Modal End
 
 // Toggle Password Visibility Start
-function togglePasswordVisibility(inputId) {
+function togglePasswordVisibility(inputId, iconId) {
 	const input = document.getElementById(inputId);
-	const toggleButton = input.nextElementSibling;
-	const toggleIcon = toggleButton.querySelector("i");
+	const toggleIcon = document.getElementById(iconId);
 
 	if (input.type === "password") {
 		input.type = "text";
@@ -63,7 +62,7 @@ function checkPasswordStrength(inputId, meterId, textId) {
 	const text = document.getElementById(textId);
 
 	let strength = 0;
-	if (password.length >= 6) {
+	if (password.length >= 8) {
 		strength += 25;
 	}
 	if (/[A-Z]/.test(password)) {

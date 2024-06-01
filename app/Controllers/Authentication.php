@@ -27,6 +27,112 @@ class Authentication extends BaseController
         echo 'Authentication';
     }
 
+    public function login() {
+        $session = session();
+        
+        $validation = \Config\Services::validation();
+        
+        $validation->setRules([
+            'email' => 'required|valid_email',
+            'password' => 'required|min_length[8]',
+        ], [
+            'email' => [
+                'required' => 'Email is required.',
+                'valid_email' => 'Please enter a valid email address.'
+            ],
+            'password' => [
+                'required' => 'Password is required.',
+                'min_length' => 'Password must be at least 8 characters in length.'
+            ],
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            $modal = $this->request->getPost('modal') ?: 'login';
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors())->with('modal', $modal);
+        }
+
+        $usersModel = new UsersModel();
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+
+        $user = $usersModel->where('email', $email)->first();
+
+        if (!$user) {
+            $session->setFlashdata('error', 'Email is not registered.');
+            return redirect()->back()->withInput()->with('errors', ['email' => 'Email is not registered.'])->with('modal', 'login');
+        }
+    
+        if (!password_verify($password, $user->password)) {
+            $session->setFlashdata('error', 'Invalid email or password.');
+            return redirect()->back()->withInput()->with('errors', ['password' => 'Wrong password.'])->with('modal', 'login');
+        }
+
+        $userData = [
+            'id' => $user->idUser,
+            'name' => $user->name,
+            'email' => $user->email,
+            'imageUrl' => $user->imageUrl,
+        ];
+
+        $session->set($userData);
+
+        return redirect()->to('/contact');
+    }
+
+
+    public function register() {
+        $session = session();
+        $usersModel = new UsersModel();
+        
+        $validation = \Config\Services::validation();
+        
+        $validation->setRules([
+            'name' => 'required|min_length[3]',
+            'email' => 'required|valid_email|is_unique[users.email]',
+            'password' => 'required|min_length[8]',
+            'confirmPassword' => 'required|matches[password]'
+        ], [
+            'name' => [
+                'required' => 'Name is required.',
+                'min_length' => 'Name must be at least 3 characters in length.'
+            ],
+            'email' => [
+                'required' => 'Email is required.',
+                'valid_email' => 'Please enter a valid email address.',
+                'is_unique' => 'Email address is already registered.'
+            ],
+            'password' => [
+                'required' => 'Password is required.',
+                'min_length' => 'Password must be at least 8 characters in length.'
+            ],
+            'confirmPassword' => [
+                'required' => 'Confirm password is required.',
+                'matches' => 'Password does not match.'
+            ]
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            $modal = $this->request->getPost('modal') ?: 'register';
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors())->with('modal', $modal);
+        }
+
+        $name = $this->request->getPost('name');
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $usersModel->save([
+            'name' => $name,
+            'email' => $email,
+            'password' => $hashedPassword,
+            'imageUrl' => 'default.jpg',
+            'provider' => 'empass',
+        ]);
+
+        $session->setFlashdata('success', 'Registration successful!');
+        return redirect()->to('/contact');
+    }
+
     public function google() {
         return redirect()->to($this->googleClient->createAuthUrl());
     }

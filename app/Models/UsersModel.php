@@ -11,8 +11,8 @@ class UsersModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = false;
-    protected $allowedFields    = [];
+    protected $protectFields    = true;
+    protected $allowedFields    = ['name', 'email', 'imageUrl', 'password', 'provider', 'oauthId'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

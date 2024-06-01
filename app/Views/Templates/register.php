@@ -7,21 +7,36 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-3 mx-3 pt-0">
-                <form>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-3" id="floatingName" placeholder="Your Name">
+                <form id="registerForm" action="<?= base_url('register') ?>" method="post">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="text" class="form-control rounded-3 <?= session('errors.name') ? 'is-invalid' : '' ?>" id="floatingName" name="name" placeholder="Your Name" value="<?= old('name') ?>" required>
                         <label for="floatingName">Name</label>
+                        <?php if (session('errors.name')): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= session('errors.name') ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control rounded-3" id="floatingEmail" placeholder="name@example.com">
+                    <div class="form-floating mb-3 position-relative">
+                        <input type="email" class="form-control rounded-3 <?= session('errors.email') ? 'is-invalid' : '' ?>" id="floatingEmail" name="email" placeholder="name@example.com" value="<?= old('email') ?>" required>
                         <label for="floatingEmail">Email Address</label>
+                        <?php if (session('errors.email')): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= session('errors.email') ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                    <div class="form-floating mb-1">
-                        <input type="password" class="form-control rounded-3" id="floatingNewPassword" autocomplete="new-password" placeholder="Password" oninput="checkPasswordStrength('floatingNewPassword', 'newPasswordStrengthMeter', 'newPasswordStrengthText')">
-                        <button type="button" class="btn toggle-eye" onclick="togglePasswordVisibility('floatingNewPassword')">
+                    <div class="form-floating mb-1 position-relative">
+                        <input type="password" class="form-control rounded-3 <?= session('errors.password') ? 'is-invalid' : '' ?>" id="floatingNewPassword" name="password" autocomplete="new-password" placeholder="Password" oninput="checkPasswordStrength('floatingNewPassword', 'newPasswordStrengthMeter', 'newPasswordStrengthText')" required>
+                        <label for="floatingNewPassword">Password</label>
+                        <button type="button" class="btn toggle-eye" onclick="togglePasswordVisibility('floatingNewPassword', 'toggleNewPassword')">
                             <i id="toggleNewPassword" class="bi bi-eye-fill fs-4"></i>
                         </button>
-                        <label for="floatingNewPassword">Password</label>
+                        <?php if (session('errors.password')): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= session('errors.password') ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="mb-3">
                         <div class="progress">
@@ -29,12 +44,17 @@
                         </div>
                         <small id="newPasswordStrengthText" class="form-text text-muted"></small>
                     </div>
-                    <div class="form-floating mb-1">
-                        <input type="password" class="form-control rounded-3" id="floatingConfirmPassword" autocomplete="new-password" placeholder="Confirm Password" oninput="checkPasswordStrength('floatingConfirmPassword', 'confirmPasswordStrengthMeter', 'confirmPasswordStrengthText')">
-                        <button type="button" class="btn toggle-eye" onclick="togglePasswordVisibility('floatingConfirmPassword')">
+                    <div class="form-floating mb-1 position-relative">
+                        <input type="password" class="form-control rounded-3 <?= session('errors.confirmPassword') ? 'is-invalid' : '' ?>" id="floatingConfirmPassword" name="confirmPassword" autocomplete="new-password" placeholder="Confirm Password" oninput="checkPasswordStrength('floatingConfirmPassword', 'confirmPasswordStrengthMeter', 'confirmPasswordStrengthText')" required>
+                        <label for="floatingConfirmPassword">Confirm Password</label>
+                        <button type="button" class="btn toggle-eye" onclick="togglePasswordVisibility('floatingConfirmPassword', 'toggleConfirmPassword')">
                             <i id="toggleConfirmPassword" class="bi bi-eye-fill fs-4"></i>
                         </button>
-                        <label for="floatingConfirmPassword">Confirm Password</label>
+                        <?php if (session('errors.confirmPassword')): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= session('errors.confirmPassword') ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="mb-3">
                         <div class="progress">
@@ -54,3 +74,12 @@
         </div>
     </div>
 </div>
+
+<?php if (session('errors') && session('modal') === 'register'): ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+        registerModal.show();
+    });
+</script>
+<?php endif; ?>

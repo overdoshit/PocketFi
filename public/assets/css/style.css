@@ -36,7 +36,7 @@
 
 /* Navbar End */
 
-/* Modal Register Start */
+/* Modal Start */
 .toggle-eye {
 	position: absolute;
 	right: 5px;
@@ -45,6 +45,22 @@
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+}
+
+.position-relative {
+	position: relative;
+}
+
+.invalid-feedback {
+	position: absolute;
+	top: 39px;
+	left: 13px;
+	font-size: 0.7em;
+	color: red;
+}
+
+.form-control.is-invalid {
+	background-image: none;
 }
 
 .bi-google {
@@ -69,7 +85,7 @@
 	justify-content: center;
 }
 
-/* Modal Register End */
+/* Modal End */
 
 /* Banner Carousel Start */
 

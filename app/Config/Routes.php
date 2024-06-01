@@ -28,3 +28,5 @@ $routes->get('/auth', 'Authentication::index');
 $routes->get('/auth/google', 'Authentication::google');
 $routes->add('/auth/google/callback', 'Authentication::googleCallBack');
 $routes->get('/logout', 'Authentication::Logout');
+$routes->post('/register', 'Authentication::register');
+$routes->post('/login', 'Authentication::login');

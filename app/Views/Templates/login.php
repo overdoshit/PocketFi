@@ -7,17 +7,27 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-3 mx-3 pt-0">
-                <form>
+                <form id="loginForm" action="<?= base_url('login') ?>" method="post">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                        <input type="email" class="form-control rounded-3 <?= session('errors.email') ? 'is-invalid' : '' ?>" id="floatingInput" name="email" placeholder="name@example.com" value="<?= old('email') ?>" required>
                         <label for="floatingInput">Email Address</label>
+                        <?php if (session('errors.email')): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= session('errors.email') ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
-                        <button type="button" class="btn toggle-eye" onclick="togglePasswordVisibility('floatingPassword')">
+                        <input type="password" class="form-control rounded-3 <?= session('errors.password') ? 'is-invalid' : '' ?>" id="floatingPassword" name="password" placeholder="Password" required>
+                        <label for="floatingPassword">Password</label>
+                        <button type="button" class="btn toggle-eye" onclick="togglePasswordVisibility('floatingPassword', 'togglePassword')">
                             <i id="togglePassword" class="bi bi-eye-fill fs-4"></i>
                         </button>
-                        <label for="floatingPassword">Password</label>
+                        <?php if (session('errors.password')): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= session('errors.password') ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Login</button>
                     <small class="text-body-secondary">Don't have an account yet?</small> <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register here</a>
@@ -31,3 +41,12 @@
         </div>
     </div>
 </div>
+
+<?php if (session('errors') && session('modal') === 'login'): ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        loginModal.show();
+    });
+</script>
+<?php endif; ?>
