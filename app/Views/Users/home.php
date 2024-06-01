@@ -147,7 +147,7 @@
     <div class="slider-container swiper">
         <div class="slider-content">
             <div class="card-wrapper swiper-wrapper">
-                <div class="card swiper-slide">
+                <div class="card-review swiper-slide">
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
@@ -178,7 +178,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="card swiper-slide">
+                <div class="card-review swiper-slide">
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
@@ -201,7 +201,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="card swiper-slide">
+                <div class="card-review swiper-slide">
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
@@ -223,30 +223,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="card swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-                        <div class="card-image">
-                            <img src="/assets/images/default.jpg" class="card-img" alt="" />
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="name">John Doe</h2>
-                        <div class="start">
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star-half" style="color: #FFD43B;"></i>
-                        </div>
-                        <p class="description">
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Labore expedita aliquam, aut
-                            quia eum nihil.
-                        </p>
-                    </div>
-                </div>
-                <div class="card swiper-slide">
+                <div class="card-review swiper-slide">
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
@@ -269,7 +246,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="card swiper-slide">
+                <div class="card-review swiper-slide">
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
@@ -292,7 +269,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="card swiper-slide">
+                <div class="card-review swiper-slide">
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
@@ -315,7 +292,30 @@
                         </p>
                     </div>
                 </div>
-                <div class="card swiper-slide">
+                <div class="card-review swiper-slide">
+                    <div class="image-content">
+                        <span class="overlay"></span>
+                        <div class="card-image">
+                            <img src="/assets/images/default.jpg" class="card-img" alt="" />
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="name">John Doe</h2>
+                        <div class="start">
+                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                            <i class="fa-solid fa-star-half" style="color: #FFD43B;"></i>
+                        </div>
+                        <p class="description">
+                            Lorem ipsum dolor sit, amet consectetur
+                            adipisicing elit. Labore expedita aliquam, aut
+                            quia eum nihil.
+                        </p>
+                    </div>
+                </div>
+                <div class="card-review swiper-slide">
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
