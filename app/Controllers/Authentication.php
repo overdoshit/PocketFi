@@ -23,10 +23,6 @@ class Authentication extends BaseController
 
     }
 
-    public function index() {
-        echo 'Authentication';
-    }
-
     public function login() {
         $session = session();
         
@@ -79,7 +75,6 @@ class Authentication extends BaseController
         return redirect()->to('/contact');
     }
 
-
     public function register() {
         $session = session();
         $usersModel = new UsersModel();
@@ -125,7 +120,7 @@ class Authentication extends BaseController
             'name' => $name,
             'email' => $email,
             'password' => $hashedPassword,
-            'imageUrl' => 'default.jpg',
+            'imageUrl' => '/assets/images/default.jpg',
             'provider' => 'empass',
         ]);
 
