@@ -24,7 +24,7 @@
                     <hr class="my-3">
                     <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
                     <button class="w-100 py-2 mb-3 btn btn-outline-primary rounded-3" type="button">
-                        <i class="bi bi-google me-1"></i> Continue with Google Account
+                    <div class="bg-icon bg-white d-inline-flex me-1"><i class="bi bi-google"></i></div>Continue with Google Account
                     </button>
                 </form>
             </div>
