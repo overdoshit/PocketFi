@@ -1,4 +1,4 @@
-<?= $this->include('templates/header'); ?>
+<?= $this->include('Templates/header'); ?>
 
 <section class="banner carousel slide mb-6" id="myCarousel" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -346,4 +346,4 @@
     </div>
 </section>
 
-<?= $this->include('templates/footer'); ?>
+<?= $this->include('Templates/footer'); ?>

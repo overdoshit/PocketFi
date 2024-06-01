@@ -60,11 +60,14 @@
                             <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/faq')) ? 'active' : ''; ?>" href="#">FAQ</a></li>
                         </nav>
                         <div class="d-flex justify-content-center align-items-center gap-2">
-                            <button type="button" class="btn btn-outline-primary">Login</button>
-                            <button type="button" class="btn btn-primary">Sign-up</button>
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
     </div>
+
+    <?= $this->include('Templates/login'); ?>
+    <?= $this->include('Templates/register'); ?>

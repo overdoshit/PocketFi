@@ -1,4 +1,4 @@
-<?= $this->include('templates/header'); ?>
+<?= $this->include('Templates/header'); ?>
 
 <div class="container">
     <div class="row">
@@ -9,4 +9,4 @@
     </div>
 </div>
 
-<?= $this->include('templates/footer'); ?>
+<?= $this->include('Templates/footer'); ?>
