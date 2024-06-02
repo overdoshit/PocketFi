@@ -1,37 +1,32 @@
-// Home Review Swiper Start
-var swiper = new Swiper(".slider-content", {
-	slidesPerView: 4,
-	spaceBetween: 20,
-	loop: true,
-	centerSlide: "true",
-	fade: "true",
-	grabCursor: "true",
-	pagination: {
-		el: ".swiper-pagination",
-		clickable: true,
-		dynamicBullets: true,
-	},
-	navigation: {
-		nextEl: ".swiper-button-next",
-		prevEl: ".swiper-button-prev",
-	},
-	breakpoints: {
-		0: {
-			slidesPerView: 1,
-		},
-		520: {
-			slidesPerView: 2,
-		},
-		950: {
-			slidesPerView: 3,
-		},
-		1300: {
-			slidesPerView: 4,
-		},
-	},
+// Navbar Start
+document.addEventListener("DOMContentLoaded", function () {
+	if ("ontouchstart" in window || navigator.maxTouchPoints) {
+		const dropdowns = document.querySelectorAll(".dropdown-hover");
+
+		dropdowns.forEach((dropdown) => {
+			dropdown.addEventListener("click", function (event) {
+				const menu = dropdown.querySelector(".dropdown-menu");
+				if (menu.classList.contains("show")) {
+					menu.classList.remove("show");
+				} else {
+					menu.classList.add("show");
+				}
+			});
+		});
+
+		document.addEventListener("click", function (event) {
+			const target = event.target;
+			if (!target.closest(".dropdown-hover")) {
+				const openMenus = document.querySelectorAll(
+					".dropdown-hover .dropdown-menu.show"
+				);
+				openMenus.forEach((menu) => menu.classList.remove("show"));
+			}
+		});
+	}
 });
 
-// Home Review Swiper End
+// Navbar End
 
 // Modal Start
 function continueWithGoogle() {
@@ -68,13 +63,13 @@ function checkPasswordStrength(inputId, meterId, textId) {
 	if (password.length >= 8) {
 		strength += 25;
 	}
-	if (/[A-Z]/.test(password)) {
-		strength += 25;
-	}
 	if (/[a-z]/.test(password)) {
 		strength += 25;
 	}
 	if (/[0-9]/.test(password)) {
+		strength += 25;
+	}
+	if (/[A-Z]/.test(password)) {
 		strength += 25;
 	}
 
@@ -82,17 +77,21 @@ function checkPasswordStrength(inputId, meterId, textId) {
 	meter.setAttribute("aria-valuenow", strength);
 
 	if (strength < 50) {
-		meter.classList.remove("bg-success", "bg-warning");
+		meter.classList.remove("bg-success", "bg-warning", "bg-primary");
 		meter.classList.add("bg-danger");
 		text.textContent = "Weak Password";
 	} else if (strength < 75) {
-		meter.classList.remove("bg-success", "bg-danger");
+		meter.classList.remove("bg-success", "bg-danger", "bg-primary");
 		meter.classList.add("bg-warning");
 		text.textContent = "Medium Password";
-	} else {
-		meter.classList.remove("bg-warning", "bg-danger");
-		meter.classList.add("bg-success");
+	} else if (strength < 100) {
+		meter.classList.remove("bg-success", "bg-warning", "bg-danger");
+		meter.classList.add("bg-primary");
 		text.textContent = "Strong Password";
+	} else {
+		meter.classList.remove("bg-warning", "bg-danger", "bg-primary");
+		meter.classList.add("bg-success");
+		text.textContent = "Very Strong Password";
 	}
 }
 
@@ -104,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const confirmPasswordInput = document.getElementById(
 		"floatingConfirmPassword"
 	);
+	let passwordsMatch = false;
 
 	function checkPasswordMatch() {
 		const newPassword = newPasswordInput.value;
@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				"border-danger",
 				"border-success"
 			);
+			passwordsMatch = false;
 			return;
 		}
 
@@ -126,22 +127,22 @@ document.addEventListener("DOMContentLoaded", function () {
 			newPasswordInput.classList.add("border-success");
 			confirmPasswordInput.classList.remove("border-danger");
 			confirmPasswordInput.classList.add("border-success");
+			passwordsMatch = true;
 		} else {
 			newPasswordInput.classList.remove("border-success");
 			newPasswordInput.classList.add("border-danger");
 			confirmPasswordInput.classList.remove("border-success");
 			confirmPasswordInput.classList.add("border-danger");
+			passwordsMatch = false;
 		}
 	}
 
 	newPasswordInput.addEventListener("input", checkPasswordMatch);
 	confirmPasswordInput.addEventListener("input", checkPasswordMatch);
-});
 
-// Password Match Check End
+	// Password Match Check End
 
-// Field Check Start
-document.addEventListener("DOMContentLoaded", function () {
+	// Field Check Start
 	const loginModal = document.getElementById("loginModal");
 	const registerModal = document.getElementById("registerModal");
 	const loginSubmitButton = loginModal.querySelector(
@@ -151,14 +152,34 @@ document.addEventListener("DOMContentLoaded", function () {
 		'#registerModal button[type="submit"]'
 	);
 
+	function isValidEmail(email) {
+		const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/;
+		return emailPattern.test(email);
+	}
+
 	function checkFieldCompletion(modal, submitButton) {
 		const inputs = modal.querySelectorAll("input");
 		let allFilled = true;
+		let emailValid = true;
+
 		inputs.forEach((input) => {
+			if (input.type === "email" && !isValidEmail(input.value.trim())) {
+				emailValid = false;
+			}
+
 			if (input.value.trim() === "") {
 				allFilled = false;
 			}
 		});
+
+		if (modal === registerModal && (!passwordsMatch || !emailValid)) {
+			allFilled = false;
+		}
+
+		if (modal === loginModal && !emailValid) {
+			allFilled = false;
+		}
+
 		submitButton.disabled = !allFilled;
 	}
 
@@ -184,32 +205,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Field Check End
 
-// Navbar Start
-document.addEventListener("DOMContentLoaded", function () {
-	if ("ontouchstart" in window || navigator.maxTouchPoints) {
-		const dropdowns = document.querySelectorAll(".dropdown-hover");
-
-		dropdowns.forEach((dropdown) => {
-			dropdown.addEventListener("click", function (event) {
-				const menu = dropdown.querySelector(".dropdown-menu");
-				if (menu.classList.contains("show")) {
-					menu.classList.remove("show");
-				} else {
-					menu.classList.add("show");
-				}
-			});
-		});
-
-		document.addEventListener("click", function (event) {
-			const target = event.target;
-			if (!target.closest(".dropdown-hover")) {
-				const openMenus = document.querySelectorAll(
-					".dropdown-hover .dropdown-menu.show"
-				);
-				openMenus.forEach((menu) => menu.classList.remove("show"));
-			}
-		});
-	}
+// Home Review Swiper Start
+var swiper = new Swiper(".slider-content", {
+	slidesPerView: 4,
+	spaceBetween: 20,
+	loop: true,
+	centerSlide: "true",
+	fade: "true",
+	grabCursor: "true",
+	pagination: {
+		el: ".swiper-pagination",
+		clickable: true,
+		dynamicBullets: true,
+	},
+	navigation: {
+		nextEl: ".swiper-button-next",
+		prevEl: ".swiper-button-prev",
+	},
+	breakpoints: {
+		0: {
+			slidesPerView: 1,
+		},
+		520: {
+			slidesPerView: 2,
+		},
+		950: {
+			slidesPerView: 3,
+		},
+		1300: {
+			slidesPerView: 4,
+		},
+	},
 });
 
-// Navbar End
+// Home Review Swiper End

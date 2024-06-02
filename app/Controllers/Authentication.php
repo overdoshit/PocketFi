@@ -11,7 +11,8 @@ class Authentication extends BaseController
     protected $googleClient;
     protected $users;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->users = new UsersModel();
         $this->googleClient = new Google_Client();
         $this->googleClient->setClientId(getenv('GOOGLE_CLIENT_ID'));
@@ -20,14 +21,18 @@ class Authentication extends BaseController
 
         $this->googleClient->addScope('email');
         $this->googleClient->addScope('profile');
-
     }
 
-    public function login() {
+    public function login()
+    {
         $session = session();
-        
+        $usersModel = new UsersModel();
         $validation = \Config\Services::validation();
-        
+
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $user = $usersModel->where('email', $email)->first();
+
         $validation->setRules([
             'email' => 'required|valid_email',
             'password' => 'required|min_length[8]',
@@ -47,19 +52,13 @@ class Authentication extends BaseController
             return redirect()->back()->withInput()->with('errors', $validation->getErrors())->with('modal', $modal);
         }
 
-        $usersModel = new UsersModel();
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-
-        $user = $usersModel->where('email', $email)->first();
-
         if (!$user) {
             $session->setFlashdata('error', 'Email is not registered.');
             return redirect()->back()->withInput()->with('errors', ['email' => 'Email is not registered.'])->with('modal', 'login');
         }
-    
+
         if (!password_verify($password, $user->password)) {
-            $session->setFlashdata('error', 'Invalid email or password.');
+            $session->setFlashdata('error', 'Wrong password.');
             return redirect()->back()->withInput()->with('errors', ['password' => 'Wrong password.'])->with('modal', 'login');
         }
 
@@ -75,28 +74,33 @@ class Authentication extends BaseController
         return redirect()->to('/contact');
     }
 
-    public function register() {
+    public function register()
+    {
         $session = session();
         $usersModel = new UsersModel();
-        
         $validation = \Config\Services::validation();
-        
+
+        $name = $this->request->getPost('name');
+        $email = $this->request->getPost('email');
+        $newPassword = $this->request->getPost('newPassword');
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
         $validation->setRules([
             'name' => 'required|min_length[3]',
-            'email' => 'required|valid_email|is_unique[users.email]',
-            'password' => 'required|min_length[8]',
-            'confirmPassword' => 'required|matches[password]'
+            'newEmail' => 'required|valid_email|is_unique[users.email]',
+            'newPassword' => 'required|min_length[8]',
+            'confirmPassword' => 'required|matches[newPassword]'
         ], [
             'name' => [
                 'required' => 'Name is required.',
                 'min_length' => 'Name must be at least 3 characters in length.'
             ],
-            'email' => [
+            'newEmail' => [
                 'required' => 'Email is required.',
                 'valid_email' => 'Please enter a valid email address.',
                 'is_unique' => 'Email address is already registered.'
             ],
-            'password' => [
+            'newPassword' => [
                 'required' => 'Password is required.',
                 'min_length' => 'Password must be at least 8 characters in length.'
             ],
@@ -111,11 +115,6 @@ class Authentication extends BaseController
             return redirect()->back()->withInput()->with('errors', $validation->getErrors())->with('modal', $modal);
         }
 
-        $name = $this->request->getPost('name');
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
         $usersModel->save([
             'name' => $name,
             'email' => $email,
@@ -128,11 +127,13 @@ class Authentication extends BaseController
         return redirect()->to('/contact');
     }
 
-    public function google() {
+    public function google()
+    {
         return redirect()->to($this->googleClient->createAuthUrl());
     }
 
-    public function googleCallBack() {
+    public function googleCallBack()
+    {
         $token = $this->googleClient->fetchAccessTokenWithAuthCode($this->request->getVar('code'));
         if (!isset($token['error'])) {
             $this->googleClient->setAccessToken($token['access_token']);
@@ -161,7 +162,8 @@ class Authentication extends BaseController
         }
     }
 
-    public function Logout() {
+    public function Logout()
+    {
         session()->destroy();
         return redirect()->to('/');
     }

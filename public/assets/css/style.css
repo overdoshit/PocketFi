@@ -61,7 +61,7 @@
 
 /* Navbar End */
 
-/* Modal Start */
+/* Modal Form Start */
 .toggle-eye {
 	position: absolute;
 	right: 5px;
@@ -78,8 +78,8 @@
 
 .invalid-feedback {
 	position: absolute;
-	top: 39px;
-	left: 13px;
+	top: 53px;
+	left: 7px;
 	font-size: 0.7em;
 	color: red;
 }
@@ -103,14 +103,7 @@
 	-webkit-text-fill-color: transparent;
 }
 
-.bg-icon {
-	border-radius: 50%;
-	width: 25px;
-	height: 25px;
-	justify-content: center;
-}
-
-/* Modal End */
+/* Modal Form End */
 
 /* Banner Carousel Start */
 
