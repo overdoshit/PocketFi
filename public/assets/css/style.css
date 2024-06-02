@@ -22,7 +22,7 @@
 @media screen and (min-width: 992px) {
 	.dropdown-hover:hover > .dropdown-menu {
 		display: block;
-		margin-top: 0; /* Remove the gap so it connects nicely */
+		margin-top: 0;
 	}
 
 	.nav-link.active {

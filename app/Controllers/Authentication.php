@@ -62,6 +62,11 @@ class Authentication extends BaseController
             return redirect()->back()->withInput()->with('errors', ['password' => 'Wrong password.'])->with('modal', 'login');
         }
 
+        if ($user->provider !== 'empass') {
+            $session->setFlashdata('error', 'This email is registered using Google. Please log in using Google.');
+            return redirect()->back()->withInput()->with('errors', ['email' => 'This email is registered using Google OAuth. Please log in using Google.'])->with('modal', 'login');
+        }
+
         $userData = [
             'id' => $user->idUser,
             'name' => $user->name,
