@@ -32,14 +32,6 @@
         font-size: 13px;
     }
 
-    .bg-position-center {
-        background-position: center !important;
-    }
-
-    .bg-size-cover {
-        background-size: cover !important;
-    }
-
     .aside-card {
         background-color: #f6f9fc;
         padding: 0 20px;
@@ -51,12 +43,21 @@
     .active-menu {
         color: #0d6efd;
     }
+
+    @media (max-width: 991.98px) {
+
+        .offcanvas-lg.showing,
+        .offcanvas-lg.hiding,
+        .offcanvas-lg.show {
+            visibility: visible;
+        }
+    }
 </style>
 
 <aside class="col-lg-3 pe-lg-4 pe-xl-5 mt-n3">
     <div class="aside-card position-lg-sticky top-0">
         <div class="offcanvas-lg offcanvas-start" id="sidebarAccount">
-            <button class="btn-close position-absolute top-0 end-0 mt-3 me-3 d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#sidebarAccount" aria-label="Close"></button>
+            <button class="btn-close fs-3 position-absolute top-0 end-0 mt-3 me-2 d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#sidebarAccount" aria-label="Close"></button>
             <div class="offcanvas-body d-block py-3">
                 <div class="pb-2 pb-lg-0 mb-4 mb-lg-5">
                     <img class="d-block rounded-circle my-2" src="<?= $session->get('imageUrl'); ?>" width="80" alt="Profile Image">
