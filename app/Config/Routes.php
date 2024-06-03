@@ -24,11 +24,11 @@ $routes->setAutoRoute(true);
  * Route Definitions
  * --------------------------------------------------------------------
  */
+$routes->post('/register', 'Authentication::register');
+$routes->post('/login', 'Authentication::login');
+$routes->get('/logout', 'Authentication::logout');
 $routes->get('/auth', 'Authentication::index');
 $routes->get('/auth/google', 'Authentication::google');
 $routes->add('/auth/google/callback', 'Authentication::googleCallBack');
-$routes->get('/logout', 'Authentication::Logout');
-$routes->post('/register', 'Authentication::register');
-$routes->post('/login', 'Authentication::login');
-$routes->get('/mobile-wifi/indonesia', 'MobileWifi::Indonesia');
-$routes->get('/mobile-wifi/international', 'MobileWifi::International');
+$routes->get('/mobile-wifi/indonesia', 'MobileWifi::indonesia');
+$routes->get('/mobile-wifi/international', 'MobileWifi::international');

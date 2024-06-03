@@ -7,14 +7,16 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class MobileWifi extends BaseController
 {
-    public function Indonesia() {
+    public function indonesia()
+    {
         $data = [
             'title' => 'Mobile Wifi Indonesia'
         ];
         return view('Users/mobile_wifi_indonesia', $data);
     }
 
-    public function International() {
+    public function international()
+    {
         $data = [
             'title' => 'Mobile Wifi International'
         ];

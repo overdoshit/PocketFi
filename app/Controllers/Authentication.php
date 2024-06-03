@@ -173,7 +173,7 @@ class Authentication extends BaseController
         }
     }
 
-    public function Logout()
+    public function logout()
     {
         session()->setFlashdata('success', 'You are now logged out.');
         session()->destroy();
