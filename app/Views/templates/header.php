@@ -89,5 +89,6 @@
         </header>
     </div>
 
+    <?= $this->include('Templates/toaster'); ?>
     <?= $this->include('Templates/login'); ?>
     <?= $this->include('Templates/register'); ?>

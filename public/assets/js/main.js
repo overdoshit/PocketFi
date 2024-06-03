@@ -212,3 +212,15 @@ var swiper = new Swiper(".slider-content", {
 });
 
 // Home Review Swiper End
+
+// Toast Start
+// Autohide toast
+document.addEventListener("DOMContentLoaded", function () {
+	var toastElement = document.getElementById("toast");
+	if (toastElement) {
+		var toast = new bootstrap.Toast(toastElement);
+		toast.show();
+	}
+});
+
+// Toast End
