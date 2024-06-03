@@ -103,6 +103,12 @@
 	-webkit-text-fill-color: transparent;
 }
 
+.bg-icon {
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	justify-content: center;
+}
 /* Modal Form End */
 
 /* Banner Carousel Start */

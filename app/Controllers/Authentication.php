@@ -76,7 +76,7 @@ class Authentication extends BaseController
 
         $session->set($userData);
 
-        return redirect()->to('/contact');
+        return redirect()->to('/profile');
     }
 
     public function register()
@@ -129,7 +129,7 @@ class Authentication extends BaseController
         ]);
 
         $session->setFlashdata('success', 'Registration successful!');
-        return redirect()->to('/contact');
+        return redirect()->to('/');
     }
 
     public function google()
@@ -163,7 +163,7 @@ class Authentication extends BaseController
             $data = [
                 'title' => 'Registered · Pocket Fi'
             ];
-            return view('/Users/berhasil', $data);
+            return redirect()->to('/profile');
         }
     }
 
