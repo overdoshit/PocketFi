@@ -1,33 +1,3 @@
-// Navbar Start
-// document.addEventListener("DOMContentLoaded", function () {
-// 	if ("ontouchstart" in window || navigator.maxTouchPoints) {
-// 		const dropdowns = document.querySelectorAll(".dropdown-hover");
-
-// 		dropdowns.forEach((dropdown) => {
-// 			dropdown.addEventListener("click", function (event) {
-// 				const menu = dropdown.querySelector(".dropdown-menu");
-// 				if (menu.classList.contains("show")) {
-// 					menu.classList.remove("show");
-// 				} else {
-// 					menu.classList.add("show");
-// 				}
-// 			});
-// 		});
-
-// 		document.addEventListener("click", function (event) {
-// 			const target = event.target;
-// 			if (!target.closest(".dropdown-hover")) {
-// 				const openMenus = document.querySelectorAll(
-// 					".dropdown-hover .dropdown-menu.show"
-// 				);
-// 				openMenus.forEach((menu) => menu.classList.remove("show"));
-// 			}
-// 		});
-// 	}
-// });
-
-// Navbar End
-
 // Modal Start
 function continueWithGoogle() {
 	window.location.href = "/auth/google";
@@ -213,6 +183,9 @@ var swiper = new Swiper(".slider-content", {
 	centerSlide: "true",
 	fade: "true",
 	grabCursor: "true",
+	autoplay: {
+		delay: 3000,
+	},
 	pagination: {
 		el: ".swiper-pagination",
 		clickable: true,
