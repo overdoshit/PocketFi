@@ -62,9 +62,9 @@ class Authentication extends BaseController
             return redirect()->back()->withInput()->with('errors', ['password' => 'Wrong password.'])->with('modal', 'login');
         }
 
-        if ($user->provider !== 'empass') {
+        if (is_null($user->password) && $user->provider !== 'empass') {
             $session->setFlashdata('error', 'This email is registered using Google. Please log in using Google.');
-            return redirect()->back()->withInput()->with('errors', ['email' => 'This email is registered using Google OAuth. Please log in using Google.'])->with('modal', 'login');
+            return redirect()->back()->withInput()->with('errors', ['email' => 'This email is registered using Google. Please log in using the third-party Google button.'])->with('modal', 'login');
         }
 
         $userData = [
@@ -72,6 +72,7 @@ class Authentication extends BaseController
             'name' => $user->name,
             'email' => $user->email,
             'imageUrl' => $user->imageUrl,
+            'provider' => $user->provider,
         ];
 
         $session->set($userData);
@@ -145,7 +146,7 @@ class Authentication extends BaseController
             $googleService = new \Google_Service_Oauth2($this->googleClient);
             $userInfo = $googleService->userinfo->get();
 
-            $usersData = [
+            $dataUser = [
                 'name' => $userInfo['name'],
                 'email' => $userInfo['email'],
                 'imageUrl' => $userInfo['picture'],
@@ -155,14 +156,19 @@ class Authentication extends BaseController
 
             $user = $this->users->where('email', $userInfo->email)->first();
             if (!$user) {
-                $this->users->insert($usersData);
+                $this->users->insert($dataUser);
             }
 
-            session()->set($usersData);
-
-            $data = [
-                'title' => 'Registered · Pocket Fi'
+            $userData = [
+                'id' => $user->idUser,
+                'name' => $user->name,
+                'email' => $user->email,
+                'imageUrl' => $user->imageUrl,
+                'provider' => $user->provider,
             ];
+
+            session()->set($userData);
+
             return redirect()->to('/profile');
         }
     }
