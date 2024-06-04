@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<?php if (session('errors') && session('modal') === 'login') : ?>
+<?php if (session('modal') === 'login') : ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));

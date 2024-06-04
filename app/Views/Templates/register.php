@@ -82,7 +82,7 @@
     </div>
 </div>
 
-<?php if (session('errors') && session('modal') === 'register') : ?>
+<?php if (session('modal') === 'register') : ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));

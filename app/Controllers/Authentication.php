@@ -23,63 +23,6 @@ class Authentication extends BaseController
         $this->googleClient->addScope('profile');
     }
 
-    public function login()
-    {
-        $usersModel = new UsersModel();
-        $validation = \Config\Services::validation();
-
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-        $user = $usersModel->where('email', $email)->first();
-
-        $validation->setRules([
-            'email' => 'required|valid_email',
-            'password' => 'required|min_length[8]',
-        ], [
-            'email' => [
-                'required' => 'Email is required.',
-                'valid_email' => 'Please enter a valid email address.'
-            ],
-            'password' => [
-                'required' => 'Password is required.',
-                'min_length' => 'Password must be at least 8 characters in length.'
-            ],
-        ]);
-
-        if (!$validation->withRequest($this->request)->run()) {
-            $modal = $this->request->getPost('modal') ?: 'login';
-            session()->setFlashdata('error', 'Login failed.');
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors())->with('modal', $modal);
-        }
-
-        if (!$user) {
-            session()->setFlashdata('error', 'Email is not registered.');
-            return redirect()->back()->withInput()->with('errors', ['email' => 'Email is not registered.'])->with('modal', 'login');
-        }
-
-        if (!password_verify($password, $user->password)) {
-            session()->setFlashdata('error', 'Wrong password.');
-            return redirect()->back()->withInput()->with('errors', ['password' => 'Wrong password.'])->with('modal', 'login');
-        }
-
-        if (is_null($user->password) && $user->provider !== 'empass') {
-            session()->setFlashdata('error', 'This email is registered using Google. Please log in using Google.');
-            return redirect()->back()->withInput()->with('errors', ['email' => 'This email is registered using Google. Please log in using the third-party Google button.'])->with('modal', 'login');
-        }
-
-        $userData = [
-            'id' => $user->idUser,
-            'name' => $user->name,
-            'email' => $user->email,
-            'imageUrl' => $user->imageUrl,
-            'provider' => $user->provider,
-        ];
-
-        session()->set($userData);
-        session()->setFlashdata('success', 'You are now logged in.');
-        return redirect()->to('/profile');
-    }
-
     public function register()
     {
         $usersModel = new UsersModel();
@@ -116,9 +59,11 @@ class Authentication extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            $modal = $this->request->getPost('modal') ?: 'register';
-            session()->setFlashdata('error', 'Account registration failed.');
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors())->with('modal', $modal);
+            return redirect()->back()
+                ->with('modal', 'register') // Show modal
+                ->withInput() // Saved input user
+                ->with('errors', $validation->getErrors()) // Error text under fields
+                ->with('error', 'Account registration failed.'); // Show toast
         }
 
         $usersModel->save([
@@ -129,8 +74,85 @@ class Authentication extends BaseController
             'provider' => 'empass',
         ]);
 
-        session()->setFlashdata('success', 'Registration successful.');
-        return redirect()->to('/');
+        return redirect()->to('/')
+            ->with('modal', 'login')
+            ->with('success', 'Registration successful.');
+    }
+
+    public function login()
+    {
+        $usersModel = new UsersModel();
+        $validation = \Config\Services::validation();
+
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $user = $usersModel->where('email', $email)->first();
+
+        $validation->setRules([
+            'email' => 'required|valid_email',
+            'password' => 'required|min_length[8]',
+        ], [
+            'email' => [
+                'required' => 'Email is required.',
+                'valid_email' => 'Please enter a valid email address.'
+            ],
+            'password' => [
+                'required' => 'Password is required.',
+                'min_length' => 'Password must be at least 8 characters in length.'
+            ],
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()
+                ->with('modal', 'login') // Show modal
+                ->withInput() // Saved input user
+                ->with('errors', $validation->getErrors()) // Error text under fields
+                ->with('error', 'Login failed.'); // Show toast
+        }
+
+        if (!$user) {
+            return redirect()->back()
+                ->with('modal', 'login')
+                ->withInput()
+                ->with('errors', ['email' => 'Email is not registered.'])
+                ->with('error', 'Email is not registered.');
+        }
+
+        if (!password_verify($password, $user->password)) {
+            return redirect()->back()
+                ->with('modal', 'login')
+                ->withInput()
+                ->with('errors', ['password' => 'Wrong password.'])
+                ->with('error', 'Wrong password.');
+        }
+
+        if (is_null($user->password) && $user->provider !== 'empass') {
+            return redirect()->back()
+                ->with('modal', 'login')
+                ->withInput()
+                ->with('errors', ['email' => 'This email is registered using Google. Please login using the third-party Google button.'])
+                ->with('error', 'Please login using the third-party Google button.');
+        }
+
+        $userData = [
+            'id' => $user->idUser,
+            'name' => $user->name,
+            'email' => $user->email,
+            'imageUrl' => $user->imageUrl,
+            'provider' => $user->provider,
+            'role' => $user->role,
+        ];
+
+        session()->set($userData);
+        return redirect()->to('/profile')
+            ->with('success', 'You are now logged in.');
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/')
+            ->with('success', 'You are now logged out.');
     }
 
     public function google()
@@ -165,18 +187,12 @@ class Authentication extends BaseController
                 'email' => $user->email,
                 'imageUrl' => $user->imageUrl,
                 'provider' => $user->provider,
+                'role' => $user->role,
             ];
 
             session()->set($userData);
-            session()->setFlashdata('success', 'You are now logged in using your Google account.');
-            return redirect()->to('/profile');
+            return redirect()->to('/profile')
+                ->with('success', 'You are now logged in using Google account.');
         }
-    }
-
-    public function logout()
-    {
-        session()->setFlashdata('success', 'You are now logged out.');
-        session()->destroy();
-        return redirect()->to('/');
     }
 }

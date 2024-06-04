@@ -68,7 +68,7 @@
                         </nav>
                         <?php if (session('email')) : ?>
                             <div class="dropdown-hover">
-                                <a class="profile btn btn-success px-2 d-flex justify-content-between align-items-center" href="#" role="button" id="userDropdown" aria-expanded="false">
+                                <a class="profile btn btn-success px-2 d-flex justify-content-between align-items-center" role="button" id="userDropdown" aria-expanded="false">
                                     <img src="<?= session('imageUrl'); ?>" alt="Profile" width="32" height="32" class="rounded-circle">
                                     <i class="fa-solid fa-bars ms-2 fs-5"></i>
                                 </a>

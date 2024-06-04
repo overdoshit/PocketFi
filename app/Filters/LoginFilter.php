@@ -11,8 +11,9 @@ class LoginFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (!session()->get('email')) {
-            session()->setFlashdata('error', 'Please login first!');
-            return redirect()->to('/')->with('errors', 'Please login first!')->with('modal', 'login');
+            return redirect()->to('/')
+                ->with('modal', 'login')
+                ->with('error', 'Please login first!');
         }
     }
 
