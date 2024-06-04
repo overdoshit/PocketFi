@@ -14,6 +14,12 @@
     .bg-size-cover {
         background-size: cover !important;
     }
+
+    @media (max-width: 991px) {
+        .settings {
+            margin-top: -100px;
+        }
+    }
 </style>
 
 
@@ -23,7 +29,7 @@
         <?= $this->include('Users/sidebar'); ?>
 
         <!-- Page content -->
-        <div class="col-lg-9 pt-4 pb-2 pb-sm-4">
+        <div class="settings col-lg-9 pt-4 pb-2 pb-sm-4">
             <h1 class="h2 mb-4">Settings</h1>
 
             <!-- Basic info -->
@@ -158,8 +164,8 @@
 
 <!-- Sidebar toggle button when mobile view -->
 <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarAccount">
-    <i class="ai-menu me-2"></i>
-    Account menu
+    <i class="fa-solid fa-bars me-2"></i>
+    Account Menu
 </button>
 
 

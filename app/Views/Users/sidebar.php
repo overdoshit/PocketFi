@@ -44,7 +44,7 @@
         color: #0d6efd;
     }
 
-    @media (max-width: 991.98px) {
+    @media (max-width: 991px) {
 
         .offcanvas-lg.showing,
         .offcanvas-lg.hiding,
@@ -100,7 +100,7 @@
                     </a>
                 </div>
                 <div class="menu flex-column">
-                    <a class="menu-link fw-semibold py-2 px-0" href="#">
+                    <a class="text-danger menu-link fw-semibold py-2 px-0" href="#">
                         <i class="fa-regular fa-right-from-bracket fs-5 me-2"></i>
                         Sign out
                     </a>

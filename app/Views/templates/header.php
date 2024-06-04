@@ -74,7 +74,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item <?= (current_url() == base_url('/profile')) ? 'active' : ''; ?>" href="/profile"><i class="fa-regular fa-user me-2"></i>Profile</a></li>
-                                    <li><a class="dropdown-item <?= (current_url() == base_url('/logout')) ? 'active' : ''; ?>" href="/logout"><i class="fa-regular fa-right-from-bracket me-2"></i>Logout</a></li>
+                                    <li><a class="dropdown-item text-danger <?= (current_url() == base_url('/logout')) ? 'active' : ''; ?>" href="/logout"><i class="fa-regular fa-right-from-bracket me-2"></i>Logout</a></li>
                                 </ul>
                             </div>
                         <?php else : ?>
