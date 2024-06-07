@@ -9,7 +9,7 @@
                 <p>Jl. Letnan Sutopo BSD Serpong Lengkong Gudang Timur, Rw. Mekar Jaya, Kec. Serpong, Kota Tangerang Selatan</p>
             </div>
 
-            <div class="col-6 col-md-2 mb-3 offset-md-1">
+            <div class="col-6 col-md-2 mb-3 offset-md-1 mt-3">
                 <h5>Pages</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-body-secondary">Home</a></li>
@@ -19,7 +19,7 @@
                 </ul>
             </div>
 
-            <div class="col-6 col-md-2 mb-3 offset-md-1">
+            <div class="col-6 col-md-2 mb-3 offset-md-1 mt-3">
                 <h5>Support</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="/how-it-works" class="nav-link p-0 text-body-secondary">How it Works</a></li>
