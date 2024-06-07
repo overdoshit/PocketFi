@@ -30,13 +30,13 @@
         </div>
 
         <div class="d-flex flex-column flex-sm-row justify-content-between border-top">
-            <p>Copyright &copy; <?= date('Y'); ?> Pocket Fi. All rights reserved.</p>
-            <ul class="list-unstyled d-flex">
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-instagram" style="font-size: 1.7rem"></i></a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi bi-facebook" style="font-size: 1.7rem"></i></a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-tiktok" style="font-size: 1.7rem"></i></a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-twitter" style="font-size: 1.7rem"></i></a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-linkedin" style="font-size: 1.7rem"></i></a></li>
+            <small>Copyright &copy; <?= date('Y'); ?> Pocket Fi. All rights reserved.</small>
+            <ul class="list-unstyled gap-4 mb-4 d-flex align-items-center justify-content-center">
+                <li><a class="link-body-emphasis" href="#"><i class="bi bi-instagram" style="font-size: 1.7rem"></i></a></li>
+                <li><a class="link-body-emphasis" href="#"><i class="bi bi bi-facebook" style="font-size: 1.7rem"></i></a></li>
+                <li><a class="link-body-emphasis" href="#"><i class="bi bi-tiktok" style="font-size: 1.7rem"></i></a></li>
+                <li><a class="link-body-emphasis" href="#"><i class="bi bi-twitter" style="font-size: 1.7rem"></i></a></li>
+                <li><a class="link-body-emphasis" href="#"><i class="bi bi-linkedin" style="font-size: 1.7rem"></i></a></li>
             </ul>
         </div>
     </footer>
