@@ -1,3 +1,33 @@
+:root {
+	--primary-color: #1fc99e;
+	--swiper-theme-color: var(--primary-color);
+}
+
+.btn-primary,
+.text-bg-primary {
+	background-color: var(--primary-color) !important;
+	border-color: var(--primary-color) !important;
+}
+
+.border-primary {
+	border-color: var(--primary-color) !important;
+}
+
+.btn-outline-primary {
+	border-color: var(--primary-color) !important;
+	color: var(--primary-color) !important;
+}
+
+.btn-outline-primary:hover {
+	background-color: var(--primary-color) !important;
+	color: white !important;
+}
+
+/* a {
+	color: var(--primary-color) !important;
+	text-decoration-color: var(--primary-color) !important;
+} */
+
 ::-webkit-scrollbar {
 	width: 8px;
 }
@@ -22,17 +52,30 @@
 	cursor: pointer;
 }
 
+.nav-link {
+	color: var(--bs-navbar-color) !important;
+}
+
 .nav-link.active {
 	font-weight: bold;
-	border-bottom: 2px solid #0d6efd;
+	border-bottom: 2px solid var(--primary-color);
 }
 
 .dropdown-menu {
 	position: static;
 }
 
+.dropdown-item {
+	color: var(--bs-navbar-color);
+}
+
+.dropdown-item.active {
+	background-color: var(--primary-color);
+}
+
 .btn-profile {
 	margin-top: 15px;
+	margin-left: 0;
 }
 
 .btn-auth {
@@ -49,7 +92,7 @@
 	}
 
 	.nav-link.active {
-		border-bottom: 2px solid #0d6efd;
+		border-bottom: 2px solid var(--primary-color);
 	}
 
 	.dropdown-menu {
@@ -58,11 +101,30 @@
 
 	.btn-profile {
 		margin-top: 0;
+		/* margin-left: 75px; */
 	}
 
 	.btn-auth {
 		margin-top: 0;
 		flex-direction: row;
+	}
+
+	.auth-profile-mobile {
+		display: none;
+	}
+
+	.auth-profile-desktop {
+		display: flex;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.auth-profile-mobile {
+		display: block;
+	}
+
+	.auth-profile-desktop {
+		display: none;
 	}
 }
 
@@ -185,6 +247,21 @@
 
 /* Banner Carousel End */
 
+/* Products Start */
+.image-products {
+	border-radius: 25px;
+}
+
+.btn-products {
+	padding: 10px 30px;
+	border-radius: 30px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* Products Wifi End */
+
 /* Service Start*/
 
 .feature-icon {
@@ -270,7 +347,7 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #4070f4;
+	background-color: var(--primary-color);
 	border-radius: 0px 25px 0px 25px;
 }
 
@@ -305,7 +382,6 @@
 }
 
 .swiper-navBtn {
-	color: #6e93f7;
 	transition: color 0.3s ease;
 }
 
@@ -355,13 +431,3 @@
 }
 
 /* Review Card End */
-
-/* Mobile Wifi Start */
-@media screen and (min-width: 768px) {
-	.mifi {
-		flex: 0 0 auto;
-		width: 50%;
-	}
-}
-
-/* Mobile Wifi End */

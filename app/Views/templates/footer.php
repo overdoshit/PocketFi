@@ -1,43 +1,36 @@
 <div class="container mt-auto">
     <footer class="py-2">
         <div class="row">
-            <div class="col-6 col-md-2 mb-3">
-                <h5>Section</h5>
+            <div class="col-md-5 mb-3">
+                <!-- <h3>Pocket Fi</h3> -->
+                <img src="/assets/images/logo.png" alt="Bootstrap" height="55">
+                <p>The Pocket Wifi is fully activated and ready to go so as soon as you land abroad, turn it on and it works! Connect the whole travel group to your Mobile WiFi or enjoy your mobile broadband with multiple gadgets.</p>
+                <h6>Address</h6>
+                <p>Jl. Letnan Sutopo BSD Serpong Lengkong Gudang Timur, Rw. Mekar Jaya, Kec. Serpong, Kota Tangerang Selatan</p>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3 offset-md-1">
+                <h5>Pages</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-body-secondary">Home</a></li>
+                    <li class="nav-item mb-2"><a href="/mobile-wifi/indonesia" class="nav-link p-0 text-body-secondary">MiFi Indonesia</a></li>
+                    <li class="nav-item mb-2"><a href="/mobile-wifi/international" class="nav-link p-0 text-body-secondary">MiFi International</a></li>
+                    <li class="nav-item mb-2"><a href="/sim-card" class="nav-link p-0 text-body-secondary">SIM Card & E-SIM</a></li>
                 </ul>
             </div>
 
-            <div class="col-6 col-md-2 mb-3">
-                <h5>Section</h5>
+            <div class="col-6 col-md-2 mb-3 offset-md-1">
+                <h5>Support</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="/how-it-works" class="nav-link p-0 text-body-secondary">How it Works</a></li>
+                    <li class="nav-item mb-2"><a href="/faq" class="nav-link p-0 text-body-secondary">FAQ</a></li>
+                    <li class="nav-item mb-2"><a href="/contact" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
                 </ul>
-            </div>
-
-            <div class="col-md-5 offset-md-1 mb-3">
-                <form>
-                    <h5>Subscribe to our newsletter</h5>
-                    <p>Monthly digest of what's new and exciting from us.</p>
-                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                        <label for="newsletter1" class="visually-hidden">Email address</label>
-                        <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                        <button class="btn btn-primary" type="button">Subscribe</button>
-                    </div>
-                </form>
             </div>
         </div>
 
         <div class="d-flex flex-column flex-sm-row justify-content-between border-top">
-            <p>&copy; <?= date('Y'); ?> Company, Inc. All rights reserved.</p>
+            <p>Copyright &copy; <?= date('Y'); ?> Pocket Fi. All rights reserved.</p>
             <ul class="list-unstyled d-flex">
                 <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-instagram" style="font-size: 1.7rem"></i></a></li>
                 <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi bi-facebook" style="font-size: 1.7rem"></i></a></li>

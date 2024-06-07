@@ -41,7 +41,7 @@
     }
 
     .active-menu {
-        color: #0d6efd;
+        color: var(--primary-color);
     }
 
     @media (max-width: 991px) {
