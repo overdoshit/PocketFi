@@ -23,10 +23,10 @@
 	color: white !important;
 }
 
-/* a {
-	color: var(--primary-color) !important;
-	text-decoration-color: var(--primary-color) !important;
-} */
+.dropdown-item:active {
+	background-color: var(--primary-color) !important;
+	color: white !important;
+}
 
 ::-webkit-scrollbar {
 	width: 8px;
@@ -386,7 +386,7 @@
 }
 
 .swiper-navBtn:hover {
-	color: #4070f4;
+	color: #0c9774;
 }
 
 .swiper-navBtn::before,
