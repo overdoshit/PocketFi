@@ -70,7 +70,7 @@ class Authentication extends BaseController
             'name' => $name,
             'email' => $email,
             'password' => $hashedPassword,
-            'imageUrl' => '/assets/images/default.jpg',
+            'imageUrl' => '/assets/images/users/default.jpg',
             'provider' => 'empass',
         ]);
 
@@ -135,7 +135,7 @@ class Authentication extends BaseController
         }
 
         $userData = [
-            'id' => $user->idUser,
+            'idUser' => $user->idUser,
             'name' => $user->name,
             'email' => $user->email,
             'imageUrl' => $user->imageUrl,

@@ -49,56 +49,63 @@
     <div class="conteiner row row-cols-1 row-cols-sm-3 row-cols-md-3">
         <div class="products col mb-3">
             <div class="card-products text-center">
-                <img class="image-products" src="https://sandbox.pinjamwifi.com/wp-content/uploads/2023/10/indonesia-wifi.jpg" alt="products" width="100%">
-                <button type="button" class="btn btn-primary btn-products mb-5">Primary</button>
+                <img class="image-products" src="/assets/images/product-mifi-indonesia.jpeg" alt="Product Mifi Indonesia" width="100%">
+                <button type="button" class="btn btn-primary btn-products mb-5">Details</button>
             </div>
         </div>
 
         <div class="products col">
             <div class="card-products text-center mb-3">
-                <img class="image-products" src="https://sandbox.pinjamwifi.com/wp-content/uploads/2023/10/indonesia-wifi.jpg" alt="products" width="100%">
-                <button type="button" class="btn btn-primary btn-products mb-5">Primary</button>
+                <img class="image-products" src="/assets/images/product-mifi-international.jpeg" alt="Product Mifi International" width="100%">
+                <button type="button" class="btn btn-primary btn-products mb-5">Details</button>
             </div>
         </div>
         <div class="products col">
             <div class="card-products text-center mb-3">
-                <img class="image-products" src="https://sandbox.pinjamwifi.com/wp-content/uploads/2023/10/indonesia-wifi.jpg" alt="products" width="100%">
-                <button type="button" class="btn btn-primary btn-products mb-5">Primary</button>
+                <img class="image-products" src="/assets/images/product-sim-card.jpeg" alt="Product SIM Card" width="100%">
+                <button type="button" class="btn btn-primary btn-products mb-5">Details</button>
             </div>
         </div>
     </div>
 </section>
 
 <section class="service container px-4 py-5" id="featured-3">
-    <h2 class="pb-2 border-bottom">Columns with icons</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-4">
+    <h2 class="pb-2 border-bottom">Our Services</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-5">
         <div class="feature col">
             <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                <i class="bi bi-collection"></i>
+                <i class="fa-solid fa-wifi"></i>
             </div>
-            <h3 class="fs-2 text-body-emphasis">Featured title</h3>
-            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+            <h3 class="fs-5 text-body-emphasis">Fast Network</h3>
+            <p>Multioperator enable users automatically to get the best provider and uninterrupted connectivity.</p>
         </div>
         <div class="feature col">
             <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                <i class="bi bi-person-circle"></i>
+                <i class="fa-solid fa-laptop-mobile"></i>
             </div>
-            <h3 class="fs-2 text-body-emphasis">Featured title</h3>
-            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+            <h3 class="fs-5 text-body-emphasis">Connects Up to 5 Devices</h3>
+            <p>connect with any devices, anywhere, anytime.</p>
         </div>
         <div class="feature col">
             <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                <i class="bi bi-toggles2"></i>
+                <i class="fa-solid fa-shield-halved"></i>
             </div>
-            <h3 class="fs-2 text-body-emphasis">Featured title</h3>
-            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+            <h3 class="fs-5 text-body-emphasis">Secure & Easy to use</h3>
+            <p>Secured by a encrypted protocol to keep you data safe.</p>
         </div>
         <div class="feature col">
             <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                <i class="bi bi-toggles2"></i>
+                <i class="fa-solid fa-hand-holding-box"></i>
             </div>
-            <h3 class="fs-2 text-body-emphasis">Featured title</h3>
-            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+            <h3 class="fs-5 text-body-emphasis">Light Weight</h3>
+            <p>Lightweight and easy to carry on vacation anywhere.</p>
+        </div>
+        <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+            <h3 class="fs-5 text-body-emphasis">24/7 Support</h3>
+            <p>Friendly & Helpful Support Center with 24 Hours standby for your assistance.</p>
         </div>
     </div>
 </section>
@@ -107,197 +114,25 @@
     <div class="slider-container swiper">
         <div class="slider-content">
             <div class="card-wrapper swiper-wrapper">
-                <div class="card-review swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-                        <div class="card-image">
-                            <img src="/assets/images/default.jpg" class="card-img" alt="" />
+                <?php foreach ($reviews as $review) : ?>
+                    <div class="card-review swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img src="<?= $review['imageUrl']; ?>" class="card-img" alt="<?= $review['name']; ?>" />
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name"><?= $review['name']; ?></h2>
+                            <div class="start">
+                                <?php for ($i = 0; $i < $review['rating']; $i++) : ?>
+                                    <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                <?php endfor; ?>
+                            </div>
+                            <p class="description"><?= $review['comment']; ?></p>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <h2 class="name">John Doe</h2>
-                        <div class="start">
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                        </div>
-                        <p class="description">
-                            Lorem ipsum, dolor sit amet
-                            consecteturadipisicing elit. Rerum sint
-                            voluptatibus deleniti molestias eveniet ea
-                            saepe, voluptatem consectetur est vel corporis
-                            repellat necessitatibus, recusandae
-                            reprehenderit amet fugiat illum ullam minus.
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Illo quo eligendi ex quod
-                            molestias corrupti non ducimus sequi ad dicta
-                            corporis dignissimos nesciunt nihil, asperiores,
-                            vel fuga. Magnam, qui cupiditate!
-                        </p>
-                    </div>
-                </div>
-                <div class="card-review swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-                        <div class="card-image">
-                            <img src="/assets/images/default.jpg" class="card-img" alt="" />
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="name">John Doe</h2>
-                        <div class="start">
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star-half" style="color: #FFD43B;"></i>
-                        </div>
-                        <p class="description">
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Labore expedita aliquam, aut
-                            quia eum nihil.
-                        </p>
-                    </div>
-                </div>
-                <div class="card-review swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-                        <div class="card-image">
-                            <img src="/assets/images/default.jpg" class="card-img" alt="" />
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="name">John Doe</h2>
-                        <div class="start">
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                        </div>
-                        <p class="description">
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Labore expedita aliquam, aut
-                            quia eum nihil.
-                        </p>
-                    </div>
-                </div>
-                <div class="card-review swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-                        <div class="card-image">
-                            <img src="/assets/images/default.jpg" class="card-img" alt="" />
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="name">John Doe</h2>
-                        <div class="start">
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star-half" style="color: #FFD43B;"></i>
-                        </div>
-                        <p class="description">
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Labore expedita aliquam, aut
-                            quia eum nihil.
-                        </p>
-                    </div>
-                </div>
-                <div class="card-review swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-                        <div class="card-image">
-                            <img src="/assets/images/default.jpg" class="card-img" alt="" />
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="name">John Doe</h2>
-                        <div class="start">
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star-half" style="color: #FFD43B;"></i>
-                        </div>
-                        <p class="description">
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Labore expedita aliquam, aut
-                            quia eum nihil.
-                        </p>
-                    </div>
-                </div>
-                <div class="card-review swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-                        <div class="card-image">
-                            <img src="/assets/images/default.jpg" class="card-img" alt="" />
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="name">John Doe</h2>
-                        <div class="start">
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star-half" style="color: #FFD43B;"></i>
-                        </div>
-                        <p class="description">
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Labore expedita aliquam, aut
-                            quia eum nihil.
-                        </p>
-                    </div>
-                </div>
-                <div class="card-review swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-                        <div class="card-image">
-                            <img src="/assets/images/default.jpg" class="card-img" alt="" />
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="name">John Doe</h2>
-                        <div class="start">
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star-half" style="color: #FFD43B;"></i>
-                        </div>
-                        <p class="description">
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Labore expedita aliquam, aut
-                            quia eum nihil.
-                        </p>
-                    </div>
-                </div>
-                <div class="card-review swiper-slide">
-                    <div class="image-content">
-                        <span class="overlay"></span>
-                        <div class="card-image">
-                            <img src="/assets/images/default.jpg" class="card-img" alt="" />
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="name">John Doe</h2>
-                        <div class="start">
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                            <i class="fa-solid fa-star-half" style="color: #FFD43B;"></i>
-                        </div>
-                        <p class="description">
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Labore expedita aliquam, aut
-                            quia eum nihil.
-                        </p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="swiper-button-next swiper-navBtn"></div>
