@@ -24,8 +24,8 @@
 
 <body class="d-flex flex-column min-vh-100">
     <!-- Header -->
-    <div class="container">
-        <header class="navbar navbar-expand-lg sticky-top mb-2">
+    <div class="container-header"> <!-- Can add sticky-top -->
+        <header class="navbar navbar-expand-lg container">
             <div class="container-fluid">
                 <!-- Logo -->
                 <a href="/" class="text-decoration-none">
@@ -67,10 +67,10 @@
                             <li class="nav-item mx-2"><a class="nav-link <?= (current_url() == base_url('/faq')) ? 'active' : ''; ?>" href="/faq">FAQ</a></li>
                         </nav>
                         <?php if (session('email')) : ?>
-                            <div class="dropdown-hover">
+                            <div class="dropdown-hover btn-profile">
                                 <a class="profile btn btn-success px-2 d-flex justify-content-between align-items-center" role="button" id="userDropdown" aria-expanded="false">
                                     <img src="<?= session('imageUrl'); ?>" alt="Profile" width="32" height="32" class="rounded-circle">
-                                    <i class="fa-solid fa-bars ms-2 fs-5"></i>
+                                    <i class="fa-solid fa-bars ms-2 fs-5 me-2"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item <?= (current_url() == base_url('/profile')) ? 'active' : ''; ?>" href="/profile"><i class="fa-regular fa-user me-2"></i>Profile</a></li>
@@ -78,8 +78,8 @@
                                 </ul>
                             </div>
                         <?php else : ?>
-                            <div class="d-flex justify-content-center align-items-center gap-2">
-                                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                            <div class="btn-auth">
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
                             </div>
                         <?php endif; ?>
