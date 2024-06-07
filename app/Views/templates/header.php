@@ -30,7 +30,7 @@
             <div class="container-fluid container">
                 <!-- Logo -->
                 <a href="/" class="text-decoration-none">
-                    <img src="/assets/images/logo.png" alt="Bootstrap" height="40">
+                    <img src="/assets/images/logo.png" alt="Pocket Fi" height="35">
                 </a>
 
                 <!-- Hamburger Button -->
@@ -42,7 +42,7 @@
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
                     <div class="offcanvas-header">
                         <a href="/" class="text-decoration-none">
-                            <img src="/assets/images/logo.png" alt="Bootstrap" height="40">
+                            <img src="/assets/images/logo.png" alt="Pocket Fi" height="35">
                         </a>
                         <button type="button" class="btn-close fs-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
