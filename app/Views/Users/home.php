@@ -11,8 +11,8 @@
             <img class="bd-placeholder-img" height="100%" width="100%" alt="First slide" src="/assets/images/banner-left.jpeg" data-was-processed="true">
             <div class="container">
                 <div class="carousel-caption text-start">
-                    <h1>POCKET FI</h1>
-                    <p>The best possible internet solution all over the world and is based in Indonesia.</p>
+                    <h1 class="fs-1 fw-bold">POCKET FI</h1>
+                    <p class="fs-4">The best possible internet solution all over the world and is based in Indonesia.</p>
                 </div>
             </div>
         </div>
@@ -20,8 +20,8 @@
             <img class="bd-placeholder-img" height="100%" width="100%" alt="Second slide" src="/assets/images/banner-center.jpeg" data-was-processed="true">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>190+ COUNTRIES</h1>
-                    <p>Offering Mobile WiFi, SIM Card, and E-SIM Connectivity in 190+ Countries for convenience and satisfication.</p>
+                    <h1 class="fs-1 fw-bold">190+ COUNTRIES</h1>
+                    <p class="fs-4">Offering Mobile WiFi, SIM Card, and E-SIM Connectivity in 190+ Countries for convenience and satisfication.</p>
                 </div>
             </div>
         </div>
@@ -29,8 +29,8 @@
             <img class="bd-placeholder-img" height="100%" width="100%" alt="Third slide" src="/assets/images/banner-right.jpeg" data-was-processed="true">
             <div class="container">
                 <div class="carousel-caption text-end">
-                    <h1>LET'S GO!!</h1>
-                    <p>Easy Travel, Seamless Adventures : Explore the world with POCKET FI !</p>
+                    <h1 class="fs-1 fw-bold">LET'S GO!!</h1>
+                    <p class="fs-4">Easy Travel, Seamless Adventures : Explore the world with POCKET FI !</p>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
     </button>
 </section>
 
-<section class="container py-5">
+<section class="container pt-5">
     <div class="conteiner row row-cols-1 row-cols-sm-3 row-cols-md-3">
         <div class="products col mb-3">
             <div class="card-products text-center">
@@ -69,7 +69,7 @@
     </div>
 </section>
 
-<section class="service container px-4 py-5" id="featured-3">
+<section class="service container px-4 pt-5" id="featured-3">
     <h2 class="pb-2 border-bottom">Our Services</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-5">
         <div class="feature col">
@@ -83,8 +83,8 @@
             <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
                 <i class="fa-solid fa-laptop-mobile"></i>
             </div>
-            <h3 class="fs-5 text-body-emphasis">Connects Up to 5 Devices</h3>
-            <p>connect with any devices, anywhere, anytime.</p>
+            <h3 class="fs-5 text-body-emphasis">Connects Up to 8 Devices</h3>
+            <p>Connect with any devices, anywhere, anytime.</p>
         </div>
         <div class="feature col">
             <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
