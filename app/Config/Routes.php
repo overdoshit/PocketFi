@@ -41,3 +41,5 @@ $routes->get('/profile/index', 'Profile::index', ['filter' => 'LoginFilter']);
 // Pages Routes
 $routes->get('/mobile-wifi/indonesia', 'MobileWifi::indonesia');
 $routes->get('/mobile-wifi/international', 'MobileWifi::international');
+
+$routes->get('/how-it-works', 'HowItWorks::index');
