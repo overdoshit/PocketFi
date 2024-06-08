@@ -50,20 +50,20 @@
         <div class="products col mb-3">
             <div class="card-products text-center">
                 <img class="image-products" src="/assets/images/product-mifi-indonesia.jpeg" alt="Product Mifi Indonesia" width="100%">
-                <button type="button" class="btn btn-primary btn-products mb-5">Details</button>
+                <a class="btn btn-primary btn-products mb-5" href="/mobile-wifi/indonesia">Details</a>
             </div>
         </div>
 
         <div class="products col">
             <div class="card-products text-center mb-3">
                 <img class="image-products" src="/assets/images/product-mifi-international.jpeg" alt="Product Mifi International" width="100%">
-                <button type="button" class="btn btn-primary btn-products mb-5">Details</button>
+                <a class="btn btn-primary btn-products mb-5" href="/mobile-wifi/international">Details</a>
             </div>
         </div>
         <div class="products col">
             <div class="card-products text-center mb-3">
                 <img class="image-products" src="/assets/images/product-sim-card.jpeg" alt="Product SIM Card" width="100%">
-                <button type="button" class="btn btn-primary btn-products mb-5">Details</button>
+                <a class="btn btn-primary btn-products mb-5" href="/sim-card">Details</a>
             </div>
         </div>
     </div>
