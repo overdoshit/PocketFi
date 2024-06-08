@@ -3,14 +3,16 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\ProductsModel;
 
 class MobileWifi extends BaseController
 {
     public function indonesia()
     {
+        $model = new ProductsModel();
         $data = [
-            'title' => 'Mobile Wifi Indonesia'
+            'title' => 'Mobile Wifi Indonesia',
+            'products' => $model->where('category', 'Indonesia')->findAll()
         ];
         return view('Users/mobile_wifi_indonesia', $data);
     }
