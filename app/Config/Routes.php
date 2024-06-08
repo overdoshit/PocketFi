@@ -15,7 +15,12 @@ use CodeIgniter\Router\RouteCollection;
 // $routes->setDefaultController('Home');
 // $routes->setDefaultMethod('index');
 // $routes->setTranslateURIDashes(false);
-// $routes->set404Override();
+$routes->set404Override(function () {
+    $data = [
+        'title' => '404 Not Found',
+    ];
+    return view('errors/404_not_found.php', $data);
+});
 $routes->setAutoRoute(true);
 
 
