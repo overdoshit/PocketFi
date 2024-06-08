@@ -24,6 +24,7 @@ class ProductsModel extends Model
         'imageUrl',
         'countryFlagUrl',
         'category',
-        'notes'
+        'notes',
+        'bestSeller',
     ];
 }

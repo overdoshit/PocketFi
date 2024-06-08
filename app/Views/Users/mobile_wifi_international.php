@@ -63,6 +63,50 @@
             --bs-modal-width: 800px;
         }
     }
+
+    .ribbon {
+        position: absolute;
+        top: -10px;
+        right: 5px;
+        z-index: 1;
+        overflow: hidden;
+        width: 75px;
+        height: 75px;
+        text-align: right;
+    }
+
+    .ribbon span {
+        font-size: 10px;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 20px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        width: 100px;
+        display: block;
+        box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+        position: absolute;
+        top: 19px;
+        right: -21px;
+    }
+
+    .best-seller {
+        background: linear-gradient(#D90809 0%, #AE0607 100%);
+    }
+
+    .low-stock {
+        background: linear-gradient(#F39C12 0%, #DB8C10 100%);
+    }
+
+    .ribbon span::before {
+        content: '';
+        position: absolute;
+        left: 0px;
+        top: 100%;
+        z-index: -1;
+    }
 </style>
 
 <section class="container text-center py-5">
@@ -77,7 +121,13 @@
 <section class="container product">
     <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
         <?php foreach ($products as $product) : ?>
-            <div class="product col">
+            <div class="product col position-relative">
+                <?php if ($product['bestSeller'] === 'Y') : ?>
+                    <div class="ribbon"><span class="best-seller">Best Seller</span></div>
+                <?php endif; ?>
+                <?php if ($product['stock'] <= 3) : ?>
+                    <div class="ribbon"><span class="low-stock">Low Stock</span></div>
+                <?php endif; ?>
                 <div class="card mb-5 rounded-3 shadow-sm border-primary">
                     <div class="card-header py-3 text-bg-primary border-primary" style="min-height: 72px;">
                         <h1 class="text-uppercase fw-bold text-start fs-6 m-0"><?= $product['country']; ?> <?= $product['packageType']; ?> <?= $product['dataUsage']; ?> IDR <?= number_format($product['price'], 0, ',', '.'); ?>/<?= $product['priceType']; ?> (MINIMUM RENT <?= $product['minimumRentDays']; ?> DAYS)</h1>
