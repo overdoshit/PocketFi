@@ -3,7 +3,7 @@
 <style>
     @media (max-width: 1199px) {
         .row-cols-md-2>* {
-            /* flex: 0 0 auto; */
+            flex: 0 0 auto;
             width: 100%;
         }
     }
