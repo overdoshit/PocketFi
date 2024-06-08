@@ -1,9 +1,16 @@
 :root {
-	--primary-color: #1fc99e;
-	--swiper-theme-color: var(--primary-color);
+	--swiper-theme-color: var(--bs-primary);
 }
 
-.btn-primary,
+/* .btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+	color: white;
+} */
+
+/* .btn-primary,
 .text-bg-primary {
 	background-color: var(--primary-color) !important;
 	border-color: var(--primary-color) !important;
@@ -26,7 +33,7 @@
 .dropdown-item:active {
 	background-color: var(--primary-color) !important;
 	color: white !important;
-}
+} */
 
 ::-webkit-scrollbar {
 	width: 8px;
@@ -41,6 +48,10 @@
 ::-webkit-scrollbar-thumb:hover {
 	background-color: #909090;
 	border: solid #909090;
+}
+
+.text-bg-primary {
+	color: white;
 }
 
 /* Navbar Start */
@@ -58,7 +69,7 @@
 
 .nav-link.active {
 	font-weight: bold;
-	border-bottom: 2px solid var(--primary-color);
+	border-bottom: 2px solid var(--bs-primary);
 }
 
 .dropdown-menu {
@@ -69,9 +80,9 @@
 	color: var(--bs-navbar-color);
 }
 
-.dropdown-item.active {
+/* .dropdown-item.active {
 	background-color: var(--primary-color);
-}
+} */
 
 .btn-profile {
 	margin-top: 15px;
@@ -92,7 +103,7 @@
 	}
 
 	.nav-link.active {
-		border-bottom: 2px solid var(--primary-color);
+		border-bottom: 2px solid var(--bs-primary);
 	}
 
 	.dropdown-menu {
@@ -324,7 +335,7 @@
 
 .card-review {
 	border-radius: 0px 25px 0px 25px;
-	background-color: #fff;
+	background-color: #fbfbfb;
 }
 
 .image-content,
@@ -347,7 +358,7 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background-color: var(--primary-color);
+	background-color: var(--bs-primary);
 	border-radius: 0px 25px 0px 25px;
 }
 
@@ -431,3 +442,7 @@
 }
 
 /* Review Card End */
+
+.link-body-emphasis {
+	color: var(--bs-primary) !important;
+}
