@@ -19,8 +19,10 @@ class MobileWifi extends BaseController
 
     public function international()
     {
+        $model = new ProductsModel();
         $data = [
-            'title' => 'Mobile Wifi International'
+            'title' => 'Mobile Wifi International',
+            'products' => $model->where('category', 'International')->findAll()
         ];
         return view('Users/mobile_wifi_international', $data);
     }
