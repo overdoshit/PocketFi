@@ -2,7 +2,7 @@
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 shadow">
-            <div class="modal-header p-4 mx-2 pb-4 border-bottom-0">
+            <div class="modal-header p-4 mx-2 border-bottom-0">
                 <h1 class="fw-bold mb-0 fs-2" id="loginModalLabel">Login</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
