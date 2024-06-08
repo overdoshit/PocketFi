@@ -79,8 +79,8 @@
         <?php foreach ($products as $product) : ?>
             <div class="product col">
                 <div class="card mb-5 rounded-3 shadow-sm border-primary">
-                    <div class="card-header py-3 text-bg-primary border-primary">
-                        <h1 class="text-uppercase fw-bold text-start fs-6"><?= $product['country']; ?> <?= $product['packageType']; ?> <?= $product['dataUsage']; ?> IDR <?= number_format($product['price'], 0, ',', '.'); ?>/<?= $product['priceType']; ?> (MINIMUM RENT <?= $product['minimumRentDays']; ?> DAYS)</h1>
+                    <div class="card-header py-3 text-bg-primary border-primary" style="min-height: 72px;">
+                        <h1 class="text-uppercase fw-bold text-start fs-6 m-0"><?= $product['country']; ?> <?= $product['packageType']; ?> <?= $product['dataUsage']; ?> IDR <?= number_format($product['price'], 0, ',', '.'); ?>/<?= $product['priceType']; ?> (MINIMUM RENT <?= $product['minimumRentDays']; ?> DAYS)</h1>
                     </div>
                     <div class="card-body">
                         <table class="table table-products">
@@ -104,15 +104,15 @@
                                 </tr>
                                 <tr>
                                     <td class="dataProduct">
-                                        <div class="title-row">Battery (Hour)</div>
-                                        <p class="content-row fw-bold"><?= $product['batteryHours']; ?>+</p>
+                                        <div class="title-row">Network</div>
+                                        <p class="content-row fw-bold"><?= $product['network']; ?></p>
                                     </td>
                                     <td class="dataProduct">
                                         <div class="title-row">Deposit</div>
                                         <p class="content-row fw-bold">IDR <?= number_format($product['deposit'], 0, ',', '.'); ?></p>
                                     </td>
                                     <td class="dataProduct">
-                                        <button type="button" class="btn btn-warning btn-more" data-bs-toggle="modal" data-bs-target="#detailModal-<?= $product['idProduct']; ?>">More details &raquo;</button>
+                                        <button type="button" class="btn btn-warning btn-more m-2" data-bs-toggle="modal" data-bs-target="#detailModal-<?= $product['idProduct']; ?>">More details &raquo;</button>
                                     </td>
                                 </tr>
                             </tbody>
