@@ -2,39 +2,6 @@
 	--swiper-theme-color: var(--bs-primary);
 }
 
-/* .btn-primary,
-.btn-primary:hover,
-.btn-primary:active,
-.btn-outline-primary:hover,
-.btn-outline-primary:active {
-	color: white;
-} */
-
-/* .btn-primary,
-.text-bg-primary {
-	background-color: var(--primary-color) !important;
-	border-color: var(--primary-color) !important;
-}
-
-.border-primary {
-	border-color: var(--primary-color) !important;
-}
-
-.btn-outline-primary {
-	border-color: var(--primary-color) !important;
-	color: var(--primary-color) !important;
-}
-
-.btn-outline-primary:hover {
-	background-color: var(--primary-color) !important;
-	color: white !important;
-}
-
-.dropdown-item:active {
-	background-color: var(--primary-color) !important;
-	color: white !important;
-} */
-
 ::-webkit-scrollbar {
 	width: 8px;
 }
@@ -80,10 +47,6 @@
 	color: var(--bs-navbar-color);
 }
 
-/* .dropdown-item.active {
-	background-color: var(--primary-color);
-} */
-
 .btn-profile {
 	margin-top: 15px;
 	margin-left: 0;
@@ -112,7 +75,6 @@
 
 	.btn-profile {
 		margin-top: 0;
-		/* margin-left: 75px; */
 	}
 
 	.btn-auth {
@@ -443,6 +405,9 @@
 
 /* Review Card End */
 
+/* Footer Start */
 .link-body-emphasis {
 	color: var(--bs-primary) !important;
 }
+
+/* Footer end */
