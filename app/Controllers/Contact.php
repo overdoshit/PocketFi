@@ -11,6 +11,6 @@ class Contact extends BaseController
         $data = [
             'title' => 'Contact · Pocket Fi'
         ];
-        echo view("Users/contact", $data);
+        return view("Users/contact", $data);
     }
 }

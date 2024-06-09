@@ -11,6 +11,6 @@ class Faq extends BaseController
         $data = [
             'title' => 'FAQ · Pocket Fi'
         ];
-        echo view("Users/faq", $data);
+        return view("Users/faq", $data);
     }
 }

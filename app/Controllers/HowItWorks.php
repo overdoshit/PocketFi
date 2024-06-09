@@ -11,6 +11,6 @@ class HowItWorks extends BaseController
         $data = [
             'title' => 'How It Works · Pocket Fi'
         ];
-        echo view("Users/how_it_works", $data);
+        return view("Users/how_it_works", $data);
     }
 }
