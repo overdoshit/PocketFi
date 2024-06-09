@@ -168,7 +168,11 @@
                             </tbody>
                         </table>
                         <h5 class="fw-bold my-2">IDR <?= number_format($product['price'], 0, ',', '.'); ?>/ <span class="text-lowercase"><?= $product['priceType']; ?></span></h5>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Check out</button>
+                        <?php if (session('email')) : ?>
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal-<?= $product['idProduct']; ?>">Check out</button>
+                        <?php else : ?>
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Check out</button>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -248,6 +252,39 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade bookingModal text-start" id="bookingModal-<?= $product['idProduct']; ?>" tabindex="-1" aria-labelledby="bookingModalLabel-<?= $product['idProduct']; ?>" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content rounded-4 shadow">
+                        <div class="modal-header p-4 mx-2 border-bottom-1">
+                            <h1 class="text-uppercase fw-bold mb-0 fs-5" id="bookingModalLabel-<?= $product['idProduct']; ?>"><?= $product['country']; ?> <?= $product['packageType']; ?> <?= $product['dataUsage']; ?> IDR <?= number_format($product['price'], 0, ',', '.'); ?>/<?= $product['priceType']; ?> (MINIMUM RENT <?= $product['minimumRentDays']; ?> DAYS)</h1>
+                            <button type="button" class="btn-close ms-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="/booking" method="post">
+                            <div class="modal-body">
+                                <h5 class="text-center mb-4">Set how long you want to borrow wifi</h5>
+                                <input type="hidden" name="product" value="<?= $product['idProduct']; ?>">
+                                <input type="hidden" name="per" value="<?= $product['packageType']; ?>">
+                                <div class="date-book">
+                                    <div class="form-floating mb-4">
+                                        <input type="date" class="form-control rounded-3 start-date" id="startDate" name="startDate" min="<?= date("Y-m-d"); ?>" required>
+                                        <label for="floatingInput">Start Date</label>
+                                    </div>
+                                    <div class="form-floating mb-4">
+                                        <input type="date" class="form-control rounded-3 start-date" id="endDate" name="endDate" required>
+                                        <label for="floatingInput">End Date</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Continue</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         <?php endforeach; ?>
     </div>
 </section>
