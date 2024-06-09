@@ -1,10 +1,10 @@
 <?= $this->include('Templates/header'); ?>
 
-<section class="banner carousel slide mb-7" id="myCarousel" data-bs-ride="carousel">
+<section class="banner carousel slide mb-7" id="banner" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+        <button type="button" data-bs-target="#banner" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+        <button type="button" data-bs-target="#banner" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+        <button type="button" data-bs-target="#banner" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -35,17 +35,17 @@
             </div>
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#banner" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
 </section>
 
-<section class="container pt-5">
+<section class="container pt-5" id="products">
     <div class="conteiner row row-cols-1 row-cols-sm-3 row-cols-md-3">
         <div class="products col mb-3">
             <div class="card-products text-center">
@@ -69,7 +69,7 @@
     </div>
 </section>
 
-<section class="service container px-4 pt-5" id="featured-3">
+<section class="service container px-4 pt-5" id="services">
     <h2 class="pb-2 border-bottom">Our Services</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-5">
         <div class="feature col">
@@ -110,7 +110,7 @@
     </div>
 </section>
 
-<section class="review container">
+<section class="review container" id="reviews">
     <div class="slider-container swiper">
         <div class="slider-content">
             <div class="card-wrapper swiper-wrapper">

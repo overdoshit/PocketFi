@@ -2,6 +2,10 @@
 	--swiper-theme-color: var(--bs-primary);
 }
 
+* {
+	scroll-behavior: smooth;
+}
+
 ::-webkit-scrollbar {
 	width: 8px;
 }
