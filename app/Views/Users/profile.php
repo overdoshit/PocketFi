@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="row g-3 g-sm-4 mt-0 mt-lg-2">
-                    <div class="row-field">
+                    <div class="col-12">
                         <label class="form-label" for="fn">Full name</label>
                         <input class="form-control" type="text" value="<?= session()->get('name'); ?>" id="fn">
                     </div>
@@ -75,8 +75,8 @@
                         <input class="form-control" type="tel" data-format='{"numericOnly": true, "delimiters": ["+1 ", " ", " "], "blocks": [0, 3, 3, 2]}' placeholder="+1 ___ ___ __" id="phone">
                     </div>
                     <div class="col-12">
-                        <label class="form-label" for="bio">Address</label>
-                        <textarea class="form-control" rows="5" placeholder="Add a address" id="bio"></textarea>
+                        <label class="form-label" for="address">Address</label>
+                        <textarea class="form-control" rows="5" placeholder="Add a address" id="address"></textarea>
                     </div>
                     <div class="col-12 d-sm-flex align-items-center">
                         <div class="form-label text-body-secondary mb-2 mb-sm-0 me-sm-4">Communication:</div>
@@ -89,6 +89,19 @@
                             <label class="form-check-label" for="c-phone">Phone</label>
                         </div>
                     </div>
+
+                    <div class="col-12">
+                        <label class="form-label" for="test">Test</label>
+                        <textarea class="form-control" rows="5" placeholder="Add a address" id="test"></textarea>
+                    </div>
+                    <script>
+                        ClassicEditor
+                            .create(document.querySelector('#test'))
+                            .catch(error => {
+                                console.error(error);
+                            });
+                    </script>
+
                     <div class="col-12 d-flex justify-content-end pt-3">
                         <button class="btn btn-secondary" type="button">Cancel</button>
                         <button class="btn btn-primary ms-3" type="button">Save changes</button>
@@ -104,6 +117,5 @@
     <i class="fa-solid fa-bars me-2"></i>
     Account Menu
 </button>
-
 
 <?= $this->include('Templates/footer'); ?>
