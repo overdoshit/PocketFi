@@ -42,6 +42,7 @@ $routes->add('/auth/google/callback', 'Authentication::googleCallBack');
 // User Profile Routes
 $routes->get('/profile', 'Profile::index', ['filter' => 'LoginFilter']);
 $routes->get('/profile/index', 'Profile::index', ['filter' => 'LoginFilter']);
+$routes->post('/profile/update', 'Profile::update', ['filter' => 'LoginFilter']);
 
 // Pages Routes
 $routes->get('/mobile-wifi/indonesia', 'MobileWifi::indonesia');

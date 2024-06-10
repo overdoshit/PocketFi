@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <script defer src="/assets/js/main.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+    <!-- Cleve.js for phone number input -->
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
