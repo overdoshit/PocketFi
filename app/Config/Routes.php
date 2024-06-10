@@ -47,8 +47,7 @@ $routes->post('/profile/update', 'Profile::update', ['filter' => 'LoginFilter'])
 // Pages Routes
 $routes->get('/mobile-wifi/indonesia', 'MobileWifi::indonesia');
 $routes->get('/mobile-wifi/international', 'MobileWifi::international');
-
+$routes->get('/sim-card', 'SimCard::index');
 $routes->get('/how-it-works', 'HowItWorks::index');
-
 $routes->post('/redeem', 'Booking::redeemPromo');
 $routes->post('/booking/payment', 'Booking::payment');
