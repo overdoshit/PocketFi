@@ -51,3 +51,4 @@ $routes->get('/mobile-wifi/international', 'MobileWifi::international');
 $routes->get('/how-it-works', 'HowItWorks::index');
 
 $routes->post('/redeem', 'Booking::redeemPromo');
+$routes->post('/booking/payment', 'Booking::payment');

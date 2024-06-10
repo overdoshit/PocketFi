@@ -36,40 +36,44 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label class="form-label" for="phone">Phone<span class="text-body-secondary"> (with whatsapp preferably)</span></label>
+                        <label class="form-label" for="phone">Phone<span class="text-body-secondary"> (with whatsapp preferably)</span> <span style="color: red; font-weight: bold;">*</span></label>
                         <input class="form-control" type="tel" value="<?= session()->get('phone'); ?>" name="phone" placeholder="+62 __ ____ ____" id="phone" required>
                     </div>
 
                     <div class="col-sm-6">
                         <label class="form-label" for="province">Province <span style="color: red; font-weight: bold;">*</span></label>
-                        <select class="form-control" id="province" name="province" required>
+                        <select class="form-control" id="Province" name="Province" required>
                             <option value="" disabled selected>Select Province</option>
                             <!-- Options will be populated dynamically by JavaScript -->
                         </select>
+                        <input type="hidden" id="provinceName" name="provinceName">
                     </div>
 
                     <div class="col-sm-6">
                         <label class="form-label" for="city">City <span style="color: red; font-weight: bold;">*</span></label>
-                        <select class="form-control" id="city" name="city" disabled required>
+                        <select class="form-control" id="City" name="City" disabled required>
                             <option value="" disabled selected>Select City</option>
                             <!-- Options will be populated dynamically by JavaScript -->
                         </select>
+                        <input type="hidden" id="cityName" name="cityName">
                     </div>
 
                     <div class="col-sm-6">
                         <label class="form-label" for="district">District <span style="color: red; font-weight: bold;">*</span></label>
-                        <select class="form-control" id="district" name="district" disabled required>
+                        <select class="form-control" id="District" name="District" disabled required>
                             <option value="" disabled selected>Select District</option>
                             <!-- Options will be populated dynamically by JavaScript -->
                         </select>
+                        <input type="hidden" id="districtName" name="districtName">
                     </div>
 
                     <div class="col-sm-6">
                         <label class="form-label" for="subdistrict">Subdistrict <span style="color: red; font-weight: bold;">*</span></label>
-                        <select class="form-control" id="subdistrict" name="subdistrict" disabled required>
+                        <select class="form-control" id="Subdistrict" name="Subdistrict" disabled required>
                             <option value="" disabled selected>Select Subdistrict</option>
                             <!-- Options will be populated dynamically by JavaScript -->
                         </select>
+                        <input type="hidden" id="subdistrictName" name="subdistrictName">
                     </div>
 
                     <div class="col-sm-6">
@@ -83,6 +87,7 @@
                             <option value="" disabled selected>Select Shipping</option>
                             <!-- Options will be populated dynamically by JavaScript -->
                         </select>
+                        <input type="hidden" id="expedition" name="expedition">
                     </div>
 
                     <div class="col-12">
@@ -142,19 +147,19 @@
                                 <label class="fw-semibold">Shipping Cost</label>
                             </div>
                             <div style="width: 50%; text-align: right;" id="shippingCost">
-                                <input type="hidden" name="shippingPrice" id="shippingPrice" value="">
+                                <input type="hidden" id="shippingPrice" name="shippingPrice">
                             </div>
 
                             <div style="width: 50%">
                                 <label class="fw-semibold">Discount</label>
                             </div>
                             <div style="width: 50%; text-align: right; color: red;" id="discount">
-                                <input type="hidden" name="discount" id="discountValue" value="0">
                             </div>
+                            <input type="hidden" id="discountValue" name="discountValue">
 
                             <div class="input-group mt-2">
                                 <input type="text" class="form-control" name="promoCode" placeholder="Promo code">
-                                <button type="button" class="btn btn-info" onclick="redeemPromo()">Redeem</button>
+                                <button type="button" class="btn btn-info" id="redeemPromoButton">Redeem</button>
                             </div>
                         </div>
 
@@ -164,7 +169,7 @@
                             </div>
                             <div style="width: 50%; text-align: right;">
                                 <h4 style="font-weight: bold" id="grandtotal"></h4>
-                                <input type="hidden" name="grandtotal" id="grandtotalValue" value="0">
+                                <input type="hidden" id="grossAmount" name="grossAmount">
                             </div>
                         </div>
                     </div>
@@ -198,10 +203,10 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const provinceDropdown = document.getElementById('province');
-        const cityDropdown = document.getElementById('city');
-        const districtDropdown = document.getElementById('district');
-        const subdistrictDropdown = document.getElementById('subdistrict');
+        const provinceDropdown = document.getElementById('Province');
+        const cityDropdown = document.getElementById('City');
+        const districtDropdown = document.getElementById('District');
+        const subdistrictDropdown = document.getElementById('Subdistrict');
         const shippingDropdown = document.getElementById('shipping');
         const shippingPriceInput = document.getElementById('shippingPrice');
         const shippingCostElement = document.getElementById('shippingCost');
@@ -210,11 +215,12 @@
         let currentDiscount = 0;
 
         function updateGrandTotal() {
-            const shippingPrice = parseInt(shippingDropdown.value, 10) || 0;
+            let shippingPrice = parseInt(shippingDropdown.value, 10) || 0;
             const rentCost = <?= $rentCost; ?>;
             const deposit = <?= $deposit; ?>;
-            const grandTotal = rentCost + deposit + shippingPrice - currentDiscount;
+            let grandTotal = rentCost + deposit + shippingPrice - currentDiscount;
             grandtotalElement.textContent = 'IDR ' + grandTotal.toLocaleString('id-ID');
+            document.getElementById('grossAmount').value = grandTotal;
         }
 
         async function fetchAndPopulate(url, dropdown, keyName, keyValue) {
@@ -234,6 +240,7 @@
         fetchAndPopulate(`https://api.binderbyte.com/wilayah/provinsi?api_key=<?= getenv('API_KEY'); ?>`, provinceDropdown, 'name', 'id');
         provinceDropdown.addEventListener('change', () => {
             const provinceId = provinceDropdown.value;
+            document.getElementById('provinceName').value = provinceDropdown.options[provinceDropdown.selectedIndex].textContent;
             cityDropdown.innerHTML = '<option value="" disabled selected>Select City</option>';
             districtDropdown.innerHTML = '<option value="" disabled selected>Select District</option>';
             subdistrictDropdown.innerHTML = '<option value="" disabled selected>Select Subdistrict</option>';
@@ -246,11 +253,11 @@
             const cityId = cityDropdown.value;
             let cityName = cityDropdown.options[cityDropdown.selectedIndex].textContent;
             cityName = cleanCityName(cityName);
+            document.getElementById('cityName').value = cityName;
             districtDropdown.innerHTML = '<option value="" disabled selected>Select District</option>';
             subdistrictDropdown.innerHTML = '<option value="" disabled selected>Select Subdistrict</option>';
             subdistrictDropdown.disabled = true;
             fetchAndPopulate(`https://api.binderbyte.com/wilayah/kecamatan?api_key=<?= getenv('API_KEY'); ?>&id_kabupaten=${cityId}`, districtDropdown, 'name', 'id');
-            console.log(cityName);
             fetchShippingOptions(cityName);
         });
 
@@ -262,8 +269,13 @@
 
         districtDropdown.addEventListener('change', () => {
             const districtId = districtDropdown.value;
+            document.getElementById('districtName').value = districtDropdown.options[districtDropdown.selectedIndex].textContent;
             subdistrictDropdown.innerHTML = '<option value="" disabled selected>Select Subdistrict</option>';
             fetchAndPopulate(`https://api.binderbyte.com/wilayah/kelurahan?api_key=<?= getenv('API_KEY'); ?>&id_kecamatan=${districtId}`, subdistrictDropdown, 'name', 'id');
+        });
+
+        subdistrictDropdown.addEventListener('change', () => {
+            document.getElementById('subdistrictName').value = subdistrictDropdown.options[subdistrictDropdown.selectedIndex].textContent;
         });
 
         shippingDropdown.addEventListener('change', () => {
@@ -278,7 +290,6 @@
             const response = await fetch(url);
             const data = await response.json();
             const items = data.data.costs;
-            const shippingDropdown = document.getElementById('shipping');
             shippingDropdown.innerHTML = '<option value="" disabled selected>Select Shipping</option>';
 
             const pickupOption = document.createElement('option');
@@ -289,83 +300,67 @@
             items.forEach(item => {
                 const option = document.createElement('option');
                 option.value = item.price;
-                option.textContent = `${item.name} - ${item.type} (IDR ${item.price}, Est. ${item.estimated})`;
+                option.textContent = `${item.name} - ${item.type} (IDR ${Number(item.price).toLocaleString('id-ID')}, Est. ${item.estimated})`;
                 shippingDropdown.appendChild(option);
             });
 
             shippingDropdown.disabled = false;
         }
 
+        shippingDropdown.addEventListener('change', () => {
+            document.getElementById('expedition').value = shippingDropdown.options[shippingDropdown.selectedIndex].textContent;
+        });
+
         const redeemPromoButton = document.getElementById('redeemPromoButton');
         if (redeemPromoButton) {
             redeemPromoButton.addEventListener('click', redeemPromo);
         } else {
-            console.error('Redeem promo button not found.'); // Tambahkan pesan kesalahan untuk debug
+            console.error('Enter the promo code.'); // This is fine
         }
-    });
 
-    async function redeemPromo() {
-        const promoCode = document.querySelector('input[name="promoCode"]').value;
-        const rentCost = parseInt(document.querySelector('input[name="rentCost"]').value);
-        const discountElement = document.getElementById('discount');
-        const grandtotalElement = document.getElementById('grandtotal');
-        let currentDiscount = 0;
+        async function redeemPromo() {
+            const promoCode = document.querySelector('input[name="promoCode"]').value;
+            const rentCost = parseInt(document.querySelector('input[name="rentCost"]').value, 10);
+            currentDiscount = 0;
 
-        const formData = new FormData();
-        formData.append('promoCode', promoCode);
-        formData.append('rentCost', rentCost);
+            const formData = new FormData();
+            formData.append('promoCode', promoCode);
+            formData.append('rentCost', rentCost);
 
-        try {
-            const response = await fetch('/redeem', {
-                method: 'POST',
-                body: formData
-            });
-            const data = await response.json();
+            try {
+                const response = await fetch('/redeem', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
 
-            if (data.success) {
-                // Tampilkan diskon
-                currentDiscount = data.discount; // Perbarui nilai diskon saat ini
-                discountElement.textContent = '- IDR ' + currentDiscount.toLocaleString('id-ID');
-
-                // Hitung ulang grand total
-                updateGrandTotal(); // Panggil fungsi untuk memperbarui total biaya
-
-                // Tampilkan pesan sukses dengan modal
-                showModal('success', 'Promo code redeemed successfully! You Get IDR ' + currentDiscount.toLocaleString('id-ID') + ' Discount');
-            } else {
-                // Tampilkan pesan error dengan modal
-                showModal('error', data.message);
+                if (data.success) {
+                    currentDiscount = parseInt(data.discount, 10);
+                    discountElement.textContent = '- IDR ' + currentDiscount.toLocaleString('id-ID');
+                    document.getElementById('discountValue').value = currentDiscount;
+                    updateGrandTotal();
+                    showModal('success', 'Promo code redeemed successfully! You Get IDR ' + currentDiscount.toLocaleString('id-ID') + ' Discount');
+                } else {
+                    showModal('error', data.message);
+                }
+            } catch (error) {
+                console.error('Error redeeming promo:', error);
+                showModal('error', 'An error occurred while redeeming promo code.');
             }
-        } catch (error) {
-            console.error('Error redeeming promo:', error);
-            // Tampilkan pesan error dengan modal
-            showModal('error', 'An error occurred while redeeming promo code.');
         }
 
-        function updateGrandTotal() {
-            const shippingDropdown = document.getElementById('shipping');
-            const shippingPrice = parseInt(shippingDropdown.value, 10) || 0;
-            const rentCost = <?= $rentCost; ?>;
-            const deposit = <?= $deposit; ?>;
-            const grandTotal = rentCost + deposit + shippingPrice - currentDiscount;
-            grandtotalElement.textContent = 'IDR ' + grandTotal.toLocaleString('id-ID');
+        function showModal(type, message) {
+            if (type === 'success') {
+                document.getElementById('successMessage').innerText = message;
+                const successModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'));
+                successModal.show();
+            } else {
+                document.getElementById('errorMessage').innerText = message;
+                const errorModal = new bootstrap.Modal(document.getElementById('statusErrorsModal'));
+                errorModal.show();
+            }
         }
-    }
 
-    // Fungsi untuk menampilkan modal
-    function showModal(type, message) {
-        if (type === 'success') {
-            document.getElementById('successMessage').innerText = message;
-            const successModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'));
-            successModal.show();
-        } else {
-            document.getElementById('errorMessage').innerText = message;
-            const errorModal = new bootstrap.Modal(document.getElementById('statusErrorsModal'));
-            errorModal.show();
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
         const phoneInput = document.getElementById('phone');
         if (phoneInput) {
             new Cleave(phoneInput, {
@@ -386,6 +381,5 @@
         }
     });
 </script>
-
 
 <?= $this->include('Templates/footer'); ?>
