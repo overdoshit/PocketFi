@@ -85,6 +85,7 @@ class Booking extends BaseController
         $endDate = $this->request->getPost('endDate');
         $durationRent = $this->request->getPost('durationRent');
         $rentCost = $this->request->getPost('rentCost');
+        $productName = $this->request->getPost('productName');
         $deposit = $this->request->getPost('deposit');
         $discount = $this->request->getPost('discountValue');
         $promoCode = $this->request->getPost('promoCode');
@@ -104,6 +105,7 @@ class Booking extends BaseController
         log_message('debug', 'startDate: ' . print_r($startDate, true));
         log_message('debug', 'endDate: ' . print_r($endDate, true));
         log_message('debug', 'durationRent: ' . print_r($durationRent, true));
+        log_message('debug', 'productName: ' . print_r($productName, true));
         log_message('debug', 'rentCost: ' . print_r($rentCost, true));
         log_message('debug', 'deposit: ' . print_r($deposit, true));
         log_message('debug', 'discount: ' . print_r($discount, true));
