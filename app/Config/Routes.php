@@ -49,3 +49,5 @@ $routes->get('/mobile-wifi/indonesia', 'MobileWifi::indonesia');
 $routes->get('/mobile-wifi/international', 'MobileWifi::international');
 
 $routes->get('/how-it-works', 'HowItWorks::index');
+
+$routes->post('/redeem', 'Booking::redeemPromo');
