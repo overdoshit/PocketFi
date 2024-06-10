@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="address">Address</label>
-                            <textarea class="form-control" rows="5" name="address" placeholder="Add an address"><?= session()->get('address'); ?></textarea>
+                            <textarea class="form-control" rows="5" name="address" placeholder="Jl. Sama Dia"><?= session()->get('address'); ?></textarea>
                         </div>
 
                         <div class="col-12 d-flex justify-content-end pt-3">
