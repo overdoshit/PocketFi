@@ -140,6 +140,8 @@ class Authentication extends BaseController
             'email' => $user->email,
             'imageUrl' => $user->imageUrl,
             'provider' => $user->provider,
+            'phone' => $user->phone,
+            'address' => $user->address,
             'role' => $user->role,
         ];
 
@@ -187,6 +189,8 @@ class Authentication extends BaseController
                 'email' => $user->email,
                 'imageUrl' => $user->imageUrl,
                 'provider' => $user->provider,
+                'phone' => $user->phone,
+                'address' => $user->address,
                 'role' => $user->role,
             ];
 
