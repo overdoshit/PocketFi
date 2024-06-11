@@ -43,11 +43,16 @@ $routes->add('/auth/google/callback', 'Authentication::googleCallBack');
 $routes->get('/profile', 'Profile::index', ['filter' => 'LoginFilter']);
 $routes->get('/profile/index', 'Profile::index', ['filter' => 'LoginFilter']);
 $routes->post('/profile/update', 'Profile::update', ['filter' => 'LoginFilter']);
+$routes->post('/profile/delete-photo', 'Profile::deletePhoto', ['filter' => 'LoginFilter']);
 
-// Pages Routes
+// Product Pages Routes
 $routes->get('/mobile-wifi/indonesia', 'MobileWifi::indonesia');
 $routes->get('/mobile-wifi/international', 'MobileWifi::international');
 $routes->get('/sim-card', 'SimCard::index');
+
+//Pages Routes
 $routes->get('/how-it-works', 'HowItWorks::index');
-$routes->post('/redeem', 'Booking::redeemPromo');
-$routes->post('/booking/payment', 'Booking::payment');
+
+// Booking Pages Routes
+$routes->post('/redeem', 'Booking::redeemPromo', ['filter' => 'LoginFilter']);
+$routes->post('/booking/payment', 'Booking::payment', ['filter' => 'LoginFilter']);

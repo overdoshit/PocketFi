@@ -54,24 +54,6 @@
                         <h2 class="h4 mb-0">Basic info</h2>
                     </div>
                     <div class="d-flex align-items-center">
-                        <!-- <div class="dropdown" style="position: static;">
-                            <a class="d-flex flex-column justify-content-end overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0" href="#" data-bs-toggle="dropdown" aria-expanded="false" style="width: 80px; height: 80px; background-image: url(<?= $session->get('imageUrl'); ?>);" aria-label="Upload picture">
-                                <span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0,0,0,.5)">
-                                    <i class="fa-regular fa-camera"></i>
-                                </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <label class="dropdown-item fw-normal">
-                                    <i class="fa-regular fa-camera fa-fw me-1"></i>
-                                    Upload new photo
-                                    <input type="file" class="d-none" id="profileImage" name="profileImage">
-                                </label>
-                                <a class="dropdown-item text-danger fw-normal" href="#">
-                                    <i class="fa-regular fa-trash-xmark fa-fw me-1"></i>
-                                    Delete photo
-                                </a>
-                            </div>
-                        </div> -->
                         <div class="dropdown dropdown-image">
                             <a class="d-flex flex-column justify-content-end overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0" href="#" data-bs-toggle="dropdown" aria-expanded="false" style="width: 80px; height: 80px; object-fit: cover; background-image: url(<?= $session->get('imageUrl'); ?>);" aria-label="Upload picture">
                                 <span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0,0,0,.5)">
@@ -84,7 +66,7 @@
                                     Upload new photo
                                     <input type="file" class="d-none" id="profileImage" name="profileImage">
                                 </label>
-                                <a class="dropdown-item text-danger fw-normal" href="#">
+                                <a class="dropdown-item text-danger fw-normal" href="#" onclick="event.preventDefault(); var form = document.getElementById('delete-photo-form'); if (form) { form.submit(); } else { console.error('Form not found'); }">
                                     <i class="fa-regular fa-trash-xmark fa-fw me-1"></i>
                                     Delete photo
                                 </a>
@@ -122,6 +104,11 @@
         </div>
     </div>
 </div>
+
+<!-- Hidden form for deleting photo -->
+<form id="delete-photo-form" action="<?= base_url('profile/delete-photo') ?>" method="post" style="display: none;">
+    <?= csrf_field() ?>
+</form>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
