@@ -54,5 +54,7 @@ $routes->get('/sim-card', 'SimCard::index');
 $routes->get('/how-it-works', 'HowItWorks::index');
 
 // Booking Pages Routes
+$routes->post('/booking', 'Booking::index', ['filter' => 'LoginFilter']);
+$routes->post('/booking/index', 'Booking::index', ['filter' => 'LoginFilter']);
 $routes->post('/redeem', 'Booking::redeemPromo', ['filter' => 'LoginFilter']);
 $routes->post('/booking/payment', 'Booking::payment', ['filter' => 'LoginFilter']);
