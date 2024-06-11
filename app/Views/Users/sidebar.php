@@ -41,7 +41,7 @@
     }
 
     .active-menu {
-        color: var(--primary-color);
+        color: var(--bs-primary);
     }
 
     @media (max-width: 991px) {
@@ -64,39 +64,16 @@
                     <h3 class="h5 mb-1"><?= $session->get('name'); ?></h3>
                     <p class="fs-sm text-body-secondary mb-0"><?= $session->get('email'); ?></p>
                 </div>
-                <div class="menu flex-column pb-2 pb-lg-4 mb-3">
+                <div class="menu flex-column pb-2 pb-lg-4 mb-1">
                     <h4 class="fs-xs fw-medium text-body-secondary text-uppercase pb-1 mb-2">Account</h4>
-                    <a class="menu-link fw-semibold py-2 px-0" href="#">
-                        <i class="fa-regular fa-user-check fs-5 me-1"></i>
-                        Overview
-                    </a>
-                    <a class="menu-link fw-semibold py-2 px-0 active-menu" href="/profile">
-                        <i class="fa-regular fa-gear fs-5 me-2"></i>
-                        Settings
-                    </a>
-                    <a class="menu-link fw-semibold py-2 px-0" href="#">
-                        <i class="fa-regular fa-wallet fs-5 me-2"></i>
-                        Billing
+                    <a class="menu-link fw-semibold py-2 px-0 <?= (current_url() == base_url('/profile')) ? 'active-menu' : ''; ?>" href="/profile">
+                        <i class="fa-regular fa-gear fs-5 me-2"></i> Settings
                     </a>
                 </div>
                 <div class="menu flex-column pb-2 pb-lg-4 mb-1">
                     <h4 class="fs-xs fw-medium text-body-secondary text-uppercase pb-1 mb-2">Dashboard</h4>
-                    <a class="menu-link fw-semibold py-2 px-0" href="#">
-                        <i class="fa-regular fa-cart-shopping fs-5 me-2"></i>
-                        Orders
-                    </a>
-                    <a class="menu-link fw-semibold py-2 px-0" href="#">
-                        <i class="fa-regular fa-wave-pulse fs-5 me-1"></i>
-                        Earnings
-                    </a>
-                    <a class="menu-link fw-semibold py-2 px-0" href="#">
-                        <i class="fa-regular fa-message-dots fs-5 me-2"></i>
-                        Chat
-                        <span class="badge bg-danger ms-auto p-2">3</span>
-                    </a>
-                    <a class="menu-link fw-semibold py-2 px-0" href="#">
-                        <i class="fa-regular fa-heart fs-5 me-2"></i>
-                        Favorites
+                    <a class="menu-link fw-semibold py-2 px-0 <?= (current_url() == base_url('/order')) ? 'active-menu' : ''; ?>" href="#/order">
+                        <i class="fa-regular fa-cart-shopping fs-5 me-2"></i> Orders
                     </a>
                 </div>
                 <div class="menu flex-column">
