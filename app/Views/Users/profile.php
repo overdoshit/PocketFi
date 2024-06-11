@@ -15,10 +15,24 @@
         background-size: cover !important;
     }
 
+    .dropdown-image {
+        position: relative;
+    }
+
     @media (max-width: 991px) {
         .settings {
             margin-top: -100px;
         }
+
+        .dropdown-image {
+            position: static;
+        }
+    }
+
+    .show,
+    .showing,
+    .hidding {
+        transition: 0.2s ease-in-out;
     }
 </style>
 
@@ -34,23 +48,42 @@
 
             <!-- Basic info -->
             <section class="card-body p-4 mb-4">
-                <form action="<?= base_url('profile/update') ?>" method="post">
+                <form action="<?= base_url('profile/update') ?>" method="post" enctype="multipart/form-data">
                     <div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
                         <i class="ai-user text-primary lead pe-1 me-2"></i>
                         <h2 class="h4 mb-0">Basic info</h2>
                     </div>
                     <div class="d-flex align-items-center">
-                        <div class="dropdown-image dropdown-hover">
-                            <a class="d-flex flex-column justify-content-end overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0" href="#" data-bs-toggle="dropdown-image" aria-expanded="false" style="width: 80px; height: 80px; background-image: url(<?= $session->get('imageUrl'); ?>);" aria-label="Upload picture">
+                        <!-- <div class="dropdown" style="position: static;">
+                            <a class="d-flex flex-column justify-content-end overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0" href="#" data-bs-toggle="dropdown" aria-expanded="false" style="width: 80px; height: 80px; background-image: url(<?= $session->get('imageUrl'); ?>);" aria-label="Upload picture">
                                 <span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0,0,0,.5)">
                                     <i class="fa-regular fa-camera"></i>
                                 </span>
                             </a>
-                            <div class="dropdown-menu my-1">
-                                <a class="dropdown-item fw-normal" href="#">
+                            <div class="dropdown-menu">
+                                <label class="dropdown-item fw-normal">
                                     <i class="fa-regular fa-camera fa-fw me-1"></i>
                                     Upload new photo
+                                    <input type="file" class="d-none" id="profileImage" name="profileImage">
+                                </label>
+                                <a class="dropdown-item text-danger fw-normal" href="#">
+                                    <i class="fa-regular fa-trash-xmark fa-fw me-1"></i>
+                                    Delete photo
                                 </a>
+                            </div>
+                        </div> -->
+                        <div class="dropdown dropdown-image">
+                            <a class="d-flex flex-column justify-content-end overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0" href="#" data-bs-toggle="dropdown" aria-expanded="false" style="width: 80px; height: 80px; object-fit: cover; background-image: url(<?= $session->get('imageUrl'); ?>);" aria-label="Upload picture">
+                                <span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0,0,0,.5)">
+                                    <i class="fa-regular fa-camera"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <label class="dropdown-item fw-normal">
+                                    <i class="fa-regular fa-camera fa-fw me-1"></i>
+                                    Upload new photo
+                                    <input type="file" class="d-none" id="profileImage" name="profileImage">
+                                </label>
                                 <a class="dropdown-item text-danger fw-normal" href="#">
                                     <i class="fa-regular fa-trash-xmark fa-fw me-1"></i>
                                     Delete photo
@@ -96,7 +129,7 @@
         if (phoneInput) {
             new Cleave(phoneInput, {
                 numericOnly: true,
-                blocks: [3, 3, 4, 5],
+                blocks: [15],
                 prefix: '+62',
                 noImmediatePrefix: true,
                 rawValueTrimPrefix: true,
@@ -110,6 +143,20 @@
                 }
             });
         }
+    });
+
+    const profileImageInput = document.getElementById('profileImage');
+    const profileImage = document.querySelector('.bg-size-cover.bg-position-center');
+
+    profileImageInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            profileImage.style.backgroundImage = `url(${e.target.result})`;
+        };
+
+        reader.readAsDataURL(file);
     });
 </script>
 
