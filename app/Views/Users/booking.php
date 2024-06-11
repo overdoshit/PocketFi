@@ -32,7 +32,8 @@
 
                     <div class="col-sm-6">
                         <label class="form-label" for="email">Email address <span style="color: red; font-weight: bold;">*</span></label>
-                        <input class="form-control" type="email" value="<?= session()->get('email'); ?>" name="email" placeholder="johndoe@mail.com" required>
+                        <input class="form-control" type="email" disabled value="<?= session()->get('email'); ?>" name="emailUser" placeholder="johndoe@mail.com" required>
+                        <input type="hidden" name="email" value="<?= session()->get('email'); ?>">
                     </div>
 
                     <div class="col-sm-6">
@@ -103,6 +104,7 @@
                 <div class="order sticky-top" style="top: 20px;">
                     <div style="box-shadow: 0px 5px 15px 5px rgba(0, 0, 0, 0.1); padding: 32px;border-radius: 15px;">
                         <h4 class="mb-3">Your Order</h4>
+                        <input type="hidden" name="idProduct" value="<?= $idProduct; ?>">
                         <p class="fw-semibold"><?= $productName; ?></p>
                         <input type="hidden" name="productName" value="<?= $productName; ?>">
                         <div style="display: flex;background: #fbfbfb;border-bottom: 2px solid var(--bs-primary);">
@@ -158,8 +160,8 @@
                             <input type="hidden" id="discountValue" name="discountValue">
 
                             <div class="input-group mt-2">
-                                <input type="text" class="form-control" name="promoCode" placeholder="Promo code">
-                                <button type="button" class="btn btn-info" id="redeemPromoButton">Redeem</button>
+                                <input type="text" class="form-control" name="promoCode" id="promoCodeInput" placeholder="Promo code">
+                                <button type="button" class="btn btn-info" id="redeemPromoButton" disabled>Redeem</button>
                             </div>
                         </div>
 
@@ -312,16 +314,27 @@
         });
 
         const redeemPromoButton = document.getElementById('redeemPromoButton');
-        if (redeemPromoButton) {
+        const promoCodeInput = document.getElementById('promoCodeInput');
+
+        if (redeemPromoButton && promoCodeInput) {
+            promoCodeInput.addEventListener('input', () => {
+                redeemPromoButton.disabled = !promoCodeInput.value.trim();
+            });
+
             redeemPromoButton.addEventListener('click', redeemPromo);
         } else {
             console.error('Enter the promo code.'); // This is fine
         }
 
         async function redeemPromo() {
-            const promoCode = document.querySelector('input[name="promoCode"]').value;
+            let promoCode = promoCodeInput.value.trim().toUpperCase();
             const rentCost = parseInt(document.querySelector('input[name="rentCost"]').value, 10);
             currentDiscount = 0;
+
+            if (!promoCode) {
+                showModal('error', 'Please enter a promo code.');
+                return;
+            }
 
             const formData = new FormData();
             formData.append('promoCode', promoCode);
@@ -365,7 +378,7 @@
         if (phoneInput) {
             new Cleave(phoneInput, {
                 numericOnly: true,
-                blocks: [3, 3, 4, 5],
+                blocks: [15],
                 prefix: '+62',
                 noImmediatePrefix: true,
                 rawValueTrimPrefix: true,
