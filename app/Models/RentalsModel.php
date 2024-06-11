@@ -4,20 +4,38 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ReviewsModel extends Model
+class RentalsModel extends Model
 {
-    protected $table            = 'reviews';
-    protected $primaryKey       = 'idReview';
-    protected $useAutoIncrement = true;
+    protected $table            = 'rentals';
+    protected $primaryKey       = 'idOrder';
+    protected $useAutoIncrement = false;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'email',
-        'imageUrl',
+        'idProduct',
+        'status',
         'name',
-        'rating',
-        'comment',
+        'email',
+        'phone',
+        'province',
+        'city',
+        'district',
+        'subdistrict',
+        'postcode',
+        'shippingAddress',
+        'expedition',
+        'shippingPrice',
+        'startDate',
+        'endDate',
+        'durationRent',
+        'rentCost',
+        'productName',
+        'deposit',
+        'discount',
+        'promoCode',
+        'grossAmount',
+        'token',
     ];
 
     protected bool $allowEmptyInserts = false;
@@ -27,7 +45,7 @@ class ReviewsModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'createdAt';
     protected $updatedField  = 'updatedAt';
@@ -49,9 +67,4 @@ class ReviewsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function getRandomReviews($limit = 10)
-    {
-        return $this->orderBy('RAND()')->findAll($limit);
-    }
 }

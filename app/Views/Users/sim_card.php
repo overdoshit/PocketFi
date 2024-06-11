@@ -133,17 +133,17 @@
     <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
         <?php foreach ($products as $product) : ?>
             <div class="product col position-relative">
-                <?php if ($product['stock'] == 0) : ?>
+                <?php if ($product->stock == 0) : ?>
                     <div class="ribbon"><span class="sold-out">Sold Out</span></div>
-                <?php elseif ($product['stock'] <= 2) : ?>
+                <?php elseif ($product->stock <= 2) : ?>
                     <div class="ribbon"><span class="low-stock">Low Stock</span></div>
-                <?php elseif ($product['bestSeller'] === 'Y') : ?>
+                <?php elseif ($product->bestSeller === 'Y') : ?>
                     <div class="ribbon"><span class="best-seller">Best Seller</span></div>
                 <?php endif; ?>
-                <div class="card mb-5 rounded-3 shadow-sm <?= $product['stock'] == 0 ? 'border-secondary' : 'border-primary'; ?>">
-                    <div class="card-header py-3 <?= $product['stock'] == 0 ? 'text-bg-secondary border-secondary' : 'text-bg-primary border-primary'; ?>" style="min-height: 72px;">
+                <div class="card mb-5 rounded-3 shadow-sm <?= $product->stock == 0 ? 'border-secondary' : 'border-primary'; ?>">
+                    <div class="card-header py-3 <?= $product->stock == 0 ? 'text-bg-secondary border-secondary' : 'text-bg-primary border-primary'; ?>" style="min-height: 72px;">
                         <h1 class="text-uppercase fw-bold text-start fs-6 m-0">
-                            <?= $productName = $product['country'] . ' ' . $product['packageType'] . ' ' . $product['dataUsage'] . ' IDR ' . number_format($product['dailyPrice'], 0, ',', '.') . '/DAY (MINIMUM RENT ' . $product['minimumRentDays'] . ' DAYS)'; ?>
+                            <?= $productName = $product->country . ' ' . $product->packageType . ' ' . $product->dataUsage . ' IDR ' . number_format($product->dailyPrice, 0, ',', '.') . '/DAY (MINIMUM RENT ' . $product->minimumRentDays . ' DAYS)'; ?>
                         </h1>
                     </div>
                     <div class="card-body">
@@ -151,41 +151,41 @@
                             <tbody>
                                 <tr>
                                     <td class="dataProduct" rowspan="2" style="vertical-align : middle;">
-                                        <img src="<?= $product['countryFlagUrl']; ?>" width="115px" style="box-shadow: 0px 4px 8px 0px #0000004D; <?= $product['stock'] == 0 ? 'filter: grayscale(100%);' : ''; ?>">
+                                        <img src="<?= $product->countryFlagUrl; ?>" width="115px" style="box-shadow: 0px 4px 8px 0px #0000004D; <?= $product->stock == 0 ? 'filter: grayscale(100%);' : ''; ?>">
                                     </td>
                                     <td class="dataProduct">
                                         <div class="title-row">Country</div>
-                                        <p class="content-row fw-bold"><?= $product['country']; ?></p>
+                                        <p class="content-row fw-bold"><?= $product->country; ?></p>
                                     </td>
                                     <td class="dataProduct">
                                         <div class="title-row">Data Usage</div>
-                                        <p class="content-row fw-bold"><?= $product['dataUsage']; ?></p>
+                                        <p class="content-row fw-bold"><?= $product->dataUsage; ?></p>
                                     </td>
                                     <td class="dataProduct">
                                         <div class="title-row">Minimum Rent</div>
-                                        <p class="content-row fw-bold"><?= $product['minimumRentDays']; ?> DAYS</p>
+                                        <p class="content-row fw-bold"><?= $product->minimumRentDays; ?> DAYS</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="dataProduct">
                                         <div class="title-row">Network</div>
-                                        <p class="content-row fw-bold"><?= $product['network']; ?></p>
+                                        <p class="content-row fw-bold"><?= $product->network; ?></p>
                                     </td>
                                     <td class="dataProduct">
                                         <div class="title-row">Deposit</div>
-                                        <p class="content-row fw-bold">IDR <?= number_format($product['deposit'], 0, ',', '.'); ?></p>
+                                        <p class="content-row fw-bold">IDR <?= number_format($product->deposit, 0, ',', '.'); ?></p>
                                     </td>
                                     <td class="dataProduct">
-                                        <button type="button" class="btn <?= $product['stock'] == 0 ? 'btn-secondary' : 'btn-warning'; ?> btn-more m-2" data-bs-toggle="modal" data-bs-target="#detailModal-<?= $product['idProduct']; ?>">More details &raquo;</button>
+                                        <button type="button" class="btn <?= $product->stock == 0 ? 'btn-secondary' : 'btn-warning'; ?> btn-more m-2" data-bs-toggle="modal" data-bs-target="#detailModal-<?= $product->idProduct; ?>">More details &raquo;</button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <h5 class="price-label fw-bold my-2">
-                            IDR <?= number_format($product['packageType'] == 'WEEKLY' ? $product['dailyPrice'] * 7 : ($product['packageType'] == 'MONTHLY' ? $product['dailyPrice'] * 30 : $product['dailyPrice']), 0, ',', '.'); ?>/
+                            IDR <?= number_format($product->packageType == 'WEEKLY' ? $product->dailyPrice * 7 : ($product->packageType == 'MONTHLY' ? $product->dailyPrice * 30 : $product->dailyPrice), 0, ',', '.'); ?>/
                             <span class="text-lowercase">
                                 <?php
-                                switch ($product['packageType']) {
+                                switch ($product->packageType) {
                                     case 'DAILY':
                                         echo 'day';
                                         break;
@@ -203,15 +203,15 @@
                             </span>
                         </h5>
                         <?php if (session('email')) : ?>
-                            <button type="button" class="w-100 btn btn-lg <?= $product['stock'] == 0 ? 'btn-secondary' : 'btn-primary'; ?>" <?= $product['stock'] == 0 ? 'disabled' : ''; ?> data-bs-toggle="modal" data-bs-target="#bookingModal-<?= $product['idProduct']; ?>">Check out</button>
+                            <button type="button" class="w-100 btn btn-lg <?= $product->stock == 0 ? 'btn-secondary' : 'btn-primary'; ?>" <?= $product->stock == 0 ? 'disabled' : ''; ?> data-bs-toggle="modal" data-bs-target="#bookingModal-<?= $product->idProduct; ?>">Check out</button>
                         <?php else : ?>
-                            <button type="button" class="w-100 btn btn-lg <?= $product['stock'] == 0 ? 'btn-secondary' : 'btn-primary'; ?>" <?= $product['stock'] == 0 ? 'disabled' : ''; ?> data-bs-toggle="modal" data-bs-target="#loginModal">Check out</button>
+                            <button type="button" class="w-100 btn btn-lg <?= $product->stock == 0 ? 'btn-secondary' : 'btn-primary'; ?>" <?= $product->stock == 0 ? 'disabled' : ''; ?> data-bs-toggle="modal" data-bs-target="#loginModal">Check out</button>
                         <?php endif; ?>
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade detailModal text-start" id="detailModal-<?= $product['idProduct']; ?>" tabindex="-1" aria-labelledby="detailModalLabel-<?= $product['idProduct']; ?>" aria-hidden="true">
+            <div class="modal fade detailModal text-start" id="detailModal-<?= $product->idProduct; ?>" tabindex="-1" aria-labelledby="detailModalLabel-<?= $product->idProduct; ?>" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                     <div class="modal-content rounded-4 shadow">
                         <div class="modal-header p-4 mx-2 border-bottom-1">
@@ -223,7 +223,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <img src="<?= $product['imageUrl']; ?>" style="width: 100%">
+                                    <img src="<?= $product->imageUrl; ?>" style="width: 100%">
                                 </div>
                                 <div class="col-md-7">
                                     <table class="table">
@@ -232,43 +232,43 @@
                                                 <td>
                                                     <label>Country</label>
                                                     <p class="fw-bold mb-3">
-                                                        <img src="<?= $product['countryFlagUrl']; ?>" width="20px" style="box-shadow: 0px 2px 4px 0px #0000004D;">
-                                                        <?= $product['country']; ?>
+                                                        <img src="<?= $product->countryFlagUrl; ?>" width="20px" style="box-shadow: 0px 2px 4px 0px #0000004D;">
+                                                        <?= $product->country; ?>
                                                     </p>
                                                 </td>
                                                 <td>
                                                     <label>Battery (Hour)</label>
-                                                    <p class="fw-bold mb-3"><?= $product['batteryHours']; ?>+</p>
+                                                    <p class="fw-bold mb-3"><?= $product->batteryHours; ?>+</p>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <label>No. of shared devices</label>
-                                                    <p class="fw-bold mb-3"><?= $product['sharedDevices']; ?></p>
+                                                    <p class="fw-bold mb-3"><?= $product->sharedDevices; ?></p>
                                                 </td>
                                                 <td>
                                                     <label>Data Usage</label>
-                                                    <p class="fw-bold mb-3"><?= $product['dataUsage']; ?></p>
+                                                    <p class="fw-bold mb-3"><?= $product->dataUsage; ?></p>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <label>Max Download Speed</label>
-                                                    <p class="fw-bold mb-3"><?= $product['maxDownloadSpeed']; ?> Mbps</p>
+                                                    <p class="fw-bold mb-3"><?= $product->maxDownloadSpeed; ?> Mbps</p>
                                                 </td>
                                                 <td>
                                                     <label>Max Upload Speed</label>
-                                                    <p class="fw-bold mb-3"><?= $product['maxUploadSpeed']; ?> Mbps</p>
+                                                    <p class="fw-bold mb-3"><?= $product->maxUploadSpeed; ?> Mbps</p>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <label>Network</label>
-                                                    <p class="fw-bold mb-3"><?= $product['network']; ?></p>
+                                                    <p class="fw-bold mb-3"><?= $product->network; ?></p>
                                                 </td>
                                                 <td>
                                                     <label>Deposit</label>
-                                                    <p class="fw-bold mb-3">IDR <?= number_format($product['deposit'], 0, ',', '.'); ?></p>
+                                                    <p class="fw-bold mb-3">IDR <?= number_format($product->deposit, 0, ',', '.'); ?></p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -278,7 +278,7 @@
                             <div class="row">
                                 <div class="col-md-12 notes">
                                     <h5>Notes</h5>
-                                    <div><?= $product['notes']; ?></div>
+                                    <div><?= $product->notes; ?></div>
                                 </div>
                             </div>
                         </div>
@@ -289,7 +289,7 @@
                 </div>
             </div>
 
-            <div class="modal fade bookingModal text-start" id="bookingModal-<?= $product['idProduct']; ?>" tabindex="-1" aria-labelledby="bookingModalLabel-<?= $product['idProduct']; ?>" aria-hidden="true">
+            <div class="modal fade bookingModal text-start" id="bookingModal-<?= $product->idProduct; ?>" tabindex="-1" aria-labelledby="bookingModalLabel-<?= $product->idProduct; ?>" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content rounded-4 shadow">
                         <div class="modal-header p-4 mx-2 border-bottom-1">
@@ -302,16 +302,16 @@
                             <div class="modal-body">
                                 <h5 class="text-center mb-2">Set the Duration of Your WiFi Rental</h5>
                                 <p class="text-center lead fs-6">For delivery, please place your order at least 3 days in advance. If you need it sooner, please contact us to explore other delivery options.</p>
-                                <input type="hidden" name="idProduct" value="<?= $product['idProduct']; ?>">
+                                <input type="hidden" name="idProduct" value="<?= $product->idProduct; ?>">
                                 <input type="hidden" name="productName" value="<?= $productName; ?>">
                                 <div class="date-book">
                                     <div class="form-floating mb-4">
-                                        <input type="date" class="form-control rounded-3 start-date" id="startDate" name="startDate" min="<?= date('Y-m-d'); ?>" value="<?= old('startDate') ?>" required>
+                                        <input type="date" class="form-control rounded-3 start-date" id="startDate<?= $product->idProduct; ?>" name="startDate" min="<?= date('Y-m-d'); ?>" value="<?= old('startDate') ?>" required>
                                         <label for="floatingInput">Start Date</label>
                                     </div>
                                     <div class="form-floating mb-4">
-                                        <?php $minEndDate = date('Y-m-d', strtotime('+' . ($product['minimumRentDays']) . ' days')); ?>
-                                        <input type="date" class="form-control rounded-3 end-date" id="endDate" name="endDate" min="<?= $minEndDate; ?>" required>
+                                        <?php $minEndDate = date('Y-m-d', strtotime('+' . ($product->minimumRentDays) . ' days')); ?>
+                                        <input type="date" class="form-control rounded-3 end-date" id="endDate<?= $product->idProduct; ?>" name="endDate" min="<?= $minEndDate; ?>" required>
                                         <label for="floatingInput">End Date</label>
                                     </div>
                                 </div>

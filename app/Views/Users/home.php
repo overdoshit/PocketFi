@@ -119,17 +119,17 @@
                         <div class="image-content">
                             <span class="overlay"></span>
                             <div class="card-image">
-                                <img src="<?= $review['imageUrl']; ?>" class="card-img" alt="<?= $review['name']; ?>" />
+                                <img src="<?= $review->imageUrl; ?>" class="card-img" alt="<?= $review->name; ?>" />
                             </div>
                         </div>
                         <div class="card-content">
-                            <h2 class="name"><?= $review['name']; ?></h2>
+                            <h2 class="name"><?= $review->name; ?></h2>
                             <div class="start">
-                                <?php for ($i = 0; $i < $review['rating']; $i++) : ?>
+                                <?php for ($i = 0; $i < $review->rating; $i++) : ?>
                                     <i class="fa-solid fa-star" style="color: #ffd43b"></i>
                                 <?php endfor; ?>
                             </div>
-                            <p class="description"><?= $review['comment']; ?></p>
+                            <p class="description"><?= $review->comment; ?></p>
                         </div>
                     </div>
                 <?php endforeach; ?>

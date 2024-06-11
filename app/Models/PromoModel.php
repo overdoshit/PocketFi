@@ -9,10 +9,18 @@ class PromoModel extends Model
     protected $table            = 'promo';
     protected $primaryKey       = 'idPromo';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['code', 'discount', 'maxDiscountAmount', 'maxUsage', 'usedCount', 'startDate', 'endDate'];
+    protected $allowedFields    = [
+        'code',
+        'discount',
+        'maxDiscountAmount',
+        'maxUsage',
+        'usedCount',
+        'startDate',
+        'endDate',
+    ];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
