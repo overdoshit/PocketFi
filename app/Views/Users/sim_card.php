@@ -62,6 +62,10 @@
         .detailModal {
             --bs-modal-width: 800px;
         }
+
+        .bookingModal {
+            --bs-modal-width: 500px;
+        }
     }
 
     .ribbon {
@@ -119,7 +123,7 @@
 <section class="container text-center py-5">
     <div class="row">
         <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Global Wifi Indonesia</h1>
+            <h1 class="fw-light">SIM Card & E-SIM</h1>
             <p class="lead text-body-secondary">Multi operator system which will look for the best connection in your area in order to provide best signal services for you anywhere in Indonesia.</p>
         </div>
     </div>
@@ -292,11 +296,12 @@
                             <h1 class="text-uppercase fw-bold text-start fs-6 m-0">
                                 <?= $productName; ?>
                             </h1>
-                            <button type="button" class="btn-close ms-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="/booking" method="post">
                             <div class="modal-body">
-                                <h5 class="text-center mb-4">Set how long you want to borrow wifi</h5>
+                                <h5 class="text-center mb-2">Set the Duration of Your WiFi Rental</h5>
+                                <p class="text-center lead fs-6">For delivery, please place your order at least 3 days in advance. If you need it sooner, please contact us to explore other delivery options.</p>
                                 <input type="hidden" name="idProduct" value="<?= $product['idProduct']; ?>">
                                 <input type="hidden" name="productName" value="<?= $productName; ?>">
                                 <div class="date-book">
