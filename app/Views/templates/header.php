@@ -77,7 +77,7 @@
                             <?php if (session('email')) : ?>
                                 <div class="dropdown-hover btn-profile">
                                     <div class="profile btn btn-success px-2 d-flex justify-content-between align-items-center" role="button" id="userDropdownMobile" aria-expanded="false">
-                                        <img src="<?= session('imageUrl'); ?>" alt="Profile" width="30" height="30" class="rounded-circle">
+                                        <img src="<?= session('imageUrl'); ?>" alt="Profile" style="width: 30px; height: 30px; object-fit: cover;" class="rounded-circle">
                                         <i class="fa-solid fa-bars ms-2 fs-5 me-2"></i>
                                     </div>
                                     <ul class="dropdown-menu">
@@ -100,7 +100,7 @@
                     <?php if (session('email')) : ?>
                         <div class="dropdown-hover btn-profile">
                             <a class="profile btn btn-success px-2 d-flex justify-content-between align-items-center" role="button" id="userDropdown" aria-expanded="false">
-                                <img src="<?= session('imageUrl'); ?>" alt="Profile" width="30" height="30" class="rounded-circle">
+                                <img src="<?= session('imageUrl'); ?>" alt="Profile" style="width: 30px; height: 30px; object-fit: cover;" class="rounded-circle">
                                 <i class="fa-solid fa-bars ms-2 fs-5 me-2"></i>
                             </a>
                             <ul class="dropdown-menu">

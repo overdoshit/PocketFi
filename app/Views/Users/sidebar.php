@@ -60,7 +60,7 @@
             <button class="btn-close fs-3 position-absolute top-0 end-0 mt-3 me-2 d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#sidebarAccount" aria-label="Close"></button>
             <div class="offcanvas-body d-block py-3">
                 <div class="pb-2 pb-lg-0 mb-4 mb-lg-5">
-                    <img class="d-block rounded-circle my-2" src="<?= $session->get('imageUrl'); ?>" width="80" alt="Profile Image">
+                    <img class="d-block rounded-circle my-2" src="<?= $session->get('imageUrl'); ?>" style="width: 80px; height: 80px; object-fit: cover;" alt="Profile Image">
                     <h3 class="h5 mb-1"><?= $session->get('name'); ?></h3>
                     <p class="fs-sm text-body-secondary mb-0"><?= $session->get('email'); ?></p>
                 </div>
