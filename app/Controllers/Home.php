@@ -14,7 +14,7 @@ class Home extends BaseController
         ];
 
         $reviewsModel = new ReviewsModel();
-        $data['reviews'] = $reviewsModel->getRandomReviews(10);
+        $data['reviews'] = $reviewsModel->getRandomReviews(7);
 
         return view("Users/home", $data);
     }
