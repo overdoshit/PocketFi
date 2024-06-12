@@ -12,7 +12,7 @@ class MobileWifi extends BaseController
         $model = new ProductsModel();
         $data = [
             'title' => 'Mobile Wifi Indonesia',
-            'products' => $model->where('category', 'Indonesia')->findAll()
+            'products' => $model->where('category', 'MIFI Indonesia')->findAll()
         ];
         return view('Users/mobile_wifi_indonesia', $data);
     }
@@ -22,7 +22,7 @@ class MobileWifi extends BaseController
         $model = new ProductsModel();
         $data = [
             'title' => 'Mobile Wifi International',
-            'products' => $model->where('category', 'International')->findAll()
+            'products' => $model->where('category', 'MIFI International')->findAll()
         ];
         return view('Users/mobile_wifi_international', $data);
     }
