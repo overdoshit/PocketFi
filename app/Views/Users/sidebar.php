@@ -72,12 +72,12 @@
                 </div>
                 <div class="menu flex-column pb-2 pb-lg-4 mb-1">
                     <h4 class="fs-xs fw-medium text-body-secondary text-uppercase pb-1 mb-2">Dashboard</h4>
-                    <a class="menu-link fw-semibold py-2 px-0 <?= (current_url() == base_url('/order')) ? 'active-menu' : ''; ?>" href="#/order">
+                    <a class="menu-link fw-semibold py-2 px-0 <?= (current_url() == base_url('/orders')) ? 'active-menu' : ''; ?>" href="/orders">
                         <i class="fa-regular fa-cart-shopping fs-5 me-2"></i> Orders
                     </a>
                 </div>
                 <div class="menu flex-column">
-                    <a class="text-danger menu-link fw-semibold py-2 px-0" href="#">
+                    <a class="text-danger menu-link fw-semibold py-2 px-0" href="/logout">
                         <i class="fa-regular fa-right-from-bracket fs-5 me-2"></i>
                         Sign out
                     </a>
