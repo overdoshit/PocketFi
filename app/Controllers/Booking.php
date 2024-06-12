@@ -204,8 +204,8 @@ class Booking extends BaseController
                 ]
             ],
             'callbacks' => [
-                'finish' => 'http://pocketfi.test/booking/success',
-                'error' => 'https://google.com/',
+                'finish' => getenv('app.baseURL') . 'booking/success',
+                'error' => getenv('app.baseURL') . '#products',
             ]
         ];
 
