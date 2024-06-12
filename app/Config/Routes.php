@@ -44,6 +44,7 @@ $routes->get('/profile', 'Profile::index', ['filter' => 'LoginFilter']);
 $routes->get('/profile/index', 'Profile::index', ['filter' => 'LoginFilter']);
 $routes->post('/profile/update', 'Profile::update', ['filter' => 'LoginFilter']);
 $routes->post('/profile/delete-photo', 'Profile::deletePhoto', ['filter' => 'LoginFilter']);
+$routes->get('/orders', 'Profile::orders', ['filter' => 'LoginFilter']);
 
 // Product Pages Routes
 $routes->get('/mobile-wifi/indonesia', 'MobileWifi::indonesia');
@@ -58,3 +59,4 @@ $routes->post('/booking', 'Booking::index', ['filter' => 'LoginFilter']);
 $routes->post('/booking/index', 'Booking::index', ['filter' => 'LoginFilter']);
 $routes->post('/redeem', 'Booking::redeemPromo', ['filter' => 'LoginFilter']);
 $routes->post('/booking/payment', 'Booking::payment', ['filter' => 'LoginFilter']);
+$routes->get('/booking/success', 'Booking::success', ['filter' => 'LoginFilter']);
