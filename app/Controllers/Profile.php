@@ -4,14 +4,17 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UsersModel;
+use App\Models\RentalsModel;
 
 class Profile extends BaseController
 {
     protected $users;
+    protected $rentals;
 
     public function __construct()
     {
         $this->users = new UsersModel();
+        $this->rentals = new RentalsModel();
     }
 
     public function index()
@@ -34,10 +37,6 @@ class Profile extends BaseController
         $name = $this->request->getPost('name');
         $phone = $this->request->getPost('phone');
         $address = $this->request->getPost('address');
-
-        if (strpos($phone, '+62') !== 0) {
-            $phone = '+62' . ltrim($phone, '0');
-        }
 
         $userData = [
             'name' => $name,
@@ -102,5 +101,22 @@ class Profile extends BaseController
         }
 
         return redirect()->to('/profile')->with('success', 'Profile photo deleted.');
+    }
+
+    public function orders()
+    {
+        $session = session();
+        $email = $session->get('email');
+
+        // Dapatkan data pesanan berdasarkan email
+        $orders = $this->rentals->where('email', $email)->findAll();
+
+        $data = [
+            'title' => 'Orders',
+            'orders' => $orders,
+            'session' => $session,
+        ];
+
+        return view('Users/orders', $data);
     }
 }
