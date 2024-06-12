@@ -116,7 +116,7 @@
         if (phoneInput) {
             new Cleave(phoneInput, {
                 numericOnly: true,
-                blocks: [15],
+                blocks: [18],
                 prefix: '+62',
                 noImmediatePrefix: true,
                 rawValueTrimPrefix: true,

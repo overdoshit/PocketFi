@@ -22,7 +22,7 @@
 
         <div class="row g-5 mb-5">
             <div class="col-md-7 col-lg-8">
-                <h4 class="mb-3">Billing address</h4>
+                <h4 class="mb-3">Shipping address</h4>
                 <div class="row g-3">
 
                     <div class="row-field">
@@ -378,7 +378,7 @@
         if (phoneInput) {
             new Cleave(phoneInput, {
                 numericOnly: true,
-                blocks: [15],
+                blocks: [18],
                 prefix: '+62',
                 noImmediatePrefix: true,
                 rawValueTrimPrefix: true,
