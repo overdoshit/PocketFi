@@ -15,8 +15,8 @@
                 <h5>Support</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="/how-it-works" class="nav-link p-0 text-body-secondary">How it Works</a></li>
-                    <li class="nav-item mb-2"><a href="/faq" class="nav-link p-0 text-body-secondary">FAQ</a></li>
                     <li class="nav-item mb-2"><a href="/contact" class="nav-link p-0 text-body-secondary">Contact Us</a></li>
+                    <li class="nav-item mb-2"><a href="/faq" class="nav-link p-0 text-body-secondary">FAQ</a></li>
                 </ul>
             </div>
 
