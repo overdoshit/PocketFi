@@ -14,10 +14,11 @@ class Authentication extends BaseController
     public function __construct()
     {
         $this->users = new UsersModel();
+        $this->validation = \Config\Services::validation();
         $this->googleClient = new Google_Client();
         $this->googleClient->setClientId(getenv('GOOGLE_CLIENT_ID'));
         $this->googleClient->setClientSecret(getenv('GOOGLE_CLIENT_SECRET'));
-        $this->googleClient->setRedirectUri('http://localhost:8080/auth/google/callback');
+        $this->googleClient->setRedirectUri(base_url('auth/google/callback'));
 
         $this->googleClient->addScope('email');
         $this->googleClient->addScope('profile');
@@ -25,15 +26,12 @@ class Authentication extends BaseController
 
     public function register()
     {
-        $usersModel = new UsersModel();
-        $validation = \Config\Services::validation();
-
         $name = $this->request->getPost('name');
         $email = $this->request->getPost('newEmail');
         $password = $this->request->getPost('newPassword');
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $validation->setRules([
+        $this->validation->setRules([
             'name' => 'required|min_length[3]',
             'newEmail' => 'required|valid_email|is_unique[users.email]',
             'newPassword' => 'required|min_length[8]',
@@ -58,15 +56,15 @@ class Authentication extends BaseController
             ]
         ]);
 
-        if (!$validation->withRequest($this->request)->run()) {
+        if (!$this->validation->withRequest($this->request)->run()) {
             return redirect()->back()
                 ->with('modal', 'register') // Show modal
                 ->withInput() // Saved input user
-                ->with('errors', $validation->getErrors()) // Error text under fields
+                ->with('errors', $this->validation->getErrors()) // Error text under fields
                 ->with('error', 'Account registration failed.'); // Show toast
         }
 
-        $usersModel->save([
+        $this->users->save([
             'name' => $name,
             'email' => $email,
             'password' => $hashedPassword,
@@ -81,14 +79,11 @@ class Authentication extends BaseController
 
     public function login()
     {
-        $usersModel = new UsersModel();
-        $validation = \Config\Services::validation();
-
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
-        $user = $usersModel->where('email', $email)->first();
+        $user = $this->users->where('email', $email)->first();
 
-        $validation->setRules([
+        $this->validation->setRules([
             'email' => 'required|valid_email',
             'password' => 'required|min_length[8]',
         ], [
@@ -102,11 +97,11 @@ class Authentication extends BaseController
             ],
         ]);
 
-        if (!$validation->withRequest($this->request)->run()) {
+        if (!$this->validation->withRequest($this->request)->run()) {
             return redirect()->back()
                 ->with('modal', 'login') // Show modal
                 ->withInput() // Saved input user
-                ->with('errors', $validation->getErrors()) // Error text under fields
+                ->with('errors', $this->validation->getErrors()) // Error text under fields
                 ->with('error', 'Login failed.'); // Show toast
         }
 
@@ -181,10 +176,11 @@ class Authentication extends BaseController
             $user = $this->users->where('email', $userInfo->email)->first();
             if (!$user) {
                 $this->users->insert($dataUser);
+                $user = $this->users->where('email', $userInfo->email)->first();
             }
 
             $userData = [
-                'id' => $user->idUser,
+                'idUser' => $user->idUser,
                 'name' => $user->name,
                 'email' => $user->email,
                 'imageUrl' => $user->imageUrl,
