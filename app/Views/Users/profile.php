@@ -56,7 +56,7 @@
                     <div class="d-flex align-items-center">
                         <div class="dropdown dropdown-image">
                             <a class="d-flex flex-column justify-content-end overflow-hidden rounded-circle bg-size-cover bg-position-center flex-shrink-0" href="#" data-bs-toggle="dropdown" aria-expanded="false" style="width: 80px; height: 80px; object-fit: cover; background-image: url(<?= $session->get('imageUrl'); ?>);" aria-label="Upload picture">
-                                <span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0,0,0,.5)">
+                                <span class="d-block text-light text-center lh-1 pb-1" style="background-color: rgba(0,0,0,.4)">
                                     <i class="fa-regular fa-camera"></i>
                                 </span>
                             </a>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="ps-3">
                             <h3 class="h6 mb-1">Profile picture</h3>
-                            <p class="fs-sm text-body-secondary mb-0">PNG or JPG no bigger than 1000px wide and tall.</p>
+                            <p class="fs-sm text-body-secondary mb-0">JPG/JPEG/PNG/GIF no bigger than 3 MB and 5000px width and height.</p>
                         </div>
                     </div>
                     <div class="row g-3 g-sm-4 mt-0 mt-lg-2">
