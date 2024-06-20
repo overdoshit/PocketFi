@@ -1,4 +1,16 @@
 # PocketFi
+Pocket Fi is a website for portable WiFi lending services in Indonesia. Whether you are a foreign tourist in Indonesia or an Indonesian resident travelling abroad, Pocket Fi provides a seamless experience. The website features a responsive and user-friendly interface that showcases various rental packages, which can be picked up and returned via courier services. It is integrated with secure payment services, ensuring a safe and convenient transaction process.
+
+## Runtime Environment
+
+| Component   | Version                                                  |
+| ----------- | -------------------------------------------------------- |
+| Ubuntu      | [22.04](https://ubuntu.com/download/server)              |
+| NGINX       | [1.26.1](https://nginx.org/en/download.html)             |
+| PHP         | [8.3.8](https://windows.php.net/download/)               |
+| CodeIgniter | [4.5.2](https://codeigniter.com/user_guide/installation/installing_composer.html#installation) |
+| Composer    | [2.7.7](https://getcomposer.org/download/)               |
+| MySQL       | [8.0.37](https://dev.mysql.com/downloads/mysql/8.0.html) |
 
 ## What is CodeIgniter?
 
