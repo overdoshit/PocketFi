@@ -16,7 +16,7 @@
     }
 
     .menu-link:hover {
-        color: #0d6efd;
+        color: var(--bs-primary);
     }
 
     .position-lg-sticky {
