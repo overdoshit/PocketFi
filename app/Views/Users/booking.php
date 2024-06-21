@@ -1,18 +1,5 @@
 <?= $this->include('Templates/header'); ?>
 
-<style>
-    input[type="number"] {
-        -webkit-appearance: textfield;
-        -moz-appearance: textfield;
-        appearance: textfield;
-    }
-
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-    }
-</style>
-
 <div class="container">
     <form action="<?= base_url('booking/payment') ?>" method="post">
         <div class="py-5 text-center">
@@ -178,15 +165,9 @@
 
                     <div class="my-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="tos" required>
-                            <label class="form-check-label" for="flexCheckDefault">
-                                I have read the <a href="/faq">Terms and Conditions</a> and agree with the rental agreement
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="promotion">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Send me Pocket Fi Promotion Letter
+                            <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                I have read and agree with the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal" class="text-decoration-none">Terms and Conditions</a>
                             </label>
                         </div>
                     </div>
@@ -201,6 +182,7 @@
     </form>
 </div>
 
+<?= $this->include('Templates/modal_terms'); ?>
 <?= $this->include('Templates/modal_promo'); ?>
 
 <script>
@@ -392,6 +374,37 @@
                 }
             });
         }
+
+        // Terms and Conditions
+        var agreeTermsCheckbox = document.getElementById('agreeTerms');
+        var termsModal = new bootstrap.Modal(document.getElementById('termsModal'));
+        var acceptTermsButton = document.getElementById('acceptTermsButton');
+        var rejectTermsButton = document.getElementById('rejectTermsButton');
+
+        // Checkbox click and then modal show
+        agreeTermsCheckbox.addEventListener('click', function(event) {
+            event.preventDefault();
+            termsModal.show();
+        });
+
+        // Terms "Accept"
+        acceptTermsButton.addEventListener('click', function() {
+            agreeTermsCheckbox.checked = true;
+            termsModal.hide();
+        });
+
+        // Terms "Reject"
+        rejectTermsButton.addEventListener('click', function() {
+            agreeTermsCheckbox.checked = false;
+            termsModal.hide();
+        });
+
+        // Modal close
+        document.getElementById('termsModal').addEventListener('hidden.bs.modal', function() {
+            if (!agreeTermsCheckbox.checked) {
+                agreeTermsCheckbox.checked = false;
+            }
+        });
     });
 </script>
 
