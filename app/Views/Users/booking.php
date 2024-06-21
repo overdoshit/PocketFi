@@ -9,7 +9,7 @@
 
         <div class="row g-5 mb-5">
             <div class="col-md-7 col-lg-8">
-                <h4 class="mb-3">Shipping address</h4>
+                <h4 class="mb-3">Shipping Address</h4>
                 <div class="row g-3">
 
                     <div class="row-field">
@@ -125,7 +125,7 @@
                             </div>
 
                             <div style="width: 50%">
-                                <label class="fw-semibold">Deposits</label>
+                                <label class="fw-semibold">Deposit</label>
                             </div>
                             <div style="width: 50%; text-align: right;" id="deposit">
                                 <?= 'IDR ' . number_format($deposit, 0, ',', '.'); ?>
@@ -197,6 +197,7 @@
         const grandtotalElement = document.getElementById('grandtotal');
         const discountElement = document.getElementById('discount');
         let currentDiscount = 0;
+        document.getElementById('discountValue').value = currentDiscount;
 
         function updateGrandTotal() {
             let shippingPrice = parseInt(shippingDropdown.value, 10) || 0;
