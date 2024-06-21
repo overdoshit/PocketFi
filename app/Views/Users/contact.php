@@ -15,7 +15,7 @@
     <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
         <div class="col d-flex flex-column align-items-start gap-2">
             <h2 class="fw-bold text-body-emphasis">Pocket Fi</h2>
-            <p class="text-body-secondary">Jl. Letnan Sutopo BSD Serpong Lengkong Gudang Timur, Rw. Mekar Jaya, Kec. Serpong, Kota Tangerang Selatan.</p>
+            <p class="text-body-secondary">Jl. Letnan Sutopo BSD, Rawa Mekarjaya, Serpong, KOTA TANGERANG SELATAN, BANTEN 15311</p>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.691948387441!2d106.68452707580595!3d-6.3041446616982455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fad394552115%3A0xbf0c8c4f234a7e79!2sUniversitas%20Bina%20Sarana%20Informatika%20Kampus%20Bumi%20Serpong%20Damai%20(UBSI%20Kampus%20BSD)!5e0!3m2!1sid!2sid!4v1717865309173!5m2!1sid!2sid" width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 

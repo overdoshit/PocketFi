@@ -22,7 +22,7 @@
 
             <div class="col-6 col-md-3 mb-3 mt-2">
                 <h5>Address</h5>
-                <p class="text-body-secondary">Jl. Letnan Sutopo BSD Serpong Lengkong Gudang Timur, Rw. Mekar Jaya, Kec. Serpong, Kota Tangerang Selatan</p>
+                <p class="text-body-secondary">Jl. Letnan Sutopo BSD, Rawa Mekarjaya, Serpong, KOTA TANGERANG SELATAN, BANTEN 15311</p>
             </div>
 
             <div class="col-md-5 mb-3">
