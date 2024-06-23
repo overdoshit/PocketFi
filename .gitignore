@@ -126,4 +126,4 @@ nb-configuration.xml
 /phpunit*.xml
 
 # Data Users
-/public/assets/images/users/profile*
+/public/assets/images/
