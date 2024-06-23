@@ -51,7 +51,7 @@
 
                 <h2>Oops page not found</h2>
                 <p>The page you are looking for is not available.</p>
-                <a href="/" class="btn btn-secondary p-2 fw-semibold">Go back to home</a>
+                <a href="/" class="btn btn-primary p-2 fw-semibold" style="background-color: #1FC99E !important; border: none;">Go back to home</a>
             </div>
         </div>
     </div>
