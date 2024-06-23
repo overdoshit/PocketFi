@@ -27,3 +27,4 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  */
 $routes->get('/', 'Dashboard::index');
+$routes->get('/products', 'Products::index');
