@@ -316,11 +316,15 @@
                                             <?php
                                             switch ($order->status) {
                                                 case 'Waiting for Payment':
-                                                    echo '<button type="button" class="btn btn-outline-danger btn-cancel">Cancel</button>';
+                                                    echo '<a href="/booking/cancel/' . $order->idOrder . '" class="btn btn-outline-danger btn-cancel">Cancel</a>';
                                                     echo '<button type="button" class="btn btn-primary ms-2 btn-continue-payment">Continue Payment</button>';
                                                     break;
 
                                                 case 'Waiting for Pick Up':
+                                                    echo '<a href="/booking/cancel/' . $order->idOrder . '" class="btn btn-outline-danger btn-cancel">Cancel</a>';
+                                                    echo '<button type="button" class="btn btn-outline-info ms-2 btn-help">Help</button>';
+                                                    break;
+
                                                 case 'Shipping':
                                                 case 'Arrived':
                                                 case 'Deactivated':
@@ -372,9 +376,11 @@
     Account Menu
 </button>
 
+<?= $this->include('Templates/modal_cancel_order'); ?>
 <?= $this->include('Templates/footer'); ?>
 
 <script>
+    // Chevron Order List
     document.addEventListener('DOMContentLoaded', function() {
         var orderButtons = document.querySelectorAll('.order-button');
         orderButtons.forEach(function(button) {
@@ -390,6 +396,7 @@
             });
         });
 
+        // Chevron Order Timeline
         var seeDetails = document.querySelectorAll('.see-details');
         seeDetails.forEach(function(button) {
             button.addEventListener('click', function() {
@@ -401,6 +408,20 @@
                     icon.classList.remove('fa-chevron-down');
                     icon.classList.add('fa-chevron-up');
                 }
+            });
+        });
+
+        // Modal Alert Cancel Order
+        var cancelButtons = document.querySelectorAll('.btn-cancel');
+        var modal = new bootstrap.Modal(document.getElementById('cancelOrderModal'));
+        var confirmCancel = document.getElementById('confirmCancel');
+
+        cancelButtons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                var cancelUrl = this.getAttribute('href');
+                confirmCancel.setAttribute('href', cancelUrl);
+                modal.show();
             });
         });
     });

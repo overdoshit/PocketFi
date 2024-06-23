@@ -200,7 +200,7 @@ class Booking extends BaseController
 
         $orderData = [
             'idOrder' => $idOrder,
-            'status' => 'Waiting for Payment',
+            'status' => 'Order Placed',
             'idProduct' => $idProduct,
             'name' => $name,
             'email' => $email,
@@ -224,15 +224,27 @@ class Booking extends BaseController
             'grossAmount' => $grossAmount,
             'token' => $snapToken,
         ];
+        $this->orders->save($orderData);
+
+        $timelinesData = [
+            'idOrder' => $idOrder,
+            'status' => 'Order Placed',
+            'description' => 'You placed this order.',
+        ];
+        $this->timelines->save($timelinesData);
+
+        $orderData = [
+            'status' => 'Waiting for Payment',
+        ];
+        $this->orders->update($idOrder, $orderData);
 
         $timelinesData = [
             'idOrder' => $idOrder,
             'status' => 'Waiting for Payment',
             'description' => 'Waiting for the User to make a Payment.',
         ];
-
-        $this->orders->save($orderData);
         $this->timelines->save($timelinesData);
+
         return redirect()->to($redirectUrl);
     }
 
@@ -288,5 +300,44 @@ class Booking extends BaseController
         } else {
             return redirect()->to('/orders')->with('error', 'Invalid request.');
         }
+    }
+
+    public function cancel($idOrder)
+    {
+        $email = session()->get('email');
+
+        // Validasi ID order
+        $order = $this->orders->find($idOrder);
+        if (!$order) {
+            return redirect()->to('/orders')->with('error', 'Order not found.');
+        }
+
+        // Validasi email pengguna
+        if ($order->email !== $email) {
+            return redirect()->to('/orders')->with('error', 'You are not authorized to cancel this order.');
+        }
+
+        // Validasi status
+        if (!in_array($order->status, ['Waiting for Payment', 'Waiting for Pick Up'])) {
+            return redirect()->to('/orders')->with('error', 'Order cannot be canceled.');
+        }
+
+        // Update status di ordertimelines
+        $timelinesData = [
+            'idOrder' => $idOrder,
+            'status' => 'Canceled',
+            'description' => 'You canceled this order.',
+        ];
+        $this->timelines->save($timelinesData);
+
+        // Update status di orders
+        $orderData = [
+            'idOrder' => $idOrder,
+            'status' => 'Canceled',
+        ];
+        $this->orders->save($orderData);
+
+        // Mengarahkan kembali ke halaman orders dengan pesan sukses
+        return redirect()->to('/orders')->with('success', 'Your order has been canceled successfully.');
     }
 }

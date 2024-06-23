@@ -60,3 +60,4 @@ $routes->post('/booking/index', 'Booking::index', ['filter' => 'LoginFilter']);
 $routes->post('/redeem', 'Booking::redeemPromo', ['filter' => 'LoginFilter']);
 $routes->post('/booking/payment', 'Booking::payment', ['filter' => 'LoginFilter']);
 $routes->get('/booking/success', 'Booking::success', ['filter' => 'LoginFilter']);
+$routes->get('/booking/cancel/(:num)', 'Booking::cancel/$1', ['filter' => 'LoginFilter']);
