@@ -50,7 +50,7 @@
             <section class="card-body p-4 mb-4">
                 <form action="<?= base_url('profile/update') ?>" method="post" enctype="multipart/form-data">
                     <div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
-                        <i class="ai-user text-primary lead pe-1 me-2"></i>
+                        <i class="fa-regular fa-user-pen me-2" style="font-size: 20px;"></i>
                         <h2 class="h4 mb-0">Basic info</h2>
                     </div>
                     <div class="d-flex align-items-center">
