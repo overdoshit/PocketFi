@@ -328,23 +328,23 @@
 
                                                 case 'Waiting for Pick Up':
                                                     echo '<a href="/booking/cancel/' . $order->idOrder . '" class="btn btn-outline-danger btn-cancel">Cancel</a>';
-                                                    echo '<button type="button" class="btn btn-outline-info ms-2 btn-help">Help</button>';
+                                                    echo '<a href="/contact" class="btn btn-outline-info ms-2 btn-help">Help</a>';
                                                     break;
 
                                                 case 'Shipping':
                                                 case 'Arrived':
                                                 case 'Deactivated':
                                                 case 'In Return':
-                                                    echo '<button type="button" class="btn btn-outline-info ms-2 btn-help">Help</button>';
+                                                    echo '<a href="/contact" class="btn btn-outline-info ms-2 btn-help">Help</a>';
                                                     break;
 
                                                 case 'Activated':
-                                                    echo '<button type="button" class="btn btn-outline-info ms-2 btn-help">Help</button>';
+                                                    echo '<a href="/contact" class="btn btn-outline-info ms-2 btn-help">Help</a>';
                                                     echo '<button type="button" class="btn btn-outline-success ms-2 btn-extend">Extend Rent</button>';
                                                     break;
 
                                                 case 'Waiting for Return':
-                                                    echo '<button type="button" class="btn btn-outline-info ms-2 btn-help">Help</button>';
+                                                    echo '<a href="/contact" class="btn btn-outline-info ms-2 btn-help">Help</a>';
                                                     echo '<button type="button" class="btn btn-info ms-2 btn-input-resi">Input Resi</button>';
                                                     break;
 
