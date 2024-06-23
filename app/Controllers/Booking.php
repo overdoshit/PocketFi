@@ -5,19 +5,22 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ProductsModel;
 use App\Models\PromoModel;
-use App\Models\RentalsModel;
+use App\Models\OrdersModel;
+use App\Models\OrderTimelinesModel;
 
 class Booking extends BaseController
 {
     protected $products;
-    protected $rentals;
     protected $promo;
+    protected $orders;
+    protected $timelines;
 
     public function __construct()
     {
         $this->products = new ProductsModel();
-        $this->rentals = new RentalsModel();
         $this->promo = new PromoModel();
+        $this->orders = new OrdersModel();
+        $this->timelines = new OrderTimelinesModel();
     }
 
     public function index()
@@ -95,6 +98,14 @@ class Booking extends BaseController
         return $this->response->setJSON(['success' => true, 'discount' => $discount, 'message' => 'Promo code redeemed successfully! Discount: IDR ' . number_format($discount, 0, ',', '.')]);
     }
 
+    private function cleanExpedition($expedition)
+    {
+        if (preg_match('/^(.*? - [^\(]*)/', $expedition, $matches)) {
+            return trim($matches[1]);
+        }
+        return $expedition;
+    }
+
     public function payment()
     {
         $idOrder = date('ymd') . mt_rand(100000, 999999);
@@ -110,6 +121,7 @@ class Booking extends BaseController
         $address = $this->request->getPost('address');
         $shippingAddress = $address . ', ' . $subdistrict . ', ' . $district . ', ' . $city . ', ' . $province . ' ' . $postcode;
         $expedition = $this->request->getPost('expedition');
+        $expedition = $this->cleanExpedition($expedition);
         $shippingPrice = $this->request->getPost('shipping');
         $startDate = $this->request->getPost('startDate');
         $endDate = $this->request->getPost('endDate');
@@ -122,30 +134,6 @@ class Booking extends BaseController
         $discount = $this->request->getPost('discountValue');
         $promoCode = $this->request->getPost('promoCode');
         $grossAmount = $this->request->getPost('grossAmount');
-
-        // log_message('debug', 'idOrder: ' . print_r($idOrder, true));
-        // log_message('debug', 'idProduct: ' . print_r($idProduct, true));
-        // log_message('debug', 'name: ' . print_r($name, true));
-        // log_message('debug', 'email: ' . print_r($email, true));
-        // log_message('debug', 'phone: ' . print_r($phone, true));
-        // log_message('debug', 'province: ' . print_r($province, true));
-        // log_message('debug', 'city: ' . print_r($city, true));
-        // log_message('debug', 'district: ' . print_r($district, true));
-        // log_message('debug', 'subdistrict: ' . print_r($subdistrict, true));
-        // log_message('debug', 'postcode: ' . print_r($postcode, true));
-        // log_message('debug', 'address: ' . print_r($address, true));
-        // log_message('debug', 'fullAddress: ' . print_r($shippingAddress, true));
-        // log_message('debug', 'expedition: ' . print_r($expedition, true));
-        // log_message('debug', 'shippingPrice: ' . print_r($shippingPrice, true));
-        // log_message('debug', 'startDate: ' . print_r($startDate, true));
-        // log_message('debug', 'endDate: ' . print_r($endDate, true));
-        // log_message('debug', 'durationRent: ' . print_r($durationRent, true));
-        // log_message('debug', 'rentCost: ' . print_r($rentCost, true));
-        // log_message('debug', 'productName: ' . print_r($productName, true));
-        // log_message('debug', 'deposit: ' . print_r($deposit, true));
-        // log_message('debug', 'discount: ' . print_r($discount, true));
-        // log_message('debug', 'promoCode: ' . print_r($promoCode, true));
-        // log_message('debug', 'grossAmount: ' . print_r($grossAmount, true));
 
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = getenv('SERVER_KEY');
@@ -203,16 +191,16 @@ class Booking extends BaseController
             ],
             'callbacks' => [
                 'finish' => getenv('app.baseURL') . 'booking/success',
-                'error' => getenv('app.baseURL') . '#products',
+                'error' => getenv('app.baseURL') . 'orders',
             ]
         ];
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         $redirectUrl = "https://app.sandbox.midtrans.com/snap/v2/vtweb/" . $snapToken;
 
-        $rentalData = [
+        $orderData = [
             'idOrder' => $idOrder,
-            'status' => 'Menunggu Pembayaran',
+            'status' => 'Waiting for Payment',
             'idProduct' => $idProduct,
             'name' => $name,
             'email' => $email,
@@ -237,7 +225,14 @@ class Booking extends BaseController
             'token' => $snapToken,
         ];
 
-        $this->rentals->save($rentalData);
+        $timelinesData = [
+            'idOrder' => $idOrder,
+            'status' => 'Waiting for Payment',
+            'description' => 'Waiting for the User to make a Payment.',
+        ];
+
+        $this->orders->save($orderData);
+        $this->timelines->save($timelinesData);
         return redirect()->to($redirectUrl);
     }
 
@@ -248,14 +243,27 @@ class Booking extends BaseController
         $transaction_status = $this->request->getGet('transaction_status');
 
         if ($order_id && $status_code == 200 && $transaction_status == 'settlement') {
-            $rentalData = [
-                'status' => 'Menunggu Pengiriman',
+            $timelinesData = [
+                'idOrder' => $order_id,
+                'status' => 'Payment Verified',
+                'description' => 'Payment has been received by Pocket Fi and your order will be processed.',
             ];
+            $this->timelines->save($timelinesData);
 
-            $order = $this->rentals->where('idOrder', $order_id)->first();
+            $order = $this->orders->where('idOrder', $order_id)->first();
             if ($order) {
                 // Update status order
-                $this->rentals->update($order->idOrder, $rentalData);
+                $timelinesData = [
+                    'idOrder' => $order_id,
+                    'status' => 'Waiting for Pick Up',
+                    'description' => 'Your order is waiting for pick up by the courier.',
+                ];
+                $this->timelines->save($timelinesData);
+
+                $orderData = [
+                    'status' => 'Waiting for Pick Up',
+                ];
+                $this->orders->update($order->idOrder, $orderData);
 
                 // Kurangi stok produk
                 $product = $this->products->find($order->idProduct);

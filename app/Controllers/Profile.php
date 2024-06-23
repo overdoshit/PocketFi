@@ -4,17 +4,20 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UsersModel;
-use App\Models\RentalsModel;
+use App\Models\OrdersModel;
+use App\Models\OrderTimelinesModel;
 
 class Profile extends BaseController
 {
     protected $users;
-    protected $rentals;
+    protected $orders;
+    protected $orderTimelines;
 
     public function __construct()
     {
         $this->users = new UsersModel();
-        $this->rentals = new RentalsModel();
+        $this->orders = new OrdersModel();
+        $this->orderTimelines = new OrderTimelinesModel();
     }
 
     public function index()
@@ -108,12 +111,17 @@ class Profile extends BaseController
         $session = session();
         $email = $session->get('email');
 
-        // Dapatkan data pesanan berdasarkan email
-        $orders = $this->rentals->where('email', $email)->findAll();
+        $orders = $this->orders->getOrdersByEmail($email);
+
+        $orderTimelines = [];
+        foreach ($orders as $order) {
+            $orderTimelines[$order->idOrder] = $this->orderTimelines->getTimelinesByidOrder($order->idOrder);
+        }
 
         $data = [
             'title' => 'Orders',
             'orders' => $orders,
+            'orderTimelines' => $orderTimelines,
             'session' => $session,
         ];
 

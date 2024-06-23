@@ -4,38 +4,18 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RentalsModel extends Model
+class OrderTimelinesModel extends Model
 {
-    protected $table            = 'rentals';
-    protected $primaryKey       = 'idOrder';
-    protected $useAutoIncrement = false;
+    protected $table            = 'ordertimelines';
+    protected $primaryKey       = 'idTimelines';
+    protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'idProduct',
+        'idOrder',
         'status',
-        'name',
-        'email',
-        'phone',
-        'province',
-        'city',
-        'district',
-        'subdistrict',
-        'postcode',
-        'shippingAddress',
-        'expedition',
-        'shippingPrice',
-        'startDate',
-        'endDate',
-        'durationRent',
-        'rentCost',
-        'productName',
-        'deposit',
-        'discount',
-        'promoCode',
-        'grossAmount',
-        'token',
+        'description',
     ];
 
     protected bool $allowEmptyInserts = false;
@@ -67,4 +47,14 @@ class RentalsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getTimelinesByidOrder($idOrder)
+    {
+        // return $this->where('idOrder', $idOrder)->orderBy('createdAt', 'DESC')->findAll();
+        return $this->where('idOrder', $idOrder)
+            ->orderBy('createdAt', 'DESC')
+            ->orderBy('idTimelines', 'DESC')
+            ->get()
+            ->getResult();
+    }
 }
