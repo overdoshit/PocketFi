@@ -11,6 +11,12 @@
         padding-bottom: 7px;
     }
 
+    @media (max-width: 991px) {
+        .orders {
+            margin-top: -100px;
+        }
+    }
+
     @media (max-width: 767px) {
         .product-name {
             display: none !important;
@@ -93,7 +99,7 @@
         <?= $this->include('Users/sidebar'); ?>
 
         <!-- Page content -->
-        <div class="settings col-lg-9 pt-4 pb-2 pb-sm-4">
+        <div class="orders col-lg-9 pt-4 pb-2 pb-sm-4">
             <h1 class="h2 mb-4">Orders</h1>
 
             <!-- Order History -->
@@ -112,7 +118,7 @@
                                 <div class="order-header">
                                     <a class="order-button d-flex fs-4 fw-normal text-decoration-none py-3 collapsed" href="#order<?= $order->idOrder ?>" data-bs-toggle="collapse" aria-expanded="false" aria-controls="order<?= $order->idOrder ?>">
                                         <div class="d-flex justify-content-between w-100">
-                                            <div class="me-2 me-sm-4" style="min-width: 140px;">
+                                            <div class="me-2 me-sm-4" style="min-width: 145px;">
                                                 <div class="fs-sm text-body-secondary">#<?= $order->idOrder ?></div>
                                                 <span class="badge rounded-pill
                                                     <?php
@@ -200,7 +206,7 @@
                                         </div>
 
                                         <!-- Collapsible Order Timeline -->
-                                        <div class="collapse mb-3" id="timeline<?= $order->idOrder ?>">
+                                        <div class="collapse mb-4" id="timeline<?= $order->idOrder ?>">
                                             <div class="timeline">
                                                 <?php foreach ($orderTimelines[$order->idOrder] as $timeline) : ?>
                                                     <div class="timeline-item <?= $timeline->status == $order->status ? 'active' : '' ?>">
@@ -214,7 +220,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 mb-3">
+                                        <div class="col-md-6 mb-4">
                                             <h5>Personal Info</h5>
                                             <div class="row">
                                                 <div class="col-sm-4 col-md-4 fw-semibold">Name</div>
@@ -231,7 +237,7 @@
                                         </div>
 
                                         <div class="d-flex flex-wrap">
-                                            <div class="col-md-6 mb-3">
+                                            <div class="col-md-6 mb-4">
                                                 <h5>Shipping Info</h5>
                                                 <div class="row">
                                                     <div class="col-sm-4 col-md-4 fw-semibold">Courier</div>
@@ -247,7 +253,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 mb-3"> <!-- d-none -->
+                                            <div class="col-md-6 mb-4"> <!-- d-none -->
                                                 <h5>Return Shipping Info</h5>
                                                 <div class="row">
                                                     <div class="col-sm-4 col-md-4 fw-semibold">Courier</div>
@@ -264,7 +270,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="mb-3">
+                                        <div class="mb-4">
                                             <h5>Payment Details</h5>
                                             <div class="row">
                                                 <div class="col-12 text-center"> <label><?= $order->productName ?></label> </div>
@@ -286,7 +292,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="mb-3 d-none"> <!-- d-none -->
+                                        <div class="mb-4 d-none"> <!-- d-none -->
                                             <h5>Rate and Review</h5>
                                             <div class="d-flex justify-content-center">
                                                 <div class="card-wrapper mx-auto" style="width: 250px;">
@@ -317,7 +323,7 @@
                                             switch ($order->status) {
                                                 case 'Waiting for Payment':
                                                     echo '<a href="/booking/cancel/' . $order->idOrder . '" class="btn btn-outline-danger btn-cancel">Cancel</a>';
-                                                    echo '<button type="button" class="btn btn-primary ms-2 btn-continue-payment">Continue Payment</button>';
+                                                    echo '<a href="https://app.sandbox.midtrans.com/snap/v2/vtweb/' . $order->token . '" class="btn btn-primary ms-2 btn-continue-payment">Continue Payment</a>';
                                                     break;
 
                                                 case 'Waiting for Pick Up':
