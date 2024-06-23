@@ -73,6 +73,8 @@ class OrdersModel extends Model
 
     public function getOrdersByEmail($email)
     {
-        return $this->where('email', $email)->findAll();
+        return $this->where('email', $email)
+            ->orderBy('createdAt', 'DESC')
+            ->findAll();
     }
 }
