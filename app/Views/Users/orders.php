@@ -99,235 +99,268 @@
             <!-- Order History -->
             <section class="card-body p-4 mb-4">
                 <div class="d-flex align-items-center mt-sm-n1 pb-4 mb-0 mb-lg-1 mb-xl-3">
-                    <i class="ai-user text-primary lead pe-1 me-2"></i>
+                    <i class="fa-regular fa-cart-shopping fs-5 me-2"></i>
                     <h2 class="h4 mb-0">Order History</h2>
                 </div>
 
                 <div id="orders">
-                    <div class="order-item border-top mb-0">
-                        <div class="order-header">
-                            <a class="order-button d-flex fs-4 fw-normal text-decoration-none py-3 collapsed" href="#orderOne" data-bs-toggle="collapse" aria-expanded="false" aria-controls="orderOne">
-                                <div class="d-flex justify-content-between w-100">
-                                    <div class="me-3 me-sm-4">
-                                        <div class="fs-sm text-body-secondary">#240621966906</div>
-                                        <span class="badge rounded-pill bg-info bg-opacity-10 text-info fs-sm border border-info-subtle">In progress</span>
-                                    </div>
-                                    <div class="me-3 me-sm-4">
-                                        <div class="d-none d-sm-block fs-sm text-body-secondary mb-2">Order date</div>
-                                        <div class="d-sm-none fs-sm text-body-secondary mb-2">Date</div>
-                                        <div class="fs-sm fw-medium text-dark">Jun 21, 2024</div>
-                                    </div>
-                                    <div class="product-name me-3 me-sm-4 d-none d-sm-block">
-                                        <div class="fs-sm text-body-secondary mb-2">Product</div>
-                                        <div class="fs-sm fw-medium text-dark text-truncate-ellipsis">INDONESIA DAILY FUP 8 GB IDR 40.000/DAY (MINIMUM RENT 3 DAYS)</div>
-                                    </div>
-                                    <div class="me-3 me-sm-4">
-                                        <div class="fs-sm text-body-secondary mb-2">Total</div>
-                                        <div class="fs-sm fw-medium text-dark">IDR 851.500</div>
-                                    </div>
-                                    <div>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
+                    <?php if (empty($orders)) : ?>
+                        <p class="text-center text-body-secondary">No orders found.</p>
+                    <?php else : ?>
+                        <?php foreach ($orders as $order) : ?>
+                            <div class="order-item border-top mb-0">
+                                <div class="order-header">
+                                    <a class="order-button d-flex fs-4 fw-normal text-decoration-none py-3 collapsed" href="#order<?= $order->idOrder ?>" data-bs-toggle="collapse" aria-expanded="false" aria-controls="order<?= $order->idOrder ?>">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div class="me-2 me-sm-4" style="min-width: 140px;">
+                                                <div class="fs-sm text-body-secondary">#<?= $order->idOrder ?></div>
+                                                <span class="badge rounded-pill
+                                                    <?php
+                                                    switch ($order->status) {
+                                                        case 'Canceled':
+                                                        case 'Expired':
+                                                            echo 'bg-danger bg-opacity-10 text-danger fs-sm border border-danger-subtle';
+                                                            break;
+
+                                                        case 'Waiting for Payment':
+                                                            echo 'bg-secondary bg-opacity-10 text-secondary fs-sm border border-secondary-subtle';
+                                                            break;
+
+                                                        case 'Waiting for Pick Up':
+                                                        case 'Shipping':
+                                                        case 'In Return':
+                                                            echo 'bg-info bg-opacity-10 text-info fs-sm border border-info-subtle';
+                                                            break;
+
+                                                        case 'Arrived':
+                                                        case 'Returned':
+                                                            echo 'bg-primary bg-opacity-10 text-primary fs-sm border border-primary-subtle';
+                                                            break;
+
+                                                        case 'Activated':
+                                                        case 'Completed':
+                                                            echo 'bg-success bg-opacity-10 text-success fs-sm border border-success-subtle';
+                                                            break;
+
+                                                        case 'Deactivated':
+                                                            echo 'bg-dark bg-opacity-10 text-dark fs-sm border border-dark-subtle';
+                                                            break;
+
+                                                        case 'Waiting for Return':
+                                                            echo 'bg-warning bg-opacity-10 text-warning fs-sm border border-warning-subtle';
+                                                            break;
+
+                                                        case 'Rated':
+                                                            echo 'bg-warning bg-opacity-10 text-warning fs-sm border border-warning-subtle';
+                                                            break;
+
+                                                        default:
+                                                            echo 'bg-secondary bg-opacity-10 text-secondary fs-sm border border-secondary-subtle';
+                                                    }
+                                                    ?>" style="min-width: 90px;">
+                                                    <?= $order->status ?> <?= $order->status == 'Rated' ? '<div class="fa-solid fa-star" style="color: #ffd43b"></div>' : ''; ?>
+                                                </span>
+                                            </div>
+                                            <div class="me-3 me-sm-4">
+                                                <div class="d-none d-sm-block fs-sm text-body-secondary mb-2">Order date</div>
+                                                <div class="d-sm-none fs-sm text-body-secondary mb-2">Date</div>
+                                                <div class="fs-sm fw-medium text-dark"><?= date('M d, Y', strtotime($order->createdAt)) ?></div>
+                                            </div>
+                                            <div class="product-name me-3 me-sm-4 d-none d-sm-block">
+                                                <div class="fs-sm text-body-secondary mb-2">Product</div>
+                                                <div class="fs-sm fw-medium text-dark text-truncate-ellipsis"><?= $order->productName ?></div>
+                                            </div>
+                                            <div class="me-3 me-sm-4">
+                                                <div class="fs-sm text-body-secondary mb-2">Total</div>
+                                                <div class="fs-sm fw-medium text-dark">IDR <?= number_format($order->grossAmount, 0, ',', '.') ?></div>
+                                            </div>
+                                            <div>
+                                                <i class="fas fa-chevron-down chevron"></i>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="order-collapse collapse" id="orderOne" data-bs-parent="#orders">
-                            <div class="order-body pb-4">
-                                <div class="mb-4">
-                                    <div class="row">
-                                        <div class="col-6"> <label class="fw-bold">No. Invoice</label> </div>
-                                        <div class="col-6 text-end">240621966906</div>
+                                <div class="order-collapse collapse" id="order<?= $order->idOrder ?>" data-bs-parent="#orders">
+                                    <div class="order-body pb-4">
+                                        <div class="mb-4">
+                                            <div class="row">
+                                                <div class="col-6"> <label class="fw-bold">No. Invoice</label> </div>
+                                                <div class="col-6 text-end"><?= $order->idOrder ?></div>
 
-                                        <div class="col-6"> <label class="fw-bold">Order date</label> </div>
-                                        <div class="col-6 text-end">21 June 2024, 11:42</div>
+                                                <div class="col-6"> <label class="fw-bold">Order date</label> </div>
+                                                <div class="col-6 text-end"><?= date('d M Y, H:i', strtotime($order->createdAt)) ?></div>
 
-                                        <div class="col-6"> <label class="fw-bold">Order timeline</label> </div>
-                                        <div class="col-6 text-end">
-                                            <a href="#timelineOne" class="see-details text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="timelineOne">
-                                                See Details <i class="fas fa-chevron-down ms-1"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Collapsible Order Timeline -->
-                                <div class="collapse mb-3" id="timelineOne">
-                                    <div class="timeline">
-                                        <div class="timeline-item active">
-                                            <div class="timeline-content">
-                                                <div class="timeline-date">10 Mei 2024, 12:00</div>
-                                                <h6 class="timeline-title">Transaction Completed.</h6>
-                                                <p class="timeline-text">Product has been received back by Pocket Fi.</p>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-item">
-                                            <div class="timeline-content">
-                                                <div class="timeline-date">6 Mei 2024, 00:01</div>
-                                                <h6 class="timeline-title">Waiting for Return</h6>
-                                                <p class="timeline-text">Waiting for the user to make a return shipping.</p>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-item">
-                                            <div class="timeline-content">
-                                                <div class="timeline-date">6 Mei 2024, 00:00</div>
-                                                <h6 class="timeline-title">Product Deactivated</h6>
-                                                <p class="timeline-text">The product has been deactivated.</p>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-item">
-                                            <div class="timeline-content">
-                                                <div class="timeline-date">2 Mei 2024, 00:00</div>
-                                                <h6 class="timeline-title">Product Activated</h6>
-                                                <p class="timeline-text">The product has been activated.</p>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-item">
-                                            <div class="timeline-content">
-                                                <div class="timeline-date">1 Mei 2024, 20:29</div>
-                                                <h6 class="timeline-title">The Order has Arrived at the Destination</h6>
-                                                <p class="timeline-text">Received by John Doe.</p>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-item">
-                                            <div class="timeline-content">
-                                                <div class="timeline-date">30 Apr 2024, 19:30</div>
-                                                <h6 class="timeline-title">The Order has been Shipped</h6>
-                                                <p class="timeline-text">Your order is in the process of being shipped by the courier.</p>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-item">
-                                            <div class="timeline-content">
-                                                <div class="timeline-date">30 Apr 2024, 07:03</div>
-                                                <h6 class="timeline-title">Waiting for Pick Up</h6>
-                                                <p class="timeline-text">Your order is waiting for pick up by the courier.</p>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-item">
-                                            <div class="timeline-content">
-                                                <div class="timeline-date">29 Apr 2024, 11:42</div>
-                                                <h6 class="timeline-title">Payment Verified</h6>
-                                                <p class="timeline-text">Payment has been received by Pocket Fi and your order will be processed.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6 mb-3">
-                                    <h5>Personal Info</h5>
-                                    <div class="row">
-                                        <div class="col-sm-4 col-md-4 fw-semibold">Name</div>
-                                        <div class="col-sm-7 col-md-7">John Doe</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-4 col-md-4 fw-semibold">Email</div>
-                                        <div class="col-sm-7 col-md-7">johndoe@mail.com</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-4 col-md-4 fw-semibold">Phone</div>
-                                        <div class="col-sm-7 col-md-7">+6212345678900</div>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex flex-wrap">
-                                    <div class="col-md-6 mb-3">
-                                        <h5>Shipping Info</h5>
-                                        <div class="row">
-                                            <div class="col-sm-4 col-md-4 fw-semibold">Courier</div>
-                                            <div class="col-sm-7 col-md-7">SiCepat - REGULER</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4 col-md-4 fw-semibold">No. Resi</div>
-                                            <div class="col-sm-7 col-md-7">005243346849</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4 col-md-4 fw-semibold">Shipping Address</div>
-                                            <div class="col-sm-7 col-md-7">Jl. WR Supratman, Gianyar, Gianyar, GIANYAR, BALI 22222</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 mb-3"> <!-- d-none -->
-                                        <h5>Return Shipping Info</h5>
-                                        <div class="row">
-                                            <div class="col-sm-4 col-md-4 fw-semibold">Courier</div>
-                                            <div class="col-sm-7 col-md-7">SiCepat - REGULER</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4 col-md-4 fw-semibold">No. Resi</div>
-                                            <div class="col-sm-7 col-md-7">005243346849</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4 col-md-4 fw-semibold">Shipping Address</div>
-                                            <div class="col-sm-7 col-md-7">Jl. Letnan Sutopo BSD, Rawa Mekarjaya, Serpong, KOTA TANGERANG SELATAN, BANTEN 15311</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <h5>Payment Details</h5>
-                                    <div class="row">
-                                        <div class="col-12"> <label class="fw-semibold">INDONESIA DAILY FUP 8 GB IDR 40.000/DAY (MINIMUM RENT 3 DAYS)</label> </div>
-                                        <div class="col-6"> <label class="fw-semibold">Duration of Rental</label> </div>
-                                        <div class="col-6 text-end">3 DAYS</div>
-                                        <div class="col-6"> <label class="fw-semibold">Rental Cost</label> </div>
-                                        <div class="col-6 text-end">IDR 120.000</div>
-                                        <div class="col-6"> <label class="fw-semibold">Deposit</label> </div>
-                                        <div class="col-6 text-end">IDR 500.000</div>
-                                        <div class="col-6"> <label class="fw-semibold">Shipping Cost</label> </div>
-                                        <div class="col-6 text-end">IDR 32.500</div>
-                                        <div class="col-6"> <label class="fw-semibold">Discount</label> </div>
-                                        <div class="col-6 text-end"><label style="color: red;">- IDR 80.000</label></div>
-                                        <div class="col-6"> <label class="fw-semibold">Total Price</label> </div>
-                                        <div class="col-6 text-end"><label class="fw-bold mb-2">IDR 572.500</label></div>
-
-                                        <div class="col-12 col-sm-6"> <label class="fw-semibold">Payment Token</label> </div>
-                                        <div class="col-12 col-sm-6 text-start text-sm-end">176b83d0-d489-4563-be80-134ac376ded7</div>
-                                        <div class="col-12 col-sm-6"> <label class="fw-semibold">Payment Methods</label> </div>
-                                        <div class="col-12 col-sm-6 text-start text-sm-end">BCA Virtual Account</div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3"> <!-- d-none -->
-                                    <h5>Rate and Review</h5>
-                                    <div class="d-flex justify-content-center">
-                                        <div class="card-wrapper mx-auto" style="width: 250px;">
-                                            <div class="card-review">
-                                                <div class="image-content">
-                                                    <span class="overlay"></span>
-                                                    <div class="card-image">
-                                                        <img src="assets/images/users/default.jpg" class="card-img" alt="John Doe" />
-                                                    </div>
-                                                </div>
-                                                <div class="card-content">
-                                                    <h2 class="name">John Doe</h2>
-                                                    <div class="start">
-                                                        <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                                                        <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                                                        <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                                                        <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                                                    </div>
-                                                    <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore architecto officia quos, est repellendus autem molestiae. At autem explicabo similique asperiores omnis quas optio. Dolorem, exercitationem! Reiciendis maxime cumque repellendus!</p>
+                                                <div class="col-6"> <label class="fw-bold">Order timeline</label> </div>
+                                                <div class="col-6 text-end">
+                                                    <a href="#timeline<?= $order->idOrder ?>" class="see-details text-decoration-none" data-bs-toggle="collapse" aria-expanded="false" aria-controls="timeline<?= $order->idOrder ?>">
+                                                        See Details <i class="fas fa-chevron-down ms-1"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div class="d-flex justify-content-end mt-4">
-                                    <button type="button" class="btn btn-outline-danger me-2 btn-cancel">Cancel</button>
-                                    <button type="button" class="btn btn-primary me-2 btn-continue-payment">Continue Payment</button>
-                                    <button type="button" class="btn btn-outline-info me-2 btn-help">Help</button>
-                                    <button type="button" class="btn btn-info me-2 btn-input-resi">Input Resi</button>
-                                    <button type="button" class="btn btn-success me-2 btn-complete">Complete Order</button>
-                                    <button type="button" class="btn btn-warning me-2 btn-review">Leave a Review <i class="fa-solid fa-star" style="color: #ffffff;"></i></button>
-                                    <button type="button" class="btn btn-outline-warning btn-edit-review">Edit a Review <i class="fa-solid fa-pencil"></i></button>
+                                        <!-- Collapsible Order Timeline -->
+                                        <div class="collapse mb-3" id="timeline<?= $order->idOrder ?>">
+                                            <div class="timeline">
+                                                <?php foreach ($orderTimelines[$order->idOrder] as $timeline) : ?>
+                                                    <div class="timeline-item <?= $timeline->status == $order->status ? 'active' : '' ?>">
+                                                        <div class="timeline-content">
+                                                            <div class="timeline-date"><?= date('d M Y, H:i', strtotime($timeline->createdAt)) ?></div>
+                                                            <h6 class="timeline-title"><?= $timeline->status ?></h6>
+                                                            <p class="timeline-text"><?= $timeline->description ?></p>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <h5>Personal Info</h5>
+                                            <div class="row">
+                                                <div class="col-sm-4 col-md-4 fw-semibold">Name</div>
+                                                <div class="col-sm-7 col-md-7"><?= $order->name ?></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-4 col-md-4 fw-semibold">Email</div>
+                                                <div class="col-sm-7 col-md-7"><?= $order->email ?></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-4 col-md-4 fw-semibold">Phone</div>
+                                                <div class="col-sm-7 col-md-7"><?= $order->phone ?></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-wrap">
+                                            <div class="col-md-6 mb-3">
+                                                <h5>Shipping Info</h5>
+                                                <div class="row">
+                                                    <div class="col-sm-4 col-md-4 fw-semibold">Courier</div>
+                                                    <div class="col-sm-7 col-md-7"><?= $order->expedition ?></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4 col-md-4 fw-semibold">Track Number</div>
+                                                    <div class="col-sm-7 col-md-7"><?= $order->trackNumber ?? '-' ?></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4 col-md-4 fw-semibold">Shipping Address</div>
+                                                    <div class="col-sm-7 col-md-7"><?= $order->shippingAddress ?></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3"> <!-- d-none -->
+                                                <h5>Return Shipping Info</h5>
+                                                <div class="row">
+                                                    <div class="col-sm-4 col-md-4 fw-semibold">Courier</div>
+                                                    <div class="col-sm-7 col-md-7"><?= $order->returnExpedition ?? '-' ?></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4 col-md-4 fw-semibold">Track Number</div>
+                                                    <div class="col-sm-7 col-md-7"><?= $order->returnTrackNumber ?? '-' ?></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4 col-md-4 fw-semibold">Shipping Address</div>
+                                                    <div class="col-sm-7 col-md-7">Jl. Letnan Sutopo BSD, Rawa Mekarjaya, Serpong, KOTA TANGERANG SELATAN, BANTEN 15311</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <h5>Payment Details</h5>
+                                            <div class="row">
+                                                <div class="col-12 text-center"> <label><?= $order->productName ?></label> </div>
+                                                <div class="col-6"> <label class="fw-semibold">Duration of Rental</label> </div>
+                                                <div class="col-6 text-end"><?= $order->durationRent ?> DAYS</div>
+                                                <div class="col-6"> <label class="fw-semibold">Rental Cost</label> </div>
+                                                <div class="col-6 text-end">IDR <?= number_format($order->rentCost, 0, ',', '.') ?></div>
+                                                <div class="col-6"> <label class="fw-semibold">Deposit</label> </div>
+                                                <div class="col-6 text-end">IDR <?= number_format($order->deposit, 0, ',', '.') ?></div>
+                                                <div class="col-6"> <label class="fw-semibold">Shipping Cost</label> </div>
+                                                <div class="col-6 text-end">IDR <?= number_format($order->shippingPrice, 0, ',', '.') ?></div>
+                                                <div class="col-6"> <label class="fw-semibold">Discount</label> </div>
+                                                <div class="col-6 text-end"><label style="color: red;">- IDR <?= number_format($order->discount, 0, ',', '.') ?></label></div>
+                                                <div class="col-6"> <label class="fw-semibold">Total Price</label> </div>
+                                                <div class="col-6 text-end"><label class="fw-bold mb-2">IDR <?= number_format($order->grossAmount, 0, ',', '.') ?></label></div>
+
+                                                <div class="col-12 col-sm-6"> <label class="fw-semibold">Payment Token</label> </div>
+                                                <div class="col-12 col-sm-6 text-start text-sm-end"><?= $order->token ?></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3 d-none"> <!-- d-none -->
+                                            <h5>Rate and Review</h5>
+                                            <div class="d-flex justify-content-center">
+                                                <div class="card-wrapper mx-auto" style="width: 250px;">
+                                                    <div class="card-review">
+                                                        <div class="image-content">
+                                                            <span class="overlay"></span>
+                                                            <div class="card-image">
+                                                                <img src="assets/images/users/default.jpg" class="card-img" alt="John Doe" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-content">
+                                                            <h2 class="name">John Doe</h2>
+                                                            <div class="start">
+                                                                <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                                                <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                                                <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                                                <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                                                            </div>
+                                                            <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore architecto officia quos, est repellendus autem molestiae. At autem explicabo similique asperiores omnis quas optio. Dolorem, exercitationem! Reiciendis maxime cumque repellendus!</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-end mt-4">
+                                            <?php
+                                            switch ($order->status) {
+                                                case 'Waiting for Payment':
+                                                    echo '<button type="button" class="btn btn-outline-danger btn-cancel">Cancel</button>';
+                                                    echo '<button type="button" class="btn btn-primary ms-2 btn-continue-payment">Continue Payment</button>';
+                                                    break;
+
+                                                case 'Waiting for Pick Up':
+                                                case 'Shipping':
+                                                case 'Arrived':
+                                                case 'Deactivated':
+                                                case 'In Return':
+                                                    echo '<button type="button" class="btn btn-outline-info ms-2 btn-help">Help</button>';
+                                                    break;
+
+                                                case 'Activated':
+                                                    echo '<button type="button" class="btn btn-outline-info ms-2 btn-help">Help</button>';
+                                                    echo '<button type="button" class="btn btn-outline-success ms-2 btn-extend">Extend Rent</button>';
+                                                    break;
+
+                                                case 'Waiting for Return':
+                                                    echo '<button type="button" class="btn btn-outline-info ms-2 btn-help">Help</button>';
+                                                    echo '<button type="button" class="btn btn-info ms-2 btn-input-resi">Input Resi</button>';
+                                                    break;
+
+                                                case 'Returned':
+                                                    echo '<button type="button" class="btn btn-success ms-2 btn-complete">Complete Order</button>';
+                                                    break;
+
+                                                case 'Completed':
+                                                    echo '<button type="button" class="btn btn-warning ms-2 btn-review">Leave a Review <i class="fa-solid fa-star" style="color: #ffffff;"></i></button>';
+                                                    break;
+
+                                                case 'Rated':
+                                                    echo '<button type="button" class="btn btn-outline-warning ms-2 btn-edit-review">Edit a Review <i class="fa-solid fa-pencil"></i></button>';
+                                                    break;
+
+                                                default:
+                                                    break;
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- More order items -->
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
-
             </section>
         </div>
     </div>
