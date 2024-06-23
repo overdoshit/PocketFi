@@ -10,7 +10,7 @@
                 <form id="loginForm" action="<?= base_url('login') ?>" method="post">
 
                     <div class="form-floating mb-4">
-                        <input type="email" class="form-control rounded-3 <?= session('errors.email') ? 'is-invalid' : '' ?>" id="floatingInput" name="email" autocomplete="email" placeholder="name@example.com" value="<?= old('email') ?>" required>
+                        <input type="email" class="form-control rounded-3 <?= session('errors.email') ? 'is-invalid' : '' ?>" id="floatingInput" name="email" autocomplete="email" placeholder="Email" value="<?= old('email') ?>" required>
                         <label for="floatingInput">Email Address</label>
                         <?php if (session('errors.email')) : ?>
                             <div class="invalid-feedback d-block">
@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="form-floating mb-4">
-                        <input type="password" class="form-control rounded-3 <?= session('errors.password') ? 'is-invalid' : '' ?>" id="floatingPassword" name="password" autocomplete="current-password" placeholder="Password" required>
+                        <input type="password" class="form-control rounded-3 <?= session('errors.password') ? 'is-invalid' : '' ?>" id="floatingPassword" name="password" autocomplete="off" placeholder="Password" required>
                         <label for="floatingPassword">Password</label>
                         <button type="button" class="btn toggle-eye" onclick="togglePasswordVisibility('floatingPassword', 'togglePassword')">
                             <i id="togglePassword" class="bi bi-eye-fill fs-4"></i>

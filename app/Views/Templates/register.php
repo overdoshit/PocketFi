@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="form-floating mb-3 position-relative">
-                        <input type="password" class="form-control rounded-3 <?= session('errors.newPassword') ? 'is-invalid' : '' ?>" id="floatingNewPassword" name="newPassword" autocomplete="new-password" placeholder="Password" oninput="checkPasswordStrength('floatingNewPassword', 'newPasswordStrengthMeter', 'newPasswordStrengthText')" required>
+                        <input type="password" class="form-control rounded-3 <?= session('errors.newPassword') ? 'is-invalid' : '' ?>" id="floatingNewPassword" name="newPassword" autocomplete="off" placeholder="Password" oninput="checkPasswordStrength('floatingNewPassword', 'newPasswordStrengthMeter', 'newPasswordStrengthText')" required>
                         <label for="floatingNewPassword">Password</label>
                         <button type="button" class="btn toggle-eye" onclick="togglePasswordVisibility('floatingNewPassword', 'toggleNewPassword')">
                             <i id="toggleNewPassword" class="bi bi-eye-fill fs-4"></i>
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="form-floating mb-3 position-relative">
-                        <input type="password" class="form-control rounded-3 <?= session('errors.confirmPassword') ? 'is-invalid' : '' ?>" id="floatingConfirmPassword" name="confirmPassword" autocomplete="new-password" placeholder="Confirm Password" oninput="checkPasswordStrength('floatingConfirmPassword', 'confirmPasswordStrengthMeter', 'confirmPasswordStrengthText')" required>
+                        <input type="password" class="form-control rounded-3 <?= session('errors.confirmPassword') ? 'is-invalid' : '' ?>" id="floatingConfirmPassword" name="confirmPassword" autocomplete="off" placeholder="Confirm Password" oninput="checkPasswordStrength('floatingConfirmPassword', 'confirmPasswordStrengthMeter', 'confirmPasswordStrengthText')" required>
                         <label for="floatingConfirmPassword">Confirm Password</label>
                         <button type="button" class="btn toggle-eye" onclick="togglePasswordVisibility('floatingConfirmPassword', 'toggleConfirmPassword')">
                             <i id="toggleConfirmPassword" class="bi bi-eye-fill fs-4"></i>
