@@ -26,4 +26,3 @@ $routes->setAutoRoute(true);
  * Route Definitions
  * --------------------------------------------------------------------
  */
-$routes->get('/', 'Home::index');
