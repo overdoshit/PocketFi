@@ -147,7 +147,7 @@
                             <input type="hidden" id="discountValue" name="discountValue">
 
                             <div class="input-group mt-2">
-                                <input type="text" class="form-control" name="promoCode" id="promoCodeInput" placeholder="Promo code">
+                                <input type="text" class="form-control" name="promoCode" id="promoCodeInput" placeholder="Promo code" style="text-transform: uppercase;">
                                 <button type="button" class="btn btn-info" id="redeemPromoButton" disabled>Redeem</button>
                             </div>
                         </div>
