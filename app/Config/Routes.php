@@ -26,3 +26,4 @@ $routes->setAutoRoute(true);
  * Route Definitions
  * --------------------------------------------------------------------
  */
+$routes->get('/', 'Dashboard::index');
