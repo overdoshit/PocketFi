@@ -26,5 +26,17 @@ $routes->setAutoRoute(true);
  * Route Definitions
  * --------------------------------------------------------------------
  */
-$routes->get('/', 'Dashboard::index');
-$routes->get('/products', 'Products::index');
+// Authentication Routes
+$routes->get('/login', 'Authentication::loginPage', ['filter' => 'LoggedinFilter']);
+$routes->get('/authentication/loginpage', 'Authentication::loginPage', ['filter' => 'LoggedinFilter']);
+$routes->post('/login', 'Authentication::login');
+
+$routes->get('/auth/google', 'Authentication::google', ['filter' => 'LoggedinFilter']);
+$routes->get('/authentication/google', 'Authentication::google', ['filter' => 'LoggedinFilter']);
+$routes->get('/auth/google/callback', 'Authentication::googleCallBack');
+
+$routes->get('/logout', 'Authentication::logout', ['filter' => 'LoginFilter']);
+
+// Pages Routes
+$routes->get('/', 'Dashboard::index', ['filter' => 'LoginFilter']);
+$routes->get('/products', 'Products::index', ['filter' => 'LoginFilter']);

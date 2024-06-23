@@ -11,7 +11,7 @@ class LoggedinFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (session()->get('email')) {
-            return redirect()->to('/profile');
+            return redirect()->to('/');
         }
     }
 
