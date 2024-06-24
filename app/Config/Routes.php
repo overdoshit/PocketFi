@@ -40,3 +40,5 @@ $routes->get('/logout', 'Authentication::logout', ['filter' => 'LoginFilter']);
 // Pages Routes
 $routes->get('/', 'Dashboard::index', ['filter' => 'LoginFilter']);
 $routes->get('/products', 'Products::index', ['filter' => 'LoginFilter']);
+$routes->get('/product/add', 'Product::add', ['filter' => 'LoginFilter']);
+$routes->post('/product/add', 'Product::addProduct', ['filter' => 'LoginFilter']);

@@ -32,6 +32,7 @@
                     <!--begin:Menu link-->
                     <a class="sidebar menu-link <?= (current_url() == base_url('/')) ? 'active' : ''; ?>" href="/"><span class="menu-title">Dashboard</span></a>
                     <a class="sidebar menu-link <?= (current_url() == base_url('/products')) ? 'active' : ''; ?>" href="/products"><span class="menu-title">Products</span></a>
+                    <a class="sidebar menu-link <?= (current_url() == base_url('/product/add')) ? 'active' : ''; ?>" href="/product/add"><span class="menu-title">Add Product</span></a>
                     <a class="sidebar menu-link <?= (current_url() == base_url('/orders')) ? 'active' : ''; ?>" href="/orders"><span class="menu-title">Orders</span></a>
                     <!--end:Menu link-->
                 </div><!--end:Menu item-->

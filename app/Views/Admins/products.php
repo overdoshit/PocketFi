@@ -44,7 +44,7 @@
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                             <!--begin::Add product-->
-                            <a href="add-product.html" class="btn btn-primary">
+                            <a href="/product/add" class="btn btn-primary">
                                 Add Product
                             </a>
                             <!--end::Add product-->
