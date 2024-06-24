@@ -135,7 +135,6 @@
                             <!--end::Card body-->
                         </div>
                         <!--end::Package Type-->
-
                     </div>
                     <!--end::Aside column-->
 
@@ -260,24 +259,25 @@
                                         <!--end::Input group-->
 
                                         <!--begin::Input group-->
-                                        <div>
-                                            <!--begin::Label-->
+                                        <div class="mb-10 fv-row">
                                             <label class="form-label">Description</label>
-                                            <!--end::Label-->
 
                                             <!--begin::Editor-->
-                                            <div id="quill-editor" class="min-h-200px mb-2"></div>
-                                            <input type="hidden" id="notes" name="notes">
+                                            <div id="quill-editor" class="min-h-200px"></div>
+                                            <input type="hidden" id="notes" name="notes" value="<?= htmlspecialchars($product->notes) ?>">
                                             <script>
                                                 document.addEventListener('DOMContentLoaded', function() {
                                                     var quill = new Quill('#quill-editor', {
                                                         theme: 'snow'
                                                     });
 
-                                                    var initialValue = '<?= $product->notes ?>'
+                                                    var initialValue = '<?= addslashes($product->notes) ?>';
                                                     quill.clipboard.dangerouslyPasteHTML(initialValue);
 
-                                                    // Mendapatkan isi dari Quill dan menyimpannya ke input hidden
+                                                    // Set initial value to hidden input
+                                                    document.getElementById('notes').value = quill.root.innerHTML;
+
+                                                    // Update hidden input on text change
                                                     quill.on('text-change', function() {
                                                         var html = quill.root.innerHTML;
                                                         document.getElementById('notes').value = html;
@@ -290,8 +290,15 @@
                                             <div class="text-muted fs-7">Set up product descriptions for Users to get more information.</div>
                                             <!--end::Description-->
                                         </div>
-
                                         <!--end::Input group-->
+
+                                        <!--begin::Input group-->
+                                        <div class="form-check form-check-solid form-switch form-check-custom fv-row">
+                                            <label class="col-4 col-form-label fw-semibold fs-6">Best Seller</label>
+                                            <input class="form-check-input w-45px h-30px" type="checkbox" name="bestSeller" id="bestSeller" value="Y" <?= $product->bestSeller == 'Y' ? 'checked' : '' ?>>
+                                        </div>
+                                        <!--begin::Input group-->
+
                                     </div>
                                     <!--end::Card header-->
                                 </div>

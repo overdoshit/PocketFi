@@ -120,6 +120,7 @@ class Product extends BaseController
         $imageUrl = $this->categories->getImageUrlByCategory($category);
         $countryFlagUrl = $this->countries->getFlagUrlByCountry($country);
         $notes = $this->request->getVar('notes');
+        $bestSeller = $this->request->getVar('bestSeller') === 'Y' ? 'Y' : 'N';
 
         $this->products->update($idProduct, [
             'category' => $category,
@@ -138,6 +139,7 @@ class Product extends BaseController
             'countryFlagUrl' => $countryFlagUrl,
             'imageUrl' => $imageUrl,
             'notes' => $notes,
+            'bestSeller' => $bestSeller,
         ]);
 
         return redirect()->to('/products')
