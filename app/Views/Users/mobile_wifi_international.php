@@ -132,7 +132,7 @@
 <section class="container product">
     <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
         <?php foreach ($products as $product) : ?>
-            <div class="product col position-relative">
+            <div class="product col position-relative" id="product-<?= $product->idProduct ?>">
                 <?php if ($product->stock == 0) : ?>
                     <div class="ribbon"><span class="sold-out">Sold Out</span></div>
                 <?php elseif ($product->stock <= 2) : ?>
