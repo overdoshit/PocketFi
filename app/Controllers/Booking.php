@@ -132,7 +132,8 @@ class Booking extends BaseController
         $productName = $this->request->getPost('productName');
         $deposit = $this->request->getPost('deposit');
         $discount = $this->request->getPost('discountValue');
-        $promoCode = $this->request->getPost('promoCode');
+        $promoCode = strtoupper($this->request->getPost('promoCode'));
+        $promoCode = $promoCode === '' ? null : $promoCode;
         $grossAmount = $this->request->getPost('grossAmount');
 
         // Set your Merchant Server Key
