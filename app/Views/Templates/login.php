@@ -59,7 +59,7 @@
                     <div class="w-100 w-md-500px p-10">
 
                         <!--begin::Form-->
-                        <form class="form w-100" id="loginForm" action="<?= base_url('login') ?>" method="post">
+                        <form class="form w-100" id="loginForm" action="<?= base_url('login') ?>" method="POST">
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
                                 <!--begin::Title-->
