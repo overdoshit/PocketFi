@@ -93,11 +93,11 @@ class OrdersModel extends Model
         $thisMonthStart = date('Y-m-01');
         $thisMonthEnd = date('Y-m-t');
 
-        return $this->selectAvg('grossAmount')
+        return $this->selectAvg('rentCost')
             ->where('createdAt >=', $thisMonthStart)
             ->where('createdAt <=', $thisMonthEnd)
             ->get()
             ->getRow()
-            ->grossAmount;
+            ->rentCost;
     }
 }
