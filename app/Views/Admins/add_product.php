@@ -211,7 +211,7 @@
                                         <!--begin::Input group-->
                                         <div class="mb-10 fv-row">
                                             <label class="required form-label">Data Usage</label>
-                                            <input type="text" name="dataUsage" class="form-control mb-2" placeholder="Ex: FUP 32 GB" required />
+                                            <input type="text" name="dataUsage" class="form-control mb-2" placeholder="Ex: FUP 32 GB" required>
                                             <div class="text-muted fs-7">Set the specification product data usage.</div>
                                         </div>
                                         <!--end::Input group-->
@@ -223,8 +223,8 @@
                                                 <label class="required form-label w-50">Max Upload Speed (Mbps)</label>
                                             </div>
                                             <div class="d-flex gap-3">
-                                                <input type="number" name="maxDownloadSpeed" class="form-control mb-2" placeholder="Max Download Speed" required>
-                                                <input type="number" name="maxUploadSpeed" class="form-control mb-2" placeholder="Max Upload Speed" required>
+                                                <input type="number" name="maxDownloadSpeed" class="form-control mb-2" placeholder="Max Download Speed" step="any" required>
+                                                <input type="number" name="maxUploadSpeed" class="form-control mb-2" placeholder="Max Upload Speed" step="any" required>
                                             </div>
                                             <div class="d-flex gap-3">
                                                 <div class="text-muted fs-7 w-50">Set the specification product max download speed.</div>
@@ -253,7 +253,7 @@
                                         <!--begin::Input group-->
                                         <div class="mb-10 fv-row">
                                             <label class="required form-label">Network</label>
-                                            <input type="text" name="network" class="form-control mb-2" placeholder="Ex: Telkomsel" required />
+                                            <input type="text" name="network" class="form-control mb-2" placeholder="Ex: Telkomsel" required>
                                             <div class="text-muted fs-7">Set the specification product network.</div>
                                         </div>
                                         <!--end::Input group-->
@@ -273,7 +273,6 @@
                                                         theme: 'snow'
                                                     });
 
-                                                    // Mendapatkan isi dari Quill dan menyimpannya ke input hidden
                                                     quill.on('text-change', function() {
                                                         var html = quill.root.innerHTML;
                                                         document.getElementById('notes').value = html;
