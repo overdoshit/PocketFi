@@ -36,7 +36,7 @@
                             <div class="card-body d-flex align-items-end pt-0">
                                 <div class="d-flex align-items-center flex-column mt-3 w-100">
                                     <div class="d-flex justify-content-between w-100 mt-auto mb-2">
-                                        <span class="fw-bolder fs-6 text-gray-900"><?php echo $goal - $ordersThisMonth; ?> to Goal</span>
+                                        <span class="fw-bolder fs-6 text-gray-900"><?php echo $goalOrders - $ordersThisMonth; ?> to Goal</span>
                                         <span class="fw-bold fs-6 text-gray-500"><?php echo number_format($percentageToGoal, 0); ?>%</span>
                                     </div>
 
@@ -212,28 +212,20 @@
 
                     <!--begin::Col-->
                     <div class="col-lg-12 col-xl-12 col-xxl-6 mb-5 mb-xl-0">
-                        <!--begin::Chart widget 3-->
+
+                        <!--begin::Card widget 3-->
                         <div class="card card-flush overflow-hidden h-md-100">
-                            <!--begin::Header-->
+                            <!--begin::Card Header-->
                             <div class="card-header py-5">
-                                <!--begin::Title-->
                                 <h3 class="card-title align-items-start flex-column">
                                     <span class="card-label fw-bold text-gray-900">Sales This Month</span>
                                 </h3>
-                                <!--end::Title-->
-
-                                <!--begin::Toolbar-->
                                 <div class="card-toolbar">
-                                    <!--begin::Menu-->
                                     <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
-
                                         <i class="fa-regular fa-ellipsis fs-1"></i>
                                     </button>
 
-
-                                    <!--begin::Menu 2-->
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
-                                        <!--begin::Menu item-->
                                         <div class="menu-item px-3">
                                             <div class="menu-content px-3 py-3">
                                                 <a class="btn btn-primary  btn-sm px-4 w-100" href="#">
@@ -241,40 +233,27 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <!--end::Menu item-->
                                     </div>
-                                    <!--end::Menu 2-->
-
-                                    <!--end::Menu-->
                                 </div>
-                                <!--end::Toolbar-->
                             </div>
-                            <!--end::Header-->
+                            <!--end::Card Header-->
 
                             <!--begin::Card body-->
                             <div class="card-body d-flex justify-content-between flex-column pb-1 px-0">
-                                <!--begin::Statistics-->
                                 <div class="px-9 mb-5">
-                                    <!--begin::Statistics-->
                                     <div class="d-flex mb-2">
                                         <span class="fs-4 fw-semibold text-gray-500 me-1">IDR</span>
-                                        <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1 ls-n2">40.560.000</span>
+                                        <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1 ls-n2"><?= number_format($totalSalesThisMonth, 0, ',', '.') ?></span>
                                     </div>
-                                    <!--end::Statistics-->
-
-                                    <!--begin::Description-->
-                                    <span class="fs-6 fw-semibold text-gray-500">Another IDR 59.440.000 to Goal</span>
-                                    <!--end::Description-->
+                                    <span class="fs-6 fw-semibold text-gray-500">Another IDR <?= number_format($goalValues - $totalSalesThisMonth, 0, ',', '.') ?> to Goal</span>
                                 </div>
-                                <!--end::Statistics-->
 
-                                <!--begin::Chart-->
                                 <div id="kt_charts_widget_3" class="min-h-auto ps-4 pe-6" style="height: 300px"></div>
-                                <!--end::Chart-->
                             </div>
                             <!--end::Card body-->
                         </div>
-                        <!--end::Chart widget 3-->
+                        <!--end::Card widget 3-->
+
                     </div>
                     <!--end::Col-->
                 </div>

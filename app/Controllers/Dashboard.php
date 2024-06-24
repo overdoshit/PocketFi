@@ -10,7 +10,8 @@ use App\Models\UsersModel;
 class Dashboard extends BaseController
 {
     protected $orders;
-    protected $goal = 100;
+    protected $goalOrders = 100;
+    protected $goalValues = 100000000;
     protected $products;
     protected $users;
 
@@ -24,7 +25,7 @@ class Dashboard extends BaseController
     public function index()
     {
         $ordersThisMonth = $this->orders->getOrdersCountThisMonth();
-        $percentageToGoal = ($ordersThisMonth / $this->goal) * 100;
+        $percentageToGoal = ($ordersThisMonth / $this->goalOrders) * 100;
         $percentageToGoal = min(100, $percentageToGoal);
 
         $averageOrderValue = $this->orders->getAverageOrderValueThisMonth();
@@ -41,6 +42,8 @@ class Dashboard extends BaseController
 
         $users = $this->users->getAllUsers();
 
+        $totalSalesThisMonth = $this->orders->getTotalSalesThisMonth();
+
         $data = [
             'title' => 'Admin Dashboard · Pocket Fi',
             'pageTitle' => 'Dashboard',
@@ -53,8 +56,10 @@ class Dashboard extends BaseController
             'users' => $users,
             'ordersThisMonth' => $ordersThisMonth,
             'percentageToGoal' => $percentageToGoal,
-            'goal' => $this->goal,
+            'goalOrders' => $this->goalOrders,
             'averageOrderValue' => $averageOrderValue,
+            'totalSalesThisMonth' => $totalSalesThisMonth,
+            'goalValues' => $this->goalValues,
         ];
 
         return view('Admins/dashboard.php', $data);

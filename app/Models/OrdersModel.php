@@ -100,4 +100,17 @@ class OrdersModel extends Model
             ->getRow()
             ->rentCost;
     }
+
+    public function getTotalSalesThisMonth()
+    {
+        $thisMonthStart = date('Y-m-01');
+        $thisMonthEnd = date('Y-m-t');
+
+        return $this->selectSum('rentCost')
+            ->where('createdAt >=', $thisMonthStart)
+            ->where('createdAt <=', $thisMonthEnd)
+            ->get()
+            ->getRow()
+            ->rentCost;
+    }
 }
