@@ -131,38 +131,27 @@
 
                     <!--begin::Col-->
                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-5">
+
+
                         <!--begin::Card widget 6-->
-                        <div class="card card-flush  h-md-50 mb-5 mb-xl-10">
+                        <div class="card card-flush h-md-50 mb-5 mb-xl-10">
                             <!--begin::Header-->
                             <div class="card-header pt-5">
-                                <!--begin::Title-->
                                 <div class="card-title d-flex flex-column">
-                                    <!--begin::Info-->
                                     <div class="d-flex align-items-center">
-                                        <!--begin::Currency-->
                                         <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">IDR</span>
-                                        <!--end::Currency-->
-
-                                        <!--begin::Amount-->
-                                        <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">2.656.000</span>
-                                        <!--end::Amount-->
-
+                                        <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">
+                                            <?php echo number_format($averageOrderValue, 0, ',', '.'); ?>
+                                        </span>
                                     </div>
-                                    <!--end::Info-->
-
-                                    <!--begin::Subtitle-->
                                     <span class="text-gray-500 pt-1 fw-semibold fs-6">Average Value Orders This Month</span>
-                                    <!--end::Subtitle-->
                                 </div>
-                                <!--end::Title-->
                             </div>
                             <!--end::Header-->
 
                             <!--begin::Card body-->
                             <div class="card-body d-flex align-items-end px-0 pb-0">
-                                <!--begin::Chart-->
                                 <div id="kt_card_widget_6_chart" class="w-100" style="height: 80px"></div>
-                                <!--end::Chart-->
                             </div>
                             <!--end::Card body-->
                         </div>
@@ -191,7 +180,12 @@
                             <div class="card-body d-flex flex-column justify-content-end pe-0">
                                 <!--begin::Users group-->
                                 <div class="symbol-group symbol-hover flex-nowrap">
-                                    <?php foreach ($users as $user) : ?>
+                                    <?php
+                                    $max_display_users = 6;
+                                    shuffle($users);
+                                    $display_users = array_slice($users, 0, $max_display_users);
+                                    foreach ($display_users as $user) :
+                                    ?>
                                         <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="<?= $user->name ?>">
                                             <?php if (!empty($user->imageUrl)) : ?>
                                                 <img alt="Pic" src="<?= $user->imageUrl ?>" />
@@ -200,16 +194,17 @@
                                             <?php endif; ?>
                                         </div>
                                     <?php endforeach; ?>
-                                    <a href="#" class="symbol symbol-35px symbol-circle" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">
-                                        <span class="symbol-label bg-light text-gray-400 fs-8 fw-bold">+<?= count($users) - 6 ?></span>
-                                    </a>
+                                    <?php if (count($users) > $max_display_users) : ?>
+                                        <a href="#" class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="+<?= count($users) - $max_display_users ?> More Users">
+                                            <span class="symbol-label bg-light text-gray-400 fs-8 fw-bold">+<?= count($users) - $max_display_users ?></span>
+                                        </a>
+                                    <?php endif; ?>
                                 </div>
                                 <!--end::Users group-->
                             </div>
                             <!--end::Card body-->
                         </div>
                         <!--end::Card widget 7-->
-
 
 
                     </div>
@@ -223,8 +218,7 @@
                             <div class="card-header py-5">
                                 <!--begin::Title-->
                                 <h3 class="card-title align-items-start flex-column">
-                                    <span class="card-label fw-bold text-gray-900">Sales This Months</span>
-                                    <span class="text-gray-500 mt-1 fw-semibold fs-6">Users from all channels</span>
+                                    <span class="card-label fw-bold text-gray-900">Sales This Month</span>
                                 </h3>
                                 <!--end::Title-->
 
@@ -241,85 +235,8 @@
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu separator-->
-                                        <div class="separator mb-3 opacity-75"></div>
-                                        <!--end::Menu separator-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3">
-                                                New Ticket
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3">
-                                                New Customer
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
-                                            <!--begin::Menu item-->
-                                            <a href="#" class="menu-link px-3">
-                                                <span class="menu-title">New Group</span>
-                                                <span class="menu-arrow"></span>
-                                            </a>
-                                            <!--end::Menu item-->
-
-                                            <!--begin::Menu sub-->
-                                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3">
-                                                        Admin Group
-                                                    </a>
-                                                </div>
-                                                <!--end::Menu item-->
-
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3">
-                                                        Staff Group
-                                                    </a>
-                                                </div>
-                                                <!--end::Menu item-->
-
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3">
-                                                        Member Group
-                                                    </a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                            </div>
-                                            <!--end::Menu sub-->
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3">
-                                                New Contact
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-
-                                        <!--begin::Menu separator-->
-                                        <div class="separator mt-3 opacity-75"></div>
-                                        <!--end::Menu separator-->
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
                                             <div class="menu-content px-3 py-3">
-                                                <a class="btn btn-primary  btn-sm px-4" href="#">
+                                                <a class="btn btn-primary  btn-sm px-4 w-100" href="#">
                                                     Generate Reports
                                                 </a>
                                             </div>
@@ -340,13 +257,13 @@
                                 <div class="px-9 mb-5">
                                     <!--begin::Statistics-->
                                     <div class="d-flex mb-2">
-                                        <span class="fs-4 fw-semibold text-gray-500 me-1">$</span>
-                                        <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1 ls-n2">14,094</span>
+                                        <span class="fs-4 fw-semibold text-gray-500 me-1">IDR</span>
+                                        <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1 ls-n2">40.560.000</span>
                                     </div>
                                     <!--end::Statistics-->
 
                                     <!--begin::Description-->
-                                    <span class="fs-6 fw-semibold text-gray-500">Another $48,346 to Goal</span>
+                                    <span class="fs-6 fw-semibold text-gray-500">Another IDR 59.440.000 to Goal</span>
                                     <!--end::Description-->
                                 </div>
                                 <!--end::Statistics-->

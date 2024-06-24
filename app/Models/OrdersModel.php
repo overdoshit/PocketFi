@@ -80,11 +80,24 @@ class OrdersModel extends Model
 
     public function getOrdersCountThisMonth()
     {
-        $thisMonthStart = date('Y-m-01'); // Start of current month
-        $thisMonthEnd = date('Y-m-t');    // End of current month
+        $thisMonthStart = date('Y-m-01');
+        $thisMonthEnd = date('Y-m-t');
 
         return $this->where('createdAt >=', $thisMonthStart)
             ->where('createdAt <=', $thisMonthEnd)
             ->countAllResults();
+    }
+
+    public function getAverageOrderValueThisMonth()
+    {
+        $thisMonthStart = date('Y-m-01');
+        $thisMonthEnd = date('Y-m-t');
+
+        return $this->selectAvg('grossAmount')
+            ->where('createdAt >=', $thisMonthStart)
+            ->where('createdAt <=', $thisMonthEnd)
+            ->get()
+            ->getRow()
+            ->grossAmount;
     }
 }

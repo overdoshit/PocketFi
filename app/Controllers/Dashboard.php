@@ -27,6 +27,8 @@ class Dashboard extends BaseController
         $percentageToGoal = ($ordersThisMonth / $this->goal) * 100;
         $percentageToGoal = min(100, $percentageToGoal);
 
+        $averageOrderValue = $this->orders->getAverageOrderValueThisMonth();
+
         $mifiInternationalCount = $this->products->getProductCountByCategory('MIFI International');
         $mifiIndonesiaCount = $this->products->getProductCountByCategory('MIFI Indonesia');
         $simCount = $this->products->getProductCountByCategory('SIM');
@@ -52,6 +54,7 @@ class Dashboard extends BaseController
             'ordersThisMonth' => $ordersThisMonth,
             'percentageToGoal' => $percentageToGoal,
             'goal' => $this->goal,
+            'averageOrderValue' => $averageOrderValue,
         ];
 
         return view('Admins/dashboard.php', $data);
