@@ -14,6 +14,6 @@ class SimCard extends BaseController
             'title' => 'SIM Card & E-SIM',
             'products' => $model->where('category', 'SIM')->findAll()
         ];
-        return view('Users/mobile_wifi_indonesia', $data);
+        return view('Users/sim_card', $data);
     }
 }
