@@ -44,3 +44,4 @@ $routes->get('/product/add', 'Product::add', ['filter' => 'LoginFilter']);
 $routes->post('/product/add', 'Product::addProduct', ['filter' => 'LoginFilter']);
 $routes->get('/product/edit/(:num)', 'Product::edit/$1', ['filter' => 'LoginFilter']);
 $routes->post('/product/update', 'Product::updateProduct', ['filter' => 'LoginFilter']);
+$routes->get('/product/delete/(:num)', 'Product::delete/$1', ['filter' => 'LoginFilter']);

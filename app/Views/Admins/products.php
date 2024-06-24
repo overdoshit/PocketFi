@@ -86,7 +86,7 @@
                                                     }
                                                     ?>
                                                     <a href="<?= $linkProduct ?>" class="symbol symbol-50px">
-                                                        <span class="symbol-label flag-product" style="background-image:url(<?= $product->countryFlagUrl ?>);"></span>
+                                                        <span class="symbol-label flag-product" style="background-image:url(<?= $product->countryFlagUrl ?>); width: 70px; border-radius: 5px"></span>
                                                     </a>
                                                     <!--end::Thumbnail-->
                                                     <div class="ms-5">
@@ -134,7 +134,7 @@
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a href="#" class="menu-link px-3">
+                                                        <a href="/product/delete/<?= $product->idProduct ?>" class="menu-link px-3 btn-delete" data-id="<?= $product->idProduct ?>">
                                                             Delete
                                                         </a>
                                                     </div>
@@ -160,4 +160,24 @@
     </div>
     <!--end::Content wrapper-->
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var deleteButtons = document.querySelectorAll('.btn-delete');
+            var modal = new bootstrap.Modal(document.getElementById('deleteProductModal'));
+            var confirmDelete = document.getElementById('confirmDelete');
+
+            deleteButtons.forEach(function(button) {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var productId = this.getAttribute('data-id');
+                    var deleteUrl = "<?= base_url('/product/delete/') ?>" + productId;
+
+                    confirmDelete.setAttribute('href', deleteUrl);
+                    modal.show();
+                });
+            });
+        });
+    </script>
+
+    <?= $this->include('Templates/modal_delete_product'); ?>
     <?= $this->include('Templates/footer'); ?>
