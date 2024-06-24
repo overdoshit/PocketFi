@@ -62,6 +62,6 @@ class Dashboard extends BaseController
             'goalValues' => $this->goalValues,
         ];
 
-        return view('Admins/dashboard.php', $data);
+        return view('Admins/dashboard', $data);
     }
 }

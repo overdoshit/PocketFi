@@ -22,6 +22,6 @@ class Products extends BaseController
             'products' => $this->products->findAll(),
         ];
 
-        return view('Admins/products.php', $data);
+        return view('Admins/products', $data);
     }
 }
