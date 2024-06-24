@@ -75,13 +75,23 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <!--begin::Thumbnail-->
-                                                    <a href="edit-product.php?id=<?= $product->idProduct ?>" class="symbol symbol-50px">
+                                                    <?php
+                                                    $linkProduct = '';
+                                                    if ($product->category == "MIFI Indonesia") {
+                                                        $linkProduct = "http://pocketfi.test/mobile-wifi/indonesia#product-{$product->idProduct}";
+                                                    } elseif ($product->category == "MIFI International") {
+                                                        $linkProduct = "http://pocketfi.test/mobile-wifi/international#product-{$product->idProduct}";
+                                                    } elseif ($product->category == "SIM") {
+                                                        $linkProduct = "http://pocketfi.test/sim-card/#product-{$product->idProduct}";
+                                                    }
+                                                    ?>
+                                                    <a href="<?= $linkProduct ?>" class="symbol symbol-50px">
                                                         <span class="symbol-label flag-product" style="background-image:url(<?= $product->countryFlagUrl ?>);"></span>
                                                     </a>
                                                     <!--end::Thumbnail-->
                                                     <div class="ms-5">
                                                         <!--begin::Title-->
-                                                        <a href="edit-product.php?id=<?= $product->idProduct ?>" class="text-gray-800 text-hover-primary fs-5 fw-bold text-truncate-ellipsis">
+                                                        <a href="<?= $linkProduct ?>" class="text-gray-800 text-hover-primary fs-5 fw-bold text-truncate-ellipsis">
                                                             <?= $product->country . ' ' . $product->packageType . ' ' . $product->dataUsage . ' IDR ' . number_format($product->dailyPrice, 0, ',', '.') . '/DAY (MINIMUM RENT ' . $product->minimumRentDays . ' DAYS)' ?>
                                                         </a>
                                                         <!--end::Title-->
@@ -117,7 +127,7 @@
                                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a href="edit-product.php?id=<?= $product->idProduct ?>" class="menu-link px-3">
+                                                        <a href="/product/edit/<?= $product->idProduct ?>" class="menu-link px-3">
                                                             Edit
                                                         </a>
                                                     </div>

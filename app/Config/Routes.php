@@ -42,3 +42,5 @@ $routes->get('/', 'Dashboard::index', ['filter' => 'LoginFilter']);
 $routes->get('/products', 'Products::index', ['filter' => 'LoginFilter']);
 $routes->get('/product/add', 'Product::add', ['filter' => 'LoginFilter']);
 $routes->post('/product/add', 'Product::addProduct', ['filter' => 'LoginFilter']);
+$routes->get('/product/edit/(:num)', 'Product::edit/$1', ['filter' => 'LoginFilter']);
+$routes->post('/product/update', 'Product::updateProduct', ['filter' => 'LoginFilter']);

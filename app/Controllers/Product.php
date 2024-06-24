@@ -98,4 +98,66 @@ class Product extends BaseController
         return redirect()->to('/products')
             ->with('success', 'Product added successfully.');
     }
+
+    public function edit($idProduct)
+    {
+        $product = $this->products->find($idProduct);
+        $categories = $this->categories->findAll();
+        $countries = $this->countries->findAll();
+        $packagetypes = $this->packagetypes->findAll();
+
+        $data = [
+            'title' => 'Admin Product · Pocket Fi',
+            'pageTitle' => 'Edit Product',
+            'product' => $product,
+            'categories' => $categories,
+            'countries' => $countries,
+            'packagetypes' => $packagetypes,
+        ];
+
+        return view('Admins/edit_product', $data);
+    }
+
+    public function updateProduct()
+    {
+        $idProduct = $this->request->getVar('idProduct');
+        $category = $this->request->getVar('category');
+        $country = strtoupper($this->request->getVar('country'));
+        $packageType = strtoupper($this->request->getVar('packageType'));
+        $dailyPrice = $this->request->getVar('dailyPrice');
+        $deposit = $this->request->getVar('deposit');
+        $stock = $this->request->getVar('stock');
+        $minimumRentDays = $this->request->getVar('minimumRentDays');
+        $dataUsage = $this->request->getVar('dataUsage');
+        $maxDownloadSpeed = $this->request->getVar('maxDownloadSpeed');
+        $maxUploadSpeed = $this->request->getVar('maxUploadSpeed');
+        $batteryHours = $this->request->getVar('batteryHours');
+        $sharedDevices = $this->request->getVar('sharedDevices');
+        $network = $this->request->getVar('network');
+        $imageUrl = $this->categories->getImageUrlByCategory($category);
+        $countryFlagUrl = $this->countries->getFlagUrlByCountry($country);
+        $notes = $this->request->getVar('notes');
+
+        $this->products->update($idProduct, [
+            'category' => $category,
+            'country' => $country,
+            'packageType' => $packageType,
+            'dataUsage' => $dataUsage,
+            'deposit' => $deposit,
+            'dailyPrice' => $dailyPrice,
+            'stock' => $stock,
+            'minimumRentDays' => $minimumRentDays,
+            'maxDownloadSpeed' => $maxDownloadSpeed,
+            'maxUploadSpeed' => $maxUploadSpeed,
+            'batteryHours' => $batteryHours,
+            'sharedDevices' => $sharedDevices,
+            'network' => $network,
+            'countryFlagUrl' => $countryFlagUrl,
+            'imageUrl' => $imageUrl,
+            'notes' => $notes,
+        ]);
+
+        return redirect()->to('/products')
+            ->with('success', 'Product updated successfully.');
+    }
 }
