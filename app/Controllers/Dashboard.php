@@ -4,14 +4,17 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ProductsModel;
+use App\Models\UsersModel;
 
 class Dashboard extends BaseController
 {
     protected $products;
+    protected $users;
 
     public function __construct()
     {
         $this->products = new ProductsModel();
+        $this->users = new UsersModel();
     }
 
     public function index()
@@ -27,6 +30,8 @@ class Dashboard extends BaseController
         $mifiIndonesiaPercentage = ($mifiIndonesiaCount / $totalProducts) * 100;
         $simPercentage = ($simCount / $totalProducts) * 100;
 
+        $users = $this->users->getAllUsers();
+
         $data = [
             'title' => 'Admin Dashboard · Pocket Fi',
             'pageTitle' => 'Dashboard',
@@ -36,6 +41,7 @@ class Dashboard extends BaseController
             'mifiInternationalPercentage' => $mifiInternationalPercentage,
             'mifiIndonesiaPercentage' => $mifiIndonesiaPercentage,
             'simPercentage' => $simPercentage,
+            'users' => $users,
         ];
 
         return view('Admins/dashboard.php', $data);
