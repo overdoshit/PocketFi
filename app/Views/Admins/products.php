@@ -128,6 +128,7 @@
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
                                                         <a href="/product/edit/<?= $product->idProduct ?>" class="menu-link px-3">
+                                                            <i class="fa-solid fa-pen-to-square me-2"></i>
                                                             Edit
                                                         </a>
                                                     </div>
@@ -135,6 +136,7 @@
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
                                                         <a href="/product/delete/<?= $product->idProduct ?>" class="menu-link px-3 btn-delete" data-id="<?= $product->idProduct ?>">
+                                                            <i class="fa-solid fa-trash me-2"></i>
                                                             Delete
                                                         </a>
                                                     </div>
