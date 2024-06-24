@@ -26,15 +26,7 @@
         <!--begin::Menu wrapper-->
         <div id="kt_app_sidebar_menu_wrapper" class="app-sidebar-wrapper hover-scroll-y my-5 mx-3 mx-xl-11" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer" data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px">
             <!--begin::Menu-->
-            <div class="
-        menu 
-        menu-column 
-        menu-rounded 
-        menu-sub-indention      
-        menu-active-bg
-        menu-             
-        px-3        
-    " id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
+            <div class="menu menu-column menu-rounded menu-sub-indention menu-active-bg" id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
                 <!--begin:Menu item-->
                 <div class="menu-item">
                     <!--begin:Menu link-->
@@ -50,9 +42,5 @@
         <!--end::Menu wrapper-->
     </div>
     <!--end::sidebar menu-->
-    <!--begin::Footer-->
-    <div class="app-sidebar-footer flex-column-auto m-9" id="kt_app_sidebar_footer">
-    </div>
-    <!--end::Footer-->
 </div>
 <!--end::Sidebar-->
