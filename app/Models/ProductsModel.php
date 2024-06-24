@@ -61,4 +61,9 @@ class ProductsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getProductCountByCategory($category)
+    {
+        return $this->where('category', $category)->countAllResults();
+    }
 }

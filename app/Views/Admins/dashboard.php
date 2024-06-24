@@ -17,100 +17,8 @@
                     <!--begin::Col-->
                     <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-5">
 
-                        <!--begin::Card widget 4-->
-                        <div class="card card-flush h-md-50 mb-5 mb-xl-10">
-                            <!--begin::Header-->
-                            <div class="card-header pt-5">
-                                <!--begin::Title-->
-                                <div class="card-title d-flex flex-column">
-                                    <!--begin::Info-->
-                                    <div class="d-flex align-items-center">
-                                        <!--begin::Currency-->
-                                        <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">$</span>
-                                        <!--end::Currency-->
-
-                                        <!--begin::Amount-->
-                                        <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">69,700</span>
-                                        <!--end::Amount-->
-
-                                    </div>
-                                    <!--end::Info-->
-
-                                    <!--begin::Subtitle-->
-                                    <span class="text-gray-500 pt-1 fw-semibold fs-6">Expected Earnings</span>
-                                    <!--end::Subtitle-->
-                                </div>
-                                <!--end::Title-->
-                            </div>
-                            <!--end::Header-->
-
-                            <!--begin::Card body-->
-                            <div class="card-body pt-2 pb-4 d-flex align-items-center">
-                                <!--begin::Chart-->
-                                <div class="d-flex flex-center me-5 pt-2">
-                                    <div id="kt_card_widget_4_chart" style="min-width: 70px; min-height: 70px" data-kt-size="70" data-kt-line="11">
-                                    </div>
-                                </div>
-                                <!--end::Chart-->
-
-                                <!--begin::Labels-->
-                                <div class="d-flex flex-column content-justify-center w-100">
-                                    <!--begin::Label-->
-                                    <div class="d-flex fs-6 fw-semibold align-items-center">
-                                        <!--begin::Bullet-->
-                                        <div class="bullet w-8px h-6px rounded-2 bg-danger me-3"></div>
-                                        <!--end::Bullet-->
-
-                                        <!--begin::Label-->
-                                        <div class="text-gray-500 flex-grow-1 me-4">Mifi International</div>
-                                        <!--end::Label-->
-
-                                        <!--begin::Stats-->
-                                        <div class="fw-bolder text-gray-700 text-xxl-end">$7,660</div>
-                                        <!--end::Stats-->
-                                    </div>
-                                    <!--end::Label-->
-
-                                    <!--begin::Label-->
-                                    <div class="d-flex fs-6 fw-semibold align-items-center my-3">
-                                        <!--begin::Bullet-->
-                                        <div class="bullet w-8px h-6px rounded-2 bg-primary me-3"></div>
-                                        <!--end::Bullet-->
-
-                                        <!--begin::Label-->
-                                        <div class="text-gray-500 flex-grow-1 me-4">Mifi Indonesia</div>
-                                        <!--end::Label-->
-
-                                        <!--begin::Stats-->
-                                        <div class="fw-bolder text-gray-700 text-xxl-end">$2,820</div>
-                                        <!--end::Stats-->
-                                    </div>
-                                    <!--end::Label-->
-
-                                    <!--begin::Label-->
-                                    <div class="d-flex fs-6 fw-semibold align-items-center">
-                                        <!--begin::Bullet-->
-                                        <div class="bullet w-8px h-6px rounded-2 me-3" style="background-color: #E4E6EF"></div>
-                                        <!--end::Bullet-->
-
-                                        <!--begin::Label-->
-                                        <div class="text-gray-500 flex-grow-1 me-4">SIM</div>
-                                        <!--end::Label-->
-
-                                        <!--begin::Stats-->
-                                        <div class=" fw-bolder text-gray-700 text-xxl-end">$45,257</div>
-                                        <!--end::Stats-->
-                                    </div>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Labels-->
-                            </div>
-                            <!--end::Card body-->
-                        </div>
-                        <!--end::Card widget 4-->
-
                         <!--begin::Card widget 5-->
-                        <div class="card card-flush h-md-50 mb-xl-10">
+                        <div class="card card-flush h-md-50 mb-5 mb-xl-10">
                             <!--begin::Header-->
                             <div class="card-header pt-5">
                                 <!--begin::Title-->
@@ -150,6 +58,85 @@
                             <!--end::Card body-->
                         </div>
                         <!--end::Card widget 5-->
+
+
+                        <!--begin::Card widget 4-->
+                        <div class="card card-flush h-md-50 mb-xl-10">
+                            <!--begin::Card Header-->
+                            <div class="card-header pt-5">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2"><?= $mifiInternationalCount + $mifiIndonesiaCount + $simCount ?></span>
+                                    </div>
+                                    <span class="text-gray-500 pt-1 fw-semibold fs-6">Total Products</span>
+                                </div>
+                            </div>
+                            <!--end::Card Header-->
+
+                            <!--begin::Card Body-->
+                            <div class="card-body pt-2 pb-4 d-flex align-items-center">
+                                <!--begin::Chart-->
+                                <div class="d-flex flex-center me-5 pt-2">
+                                    <canvas id="chartProducts" style="min-width: 70px; min-height: 70px; max-width: 100%;"></canvas>
+                                </div>
+                                <!--end::Chart-->
+
+                                <div class="d-flex flex-column content-justify-center w-100">
+                                    <div class="d-flex fs-6 fw-semibold align-items-center">
+                                        <div class="bullet w-8px h-6px rounded-2 bg-danger me-3"></div>
+                                        <div class="text-gray-500 flex-grow-1 me-4">Mifi International</div>
+                                        <div class="fw-bolder text-gray-700 text-xxl-end"><?= $mifiInternationalCount ?></div>
+                                    </div>
+
+                                    <div class="d-flex fs-6 fw-semibold align-items-center my-3">
+                                        <div class="bullet w-8px h-6px rounded-2 bg-primary me-3"></div>
+                                        <div class="text-gray-500 flex-grow-1 me-4">Mifi Indonesia</div>
+                                        <div class="fw-bolder text-gray-700 text-xxl-end"><?= $mifiIndonesiaCount ?></div>
+                                    </div>
+
+                                    <div class="d-flex fs-6 fw-semibold align-items-center">
+                                        <div class="bullet w-8px h-6px rounded-2 me-3" style="background-color: #E4E6EF"></div>
+                                        <div class="text-gray-500 flex-grow-1 me-4">SIM</div>
+                                        <div class=" fw-bolder text-gray-700 text-xxl-end"><?= $simCount ?></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Card Body-->
+                        </div>
+                        <script>
+                            var ctx = document.getElementById('chartProducts').getContext('2d');
+                            var chart = new Chart(ctx, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ['Mifi International', 'Mifi Indonesia', 'SIM'],
+                                    datasets: [{
+                                        label: 'Products by Category',
+                                        data: [<?= $mifiInternationalPercentage ?>, <?= $mifiIndonesiaPercentage ?>, <?= $simPercentage ?>],
+                                        backgroundColor: ['#dc3545', '#007bff', '#e4e6ef'],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: {
+                                            display: false
+                                        },
+                                        tooltip: {
+                                            callbacks: {
+                                                label: function(tooltipItem) {
+                                                    return tooltipItem.raw.toFixed(2) + '%';
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        </script>
+                        <!--end::Card widget 4-->
+
+
                     </div>
                     <!--end::Col-->
 
@@ -200,11 +187,11 @@
                                 <!--begin::Title-->
                                 <div class="card-title d-flex flex-column">
                                     <!--begin::Amount-->
-                                    <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">6.3k</span>
+                                    <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">8</span>
                                     <!--end::Amount-->
 
                                     <!--begin::Subtitle-->
-                                    <span class="text-gray-500 pt-1 fw-semibold fs-6">Customers</span>
+                                    <span class="text-gray-500 pt-1 fw-semibold fs-6">Total Customers</span>
                                     <!--end::Subtitle-->
                                 </div>
                                 <!--end::Title-->
@@ -243,6 +230,8 @@
                             <!--end::Card body-->
                         </div>
                         <!--end::Card widget 7-->
+
+
                     </div>
                     <!--end::Col-->
 
