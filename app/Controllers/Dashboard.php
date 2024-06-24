@@ -3,22 +3,29 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\OrdersModel;
 use App\Models\ProductsModel;
 use App\Models\UsersModel;
 
 class Dashboard extends BaseController
 {
+    protected $orders;
+    protected $goal = 100;
     protected $products;
     protected $users;
 
     public function __construct()
     {
+        $this->orders = new OrdersModel();
         $this->products = new ProductsModel();
         $this->users = new UsersModel();
     }
 
     public function index()
     {
+        $ordersThisMonth = $this->orders->getOrdersCountThisMonth();
+        $percentageToGoal = ($ordersThisMonth / $this->goal) * 100;
+        $percentageToGoal = min(100, $percentageToGoal);
 
         $mifiInternationalCount = $this->products->getProductCountByCategory('MIFI International');
         $mifiIndonesiaCount = $this->products->getProductCountByCategory('MIFI Indonesia');
@@ -42,6 +49,9 @@ class Dashboard extends BaseController
             'mifiIndonesiaPercentage' => $mifiIndonesiaPercentage,
             'simPercentage' => $simPercentage,
             'users' => $users,
+            'ordersThisMonth' => $ordersThisMonth,
+            'percentageToGoal' => $percentageToGoal,
+            'goal' => $this->goal,
         ];
 
         return view('Admins/dashboard.php', $data);

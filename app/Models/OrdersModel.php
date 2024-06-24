@@ -77,4 +77,14 @@ class OrdersModel extends Model
             ->orderBy('createdAt', 'DESC')
             ->findAll();
     }
+
+    public function getOrdersCountThisMonth()
+    {
+        $thisMonthStart = date('Y-m-01'); // Start of current month
+        $thisMonthEnd = date('Y-m-t');    // End of current month
+
+        return $this->where('createdAt >=', $thisMonthStart)
+            ->where('createdAt <=', $thisMonthEnd)
+            ->countAllResults();
+    }
 }
