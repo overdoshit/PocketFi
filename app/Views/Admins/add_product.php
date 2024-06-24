@@ -223,8 +223,8 @@
                                                 <label class="required form-label w-50">Max Upload Speed (Mbps)</label>
                                             </div>
                                             <div class="d-flex gap-3">
-                                                <input type="number" name="maxDownloadSpeed" class="form-control mb-2" placeholder="Max Download Speed" step="any" required>
-                                                <input type="number" name="maxUploadSpeed" class="form-control mb-2" placeholder="Max Upload Speed" step="any" required>
+                                                <input type="number" name="maxDownloadSpeed" class="form-control mb-2" placeholder="Ex: 32,5" step="any" required>
+                                                <input type="number" name="maxUploadSpeed" class="form-control mb-2" placeholder="Ex: 32,5" step="any" required>
                                             </div>
                                             <div class="d-flex gap-3">
                                                 <div class="text-muted fs-7 w-50">Set the specification product max download speed.</div>

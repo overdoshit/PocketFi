@@ -224,8 +224,8 @@
                                                 <label class="required form-label w-50">Max Upload Speed (Mbps)</label>
                                             </div>
                                             <div class="d-flex gap-3">
-                                                <input type="number" name="maxDownloadSpeed" class="form-control mb-2" value="<?= $product->maxDownloadSpeed ?>" placeholder="Max Download Speed" step="any" required>
-                                                <input type="number" name="maxUploadSpeed" class="form-control mb-2" value="<?= $product->maxUploadSpeed ?>" placeholder="Max Upload Speed" step="any" required>
+                                                <input type="number" name="maxDownloadSpeed" class="form-control mb-2" value="<?= $product->maxDownloadSpeed ?>" placeholder="Ex: 32,5" step="any" required>
+                                                <input type="number" name="maxUploadSpeed" class="form-control mb-2" value="<?= $product->maxUploadSpeed ?>" placeholder="Ex: 32,5" step="any" required>
                                             </div>
                                             <div class="d-flex gap-3">
                                                 <div class="text-muted fs-7 w-50">Set the specification product max download speed.</div>
@@ -274,7 +274,7 @@
                                                         theme: 'snow'
                                                     });
 
-                                                    var initialValue = '<?= $product->notes; ?>;';
+                                                    var initialValue = '<?= $product->notes ?>'
                                                     quill.clipboard.dangerouslyPasteHTML(initialValue);
 
                                                     // Mendapatkan isi dari Quill dan menyimpannya ke input hidden
