@@ -51,7 +51,7 @@ $routes->get('/mobile-wifi/indonesia', 'MobileWifi::indonesia');
 $routes->get('/mobile-wifi/international', 'MobileWifi::international');
 $routes->get('/sim-card', 'SimCard::index');
 
-//Pages Routes
+// Pages Routes
 $routes->get('/how-it-works', 'HowItWorks::index');
 
 // Booking Pages Routes
