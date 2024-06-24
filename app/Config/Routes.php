@@ -39,9 +39,19 @@ $routes->get('/logout', 'Authentication::logout', ['filter' => 'LoginFilter']);
 
 // Pages Routes
 $routes->get('/', 'Dashboard::index', ['filter' => 'LoginFilter']);
+$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'LoginFilter']);
+$routes->get('/dashboard/index', 'Dashboard::index', ['filter' => 'LoginFilter']);
+$routes->get('/dashboard/index/(:any)', 'Dashboard::index', ['filter' => 'LoginFilter']);
+
 $routes->get('/products', 'Products::index', ['filter' => 'LoginFilter']);
+$routes->get('/products/index', 'Products::index', ['filter' => 'LoginFilter']);
+$routes->get('/products/index/(:any)', 'Products::index', ['filter' => 'LoginFilter']);
 $routes->get('/product/add', 'Product::add', ['filter' => 'LoginFilter']);
 $routes->post('/product/add', 'Product::addProduct', ['filter' => 'LoginFilter']);
 $routes->get('/product/edit/(:num)', 'Product::edit/$1', ['filter' => 'LoginFilter']);
 $routes->post('/product/update', 'Product::updateProduct', ['filter' => 'LoginFilter']);
 $routes->get('/product/delete/(:num)', 'Product::delete/$1', ['filter' => 'LoginFilter']);
+
+$routes->get('/orders', 'Orders::index', ['filter' => 'LoginFilter']);
+$routes->get('/orders/index', 'Orders::index', ['filter' => 'LoginFilter']);
+$routes->get('/orders/index/(:any)', 'Orders::index', ['filter' => 'LoginFilter']);
