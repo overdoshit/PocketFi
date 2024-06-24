@@ -100,11 +100,11 @@
                                             </td>
                                             <td class="text-center">
                                                 <?php if ($product->stock == 0) : ?>
-                                                    <span class="badge badge-light-danger" style="position: relative; top: -1px;">Out of stock</span>
+                                                    <span class="badge badge-light-danger">Out of stock</span>
                                                 <?php elseif ($product->stock <= 2) : ?>
-                                                    <span class="badge badge-light-warning" style="position: relative; top: -1px;">Low stock</span>
+                                                    <span class="badge badge-light-warning">Low stock</span>
                                                 <?php endif; ?>
-                                                <span class="fw-bold"><?= $product->stock ?></span>
+                                                <div class="fw-bold"><?= $product->stock ?></div>
                                             </td>
                                             <td class="text-center">
                                                 <?= $product->packageType ?>
