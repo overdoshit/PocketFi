@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 2048 512" width="1280" height="1280" xmlns="http://www.w3.org/2000/svg">
+<path transform="translate(0)" d="m0 0h2048v512h-2048z" fill="#060706"/>
+<path transform="translate(1791)" d="m0 0h257v512h-768l6-7z" fill="#FED017"/>
+<path transform="translate(1279)" d="m0 0h512l-6 7-505 505h-512l6-7z" fill="#FED017"/>
+<path transform="translate(0)" d="m0 0h767l-6 7-505 505h-256z" fill="#060706"/>
+<path transform="translate(1791)" d="m0 0h171l-6 7-505 505h-171l6-7z" fill="#FED017"/>
+<path transform="translate(1279)" d="m0 0h171l-6 7-505 505h-171l6-7z" fill="#060706"/>
+<path transform="translate(767)" d="m0 0h171l-6 7-505 505h-171l6-7z" fill="#FED017"/>
+<path transform="translate(1621)" d="m0 0h170l-6 7-505 505h-170l6-7z" fill="#060706"/>
+<path transform="translate(1109)" d="m0 0h170l-6 7-505 505h-170l6-7z" fill="#FED017"/>
+<path transform="translate(597)" d="m0 0h170l-6 7-505 505h-170l6-7z" fill="#060706"/>
+<path transform="translate(1962)" d="m0 0h86v86l-426 426h-171l6-7z" fill="#060706"/>
+<path transform="translate(426)" d="m0 0h171l-6 7-505 505h-86v-86z" fill="#FED017"/>
+<path transform="translate(2046,257)" d="m0 0h2v255h-256l6-7z" fill="#060706"/>
+<path transform="translate(0)" d="m0 0h255l-6 7-25 25-7 8-8 7-6 7-8 7-20 20-7 8-8 7-38 38-7 8-8 7-6 7-8 7-5 6-8 7-8 8-6 7-8 7-39 39-7 8-8 7-4 3z" fill="#FED017"/>
+<path transform="translate(2047,427)" d="m0 0h1v85h-85l6-7z" fill="#FED017"/>
+<path transform="translate(0)" d="m0 0h85l-6 7-77 77h-2z" fill="#060706"/>
+</svg>
