@@ -19,7 +19,7 @@ $routes->set404Override(function () {
     $data = [
         'title' => '404 Not Found',
     ];
-    return view('errors/404_not_found.php', $data);
+    return view('errors/404_not_found', $data);
 });
 $routes->setAutoRoute(true);
 
