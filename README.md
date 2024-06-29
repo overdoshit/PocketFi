@@ -38,21 +38,21 @@ Pocket Fi is a website for portable WiFi lending services in Indonesia. Whether 
 ## Screenshots
 Homepage: 
 <br>
-<img width="333" alt="Homepage" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(1).png">
-<img width="333" alt="Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(5).png">
-<img width="333" alt="Profile" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(11).png">
-<img width="333" alt="Checkout" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(13).png">
-<img width="333" alt="Payment" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(14).png">
-<img width="333" alt="Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(15).png">
+<img width="412" alt="Homepage" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(1).png">
+<img width="412" alt="Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(5).png">
+<img width="412" alt="Profile" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(11).png">
+<img width="412" alt="Checkout" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(13).png">
+<img width="412" alt="Payment" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(14).png">
+<img width="412" alt="Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(15).png">
 <br>
 Admin Dashboard: 
 <br>
-<img width="333" alt="Dashboard Light" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(16).png">
-<img width="333" alt="Dashboard Dark" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(17).png">
-<img width="333" alt="List Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(18).png">
-<img width="333" alt="Add Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(19).png">
-<img width="333" alt="Delete Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(21).png">
-<img width="333" alt="List Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(22).png">
+<img width="412" alt="Dashboard Light" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(16).png">
+<img width="412" alt="Dashboard Dark" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(17).png">
+<img width="412" alt="List Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(18).png">
+<img width="412" alt="Add Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(19).png">
+<img width="412" alt="Delete Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(21).png">
+<img width="412" alt="List Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(22).png">
 <br>
 [All Screenshots](https://github.com/overdoshit/PocketFi/tree/master/public/assets/images/screenshots)
 
@@ -401,4 +401,4 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
 [Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-pocketfi-dev/9f8256vqc9?form_factor=desktop)
 
 ## Contact
-For any inquiries or issues, please contact us at [Faiz Kurniawan](mailto:faiz.kurnicloud@gmail.com).
+For any inquiries or issues, please contact at [Faiz Kurniawan](mailto:faiz.kurnicloud@gmail.com).
