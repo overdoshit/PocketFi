@@ -37,9 +37,24 @@ Pocket Fi is a website for portable WiFi lending services in Indonesia. Whether 
 
 ## Screenshots
 Homepage: 
-
+<br>
+<img width="333" alt="Homepage" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(1).png">
+<img width="333" alt="Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(5).png">
+<img width="333" alt="Profile" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(11).png">
+<img width="333" alt="Checkout" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(13).png">
+<img width="333" alt="Payment" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(14).png">
+<img width="333" alt="Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(15).png">
+<br>
 Admin Dashboard: 
-
+<br>
+<img width="333" alt="Dashboard Light" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(16).png">
+<img width="333" alt="Dashboard Dark" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(17).png">
+<img width="333" alt="List Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(18).png">
+<img width="333" alt="Add Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(19).png">
+<img width="333" alt="Delete Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(21).png">
+<img width="333" alt="List Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(22).png">
+<br>
+[All Screenshots](https://github.com/overdoshit/PocketFi/tree/master/public/assets/images/screenshots)
 
 ## Design Pattern
 The app follows the MVC (Model-View-Controller) architecture pattern, ensuring a clear separation of concerns and facilitating easier testing and maintenance of the codebase.
@@ -204,7 +219,6 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     sudo cp env .env
     sudo nano .env
     ```
-    > [!NOTE]
     > Edit the `.env` file according to your configuration.
     
 4. Setup permissions: 
@@ -235,7 +249,6 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     sudo cp env .env
     sudo nano .env
     ```
-    > [!NOTE]
     > Edit the `.env` file according to your configuration.
 
 4. Setup permissions: 
@@ -369,13 +382,14 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     ```bash
     sudo nginx -t
     ```
-    >[!NOTE]
-    >If the output shows:
-    >```
-    >nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-    >nginx: configuration file /etc/nginx/nginx.conf test is successful
-    >```
-    >you can proceed to the next step.
+
+>[!NOTE]
+>If the output shows:
+>```
+>nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+>nginx: configuration file /etc/nginx/nginx.conf test is successful
+>```
+>you can proceed to the next step.
 
 7. Restart NGINX to apply changes: 
     ```bash
