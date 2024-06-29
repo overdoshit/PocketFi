@@ -78,11 +78,11 @@
                                                     <?php
                                                     $linkProduct = '';
                                                     if ($product->category == "MIFI Indonesia") {
-                                                        $linkProduct = "http://pocketfi.test/mobile-wifi/indonesia#product-{$product->idProduct}";
+                                                        $linkProduct = getenv('URL_HOMEPAGE') . "mobile-wifi/indonesia#product-{$product->idProduct}";
                                                     } elseif ($product->category == "MIFI International") {
-                                                        $linkProduct = "http://pocketfi.test/mobile-wifi/international#product-{$product->idProduct}";
+                                                        $linkProduct = getenv('URL_HOMEPAGE') . "mobile-wifi/international#product-{$product->idProduct}";
                                                     } elseif ($product->category == "SIM") {
-                                                        $linkProduct = "http://pocketfi.test/sim-card/#product-{$product->idProduct}";
+                                                        $linkProduct = getenv('URL_HOMEPAGE') . "sim-card/#product-{$product->idProduct}";
                                                     }
                                                     ?>
                                                     <a href="<?= $linkProduct ?>" class="symbol symbol-50px">
