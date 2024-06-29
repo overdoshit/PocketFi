@@ -38,6 +38,9 @@
 
     <!-- Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- My Custom -->
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <?php $session = session(); ?>
