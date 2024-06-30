@@ -1,8 +1,12 @@
-# PocketFi
+<div align="center">
+  <img height="150" alt="Pocket Fi" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/logo.png">
+</div>
+
+# Pocket Fi
 Pocket Fi is a website for portable WiFi lending services in Indonesia. Whether you are a foreign tourist in Indonesia or an Indonesian resident traveling abroad, Pocket Fi provides a seamless experience. The website features a responsive and user-friendly interface that showcases various rental packages, which can be picked up and returned via courier services. It is integrated with secure payment services, ensuring a safe and convenient transaction process.
 
 ## Table of Contents
-- [PocketFi](#pocketfi)
+- [Pocket Fi](#pocket-fi)
   - [Table of Contents](#table-of-contents)
   - [Key Features](#key-features)
   - [Screenshots](#screenshots)
@@ -38,23 +42,29 @@ Pocket Fi is a website for portable WiFi lending services in Indonesia. Whether 
 ## Screenshots
 Homepage: 
 <br>
-<img width="412" alt="Homepage" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(1).png">
-<img width="412" alt="Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(5).png">
-<img width="412" alt="Profile" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(11).png">
-<img width="412" alt="Checkout" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(13).png">
-<img width="412" alt="Payment" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(14).png">
-<img width="412" alt="Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(15).png">
+<div align="center">
+  <img width="412" alt="Homepage" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(1).png">
+  <img width="412" alt="Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(5).png">
+  <img width="412" alt="Profile" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(11).png">
+  <img width="412" alt="Checkout" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(13).png">
+  <img width="412" alt="Payment" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(14).png">
+  <img width="412" alt="Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(15).png">
+</div>
 <br>
 Admin Dashboard: 
 <br>
-<img width="412" alt="Dashboard Light" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(16).png">
-<img width="412" alt="Dashboard Dark" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(17).png">
-<img width="412" alt="List Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(18).png">
-<img width="412" alt="Add Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(19).png">
-<img width="412" alt="Delete Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(21).png">
-<img width="412" alt="List Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(22).png">
-<br>
-[All Screenshots](https://github.com/overdoshit/PocketFi/tree/master/public/assets/images/screenshots)
+<div align="center">
+  <img width="412" alt="Dashboard Light" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(16).png">
+  <img width="412" alt="Dashboard Dark" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(17).png">
+  <img width="412" alt="List Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(18).png">
+  <img width="412" alt="Add Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(19).png">
+  <img width="412" alt="Delete Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(21).png">
+  <img width="412" alt="List Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(22).png">
+</div>
+
+<div align="center">
+  <a href="https://github.com/overdoshit/PocketFi/tree/master/public/assets/images/screenshots" target="_blank">All Screenshots</a>
+</div>
 
 ## Design Pattern
 The app follows the MVC (Model-View-Controller) architecture pattern, ensuring a clear separation of concerns and facilitating easier testing and maintenance of the codebase.
@@ -401,4 +411,4 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
 [Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-pocketfi-dev/9f8256vqc9?form_factor=desktop)
 
 ## Contact
-For any inquiries or issues, please contact at [Faiz Kurniawan](mailto:faiz.kurnicloud@gmail.com).
+For any inquiries or issues, please contact at [Faiz Kurniawan](mailto:faiz.kurnicloud@gmail.com)<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Inbox%20Tray.webp" alt="Inbox Tray" width="25" height="25">
