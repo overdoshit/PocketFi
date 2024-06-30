@@ -3,7 +3,9 @@
 </div>
 
 # Pocket Fi
+<p align="justify">
 Pocket Fi is a website for portable WiFi lending services in Indonesia. Whether you are a foreign tourist in Indonesia or an Indonesian resident traveling abroad, Pocket Fi provides a seamless experience. The website features a responsive and user-friendly interface that showcases various rental packages, which can be picked up and returned via courier services. It is integrated with secure payment services, ensuring a safe and convenient transaction process.
+</p>
 
 ## Table of Contents
 - [Pocket Fi](#pocket-fi)
@@ -67,7 +69,9 @@ Admin Dashboard:
 </div>
 
 ## Design Pattern
+<p align="justify">
 The app follows the MVC (Model-View-Controller) architecture pattern, ensuring a clear separation of concerns and facilitating easier testing and maintenance of the codebase.
+</p>
 
 ## Technology Stack
 PocketFi is built using the following technologies:
