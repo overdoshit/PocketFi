@@ -1,5 +1,5 @@
 <div align="center">
-  <img height="150" alt="Pocket Fi" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/logo.png">
+  <img alt="Pocket Fi" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/logo.png">
 </div>
 
 # Pocket Fi
