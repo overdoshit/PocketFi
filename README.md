@@ -22,10 +22,13 @@ Pocket Fi is a website for portable WiFi lending services in Indonesia. Whether 
       - [Composer Installation](#composer-installation)
       - [MySQL Installation](#mysql-installation)
       - [Certbot Let's Encrypt Installation](#certbot-lets-encrypt-installation)
+    - [Domain Setup](#domain-setup)
     - [Directory Setup](#directory-setup)
     - [Homepage Setup](#homepage-setup)
     - [Admin Dashboard Setup](#admin-dashboard-setup)
+    - [Certbot Let's Encrypt Setup](#certbot-lets-encrypt-setup)
     - [NGINX Setup](#nginx-setup)
+    - [PHP-FPM Setup](#php-fpm-setup)
   - [Analysis](#analysis)
   - [Contact](#contact)
 
@@ -45,8 +48,8 @@ Pocket Fi is a website for portable WiFi lending services in Indonesia. Whether 
 Homepage: 
 <br>
 <div align="center">
-  <img width="412" alt="Homepage" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(1).png">
-  <img width="412" alt="Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(5).png">
+  <img width="412" alt="Homepage" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(01).png">
+  <img width="412" alt="Products" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(05).png">
   <img width="412" alt="Profile" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(11).png">
   <img width="412" alt="Checkout" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(13).png">
   <img width="412" alt="Payment" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(14).png">
@@ -197,20 +200,18 @@ sudo apt install software-properties-common apt-transport-https ca-certificates 
     sudo ln -s /snap/bin/certbot /usr/bin/certbot
     ```
 
-5. Get and install certificates: 
-    ```bash
-    sudo certbot --nginx
-    ```
+### Domain Setup
+> [!WARNING]
+> Replace all of `pocketfi.dev` with your actual domain name!
 
-6. Test automatic renewal: 
-    ```bash
-    sudo certbot renew --dry-run
-    ```
+1. Go to your domain registrar's website.
+2. Add DNS Record Sets for the following:
+    - DNS Names: `pocketfi.dev`, `www.pocketfi.dev`, `admin.pocketfi.dev`, and `www.admin.pocketfi.dev`
+    - Type: `A`
+    - IP Address: The public IP address of your VM instance.
+3. Save the changes.
 
 ### Directory Setup
-> [!WARNING]
-> Replace all of `pocketfi.dev` with your domain name.
-
 ```bash
 cd /var/www/
 sudo git clone https://github.com/overdoshit/PocketFi.git -b master pocketfi.dev
@@ -233,6 +234,7 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     sudo cp env .env
     sudo nano .env
     ```
+    > [!NOTE]
     > Edit the `.env` file according to your configuration.
     
 4. Setup permissions: 
@@ -263,6 +265,7 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     sudo cp env .env
     sudo nano .env
     ```
+    > [!NOTE]
     > Edit the `.env` file according to your configuration.
 
 4. Setup permissions: 
@@ -276,6 +279,22 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     sudo ln -s /var/www/pocketfi.dev/public/assets/images /var/www/admin.pocketfi.dev/public/assets/images
     ```
 
+### Certbot Let's Encrypt Setup
+1. Get and install certificates for `pocketfi.dev` and `www.pocketfi.dev`:
+    ```bash
+    sudo certbot certonly --nginx -d pocketfi.dev -d www.pocketfi.dev
+    ```
+
+2. Get and install certificates for `admin.pocketfi.dev` and `www.admin.pocketfi.dev`:
+    ```bash
+    sudo certbot certonly --nginx -d admin.pocketfi.dev -d www.admin.pocketfi.dev
+    ```
+
+3. Test automatic renewal certificates:
+    ```bash
+    sudo certbot renew --dry-run
+    ```
+
 ### NGINX Setup
 1. Navigate to the sites-available directory: 
     ```bash
@@ -284,13 +303,29 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
 
 2. Default configuration (`/etc/nginx/sites-available/default`): 
     ```nginx
+    # Redirect HTTP IP VM Instace to HTTPS pocketfi.dev
     server {
         listen 80 default_server;
         listen [::]:80 default_server;
 
         server_name _;
 
-        return 444;
+        return 301 https://pocketfi.dev$request_uri;
+    }
+
+    # Redirect HTTPS IP VM Instace to HTTPS pocketfi.dev
+    server {
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+
+        server_name _;
+
+        ssl_certificate /etc/letsencrypt/live/pocketfi.dev/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/pocketfi.dev/privkey.pem; # managed by Certbot
+        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+        return 301 https://pocketfi.dev$request_uri;
     }
     ```
 
@@ -397,22 +432,54 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     sudo nginx -t
     ```
 
->[!NOTE]
->If the output shows:
->```
->nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
->nginx: configuration file /etc/nginx/nginx.conf test is successful
->```
->you can proceed to the next step.
+> [!NOTE]
+> If the output shows:
+> ```
+> nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+> nginx: configuration file /etc/nginx/nginx.conf test is successful
+> ```
+> you can proceed to the next step.
 
-7. Restart NGINX to apply changes: 
+1. Restart NGINX to apply changes: 
     ```bash
     sudo systemctl restart nginx
     ```
 
+### PHP-FPM Setup
+1. Check the PHP-FPM version: 
+    ```bash
+    ps aux | grep php-fpm
+    ```
+
+2. Open the PHP-FPM configuration file: 
+    ```bash
+    sudo nano /etc/php/<version>/fpm/php.ini
+    ```
+    > [!NOTE]
+    > Replace `<version>` according to your php-fpm version. <br>
+    > Example: `sudo nano /etc/php/8.3/fpm/php.ini`
+
+3. Find and update the following settings: 
+    ```ini
+    post_max_size = 100M
+    ```
+
+    ```ini
+    upload_max_filesize = 100M
+    ```
+
+4. Restart PHP-FPM to apply the changes:
+    ```bash
+    sudo systemctl restart php<version>-fpm
+    ```
+    > [!NOTE]
+    > Replace `<version>` according to your php-fpm version. <br>
+    > Example `sudo systemctl restart php8.3-fpm`
+
 ## Analysis
-[SSL Labs Report](https://www.ssllabs.com/ssltest/analyze.html?d=pocketfi.dev) <br>
-[Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-pocketfi-dev/9f8256vqc9?form_factor=desktop)
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Locked%20With%20Key.webp" alt="Locked With Key" width="25" height="25" /> [SSL Labs Report](https://www.ssllabs.com/ssltest/analyze.html?d=pocketfi.dev) <br>
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Bar%20Chart.webp" alt="Bar Chart" width="25" height="25" /> [Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-pocketfi-dev/9f8256vqc9?form_factor=desktop) <br>
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Chart%20Increasing.webp" alt="Chart Increasing" width="25" height="25" /> [UptimeRobot](https://stats.uptimerobot.com/MFWVgCHl6K)
 
 ## Contact
 For any inquiries or issues, please contact at [Faiz Kurniawan](mailto:faiz.kurnicloud@gmail.com)<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Inbox%20Tray.webp" alt="Inbox Tray" width="25" height="25">
