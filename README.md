@@ -66,9 +66,13 @@ Admin Dashboard:
   <img width="412" alt="Delete Product" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(21).png">
   <img width="412" alt="List Orders" src="https://raw.githubusercontent.com/overdoshit/PocketFi/master/public/assets/images/screenshots/Screenshot(22).png">
 </div>
-
+<br>
 <div align="center">
-  <a href="https://github.com/overdoshit/PocketFi/tree/master/public/assets/images/screenshots" target="_blank">All Screenshots</a>
+  <a href="https://github.com/overdoshit/PocketFi/tree/master/public/assets/images/screenshots" target="_blank">
+    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Camera%20with%20Flash.png" alt="Camera with Flash" width="25" height="25">
+    All Screenshots
+    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Camera%20with%20Flash.png" alt="Camera with Flash" width="25" height="25">
+  </a>
 </div>
 
 ## Design Pattern
@@ -234,8 +238,8 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     sudo cp env .env
     sudo nano .env
     ```
-    > [!NOTE]
-    > Edit the `.env` file according to your configuration.
+> [!NOTE]
+> Edit the `.env` file according to your configuration.
     
 4. Setup permissions: 
     ```bash
@@ -265,8 +269,8 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     sudo cp env .env
     sudo nano .env
     ```
-    > [!NOTE]
-    > Edit the `.env` file according to your configuration.
+> [!NOTE]
+> Edit the `.env` file according to your configuration.
 
 4. Setup permissions: 
     ```bash
@@ -302,6 +306,9 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     ```
 
 2. Default configuration (`/etc/nginx/sites-available/default`): 
+    ```bash
+    sudo nano default
+    ```
     ```nginx
     # Redirect HTTP IP VM Instace to HTTPS pocketfi.dev
     server {
@@ -330,6 +337,9 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     ```
 
 3. Create configuration for `pocketfi.dev` (`/etc/nginx/sites-available/pocketfi.dev`): 
+    ```bash
+    sudo nano pocketfi.dev
+    ```
     ```nginx
     # Redirect HTTP to HTTPS for pocketfi.dev
     server {
@@ -376,6 +386,9 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     ```
 
 4. Create configuration for `admin.pocketfi.dev` (`/etc/nginx/sites-available/admin.pocketfi.dev`): 
+    ```bash
+    sudo nano admin.pocketfi.dev
+    ```
     ```nginx
     # Redirect HTTP to HTTPS for admin.pocketfi.dev
     server {
@@ -455,9 +468,9 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     ```bash
     sudo nano /etc/php/<version>/fpm/php.ini
     ```
-    > [!NOTE]
-    > Replace `<version>` according to your php-fpm version. <br>
-    > Example: `sudo nano /etc/php/8.3/fpm/php.ini`
+> [!NOTE]
+> Replace `<version>` according to your php-fpm version. <br>
+> Example: `sudo nano /etc/php/8.3/fpm/php.ini`
 
 3. Find and update the following settings: 
     ```ini
@@ -472,14 +485,23 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
     ```bash
     sudo systemctl restart php<version>-fpm
     ```
-    > [!NOTE]
-    > Replace `<version>` according to your php-fpm version. <br>
-    > Example `sudo systemctl restart php8.3-fpm`
+> [!NOTE]
+> Replace `<version>` according to your php-fpm version. <br>
+> Example `sudo systemctl restart php8.3-fpm`
 
 ## Analysis
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Locked%20With%20Key.webp" alt="Locked With Key" width="25" height="25" /> [SSL Labs Report](https://www.ssllabs.com/ssltest/analyze.html?d=pocketfi.dev) <br>
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Bar%20Chart.webp" alt="Bar Chart" width="25" height="25" /> [Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-pocketfi-dev/9f8256vqc9?form_factor=desktop) <br>
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Chart%20Increasing.webp" alt="Chart Increasing" width="25" height="25" /> [UptimeRobot](https://stats.uptimerobot.com/MFWVgCHl6K)
+<a href="https://www.ssllabs.com/ssltest/analyze.html?d=pocketfi.dev" target="_blank">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Locked%20With%20Key.webp" alt="Locked With Key" width="25" height="25"/>SSL Labs Report
+</a>
+<br>
+<a href="https://pagespeed.web.dev/analysis/https-pocketfi-dev/9f8256vqc9?form_factor=desktop" target="_blank">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Bar%20Chart.webp" alt="Bar Chart" width="25" height="25"/>Google PageSpeed Insights
+</a>
+<br>
+<a href="https://stats.uptimerobot.com/MFWVgCHl6K" target="_blank">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Chart%20Increasing.webp" alt="Chart Increasing" width="25" height="25"/>UptimeRobot
+</a>
+<br>
 
 ## Contact
-For any inquiries or issues, please contact at [Faiz Kurniawan](mailto:faiz.kurnicloud@gmail.com)<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Inbox%20Tray.webp" alt="Inbox Tray" width="25" height="25">
+For any inquiries or issues, please contact at <a href="mailto:faiz.kurnicloud@gmail.com" target="_blank">Faiz Kurniawan<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Inbox%20Tray.webp" alt="Inbox Tray" width="25" height="25"/></a>
