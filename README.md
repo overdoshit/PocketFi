@@ -498,7 +498,7 @@ sudo git clone https://github.com/overdoshit/PocketFi.git -b admin admin.pocketf
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Bar%20Chart.webp" alt="Bar Chart" width="25" height="25"/>Google PageSpeed Insights
 </a>
 <br>
-<a href="https://stats.uptimerobot.com/MFWVgCHl6K" target="_blank">
+<a href="https://stats.uptimerobot.com/pocketfi" target="_blank">
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Chart%20Increasing.webp" alt="Chart Increasing" width="25" height="25"/>UptimeRobot
 </a>
 <br>
