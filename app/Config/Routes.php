@@ -29,6 +29,7 @@ $routes->setAutoRoute(true);
 // Authentication Routes
 $routes->get('/login', 'Authentication::loginPage', ['filter' => 'LoggedinFilter']);
 $routes->get('/authentication/loginpage', 'Authentication::loginPage', ['filter' => 'LoggedinFilter']);
+$routes->get('/authentication/loginpage/(:any)', 'Authentication::loginPage', ['filter' => 'LoggedinFilter']);
 $routes->post('/login', 'Authentication::login');
 
 $routes->get('/auth/google', 'Authentication::google', ['filter' => 'LoggedinFilter']);
@@ -47,6 +48,7 @@ $routes->get('/products', 'Products::index', ['filter' => 'LoginFilter']);
 $routes->get('/products/index', 'Products::index', ['filter' => 'LoginFilter']);
 $routes->get('/products/index/(:any)', 'Products::index', ['filter' => 'LoginFilter']);
 $routes->get('/product/add', 'Product::add', ['filter' => 'LoginFilter']);
+$routes->get('/product/add/(:any)', 'Product::add', ['filter' => 'LoginFilter']);
 $routes->post('/product/add', 'Product::addProduct', ['filter' => 'LoginFilter']);
 $routes->get('/product/edit/(:num)', 'Product::edit/$1', ['filter' => 'LoginFilter']);
 $routes->post('/product/update', 'Product::updateProduct', ['filter' => 'LoginFilter']);
