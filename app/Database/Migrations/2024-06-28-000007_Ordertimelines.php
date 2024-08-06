@@ -15,8 +15,7 @@ class Ordertimelines extends Migration
                 'auto_increment' => true
             ],
             'idOrder' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '25',
+                'type'       => 'BIGINT',
                 'null'       => false,
             ],
             'status' => [
