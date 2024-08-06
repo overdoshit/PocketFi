@@ -10,8 +10,7 @@ class Orders extends Migration
     {
         $this->forge->addField([
             'idOrder' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '25',
+                'type'       => 'BIGINT',
                 'null'       => false,
             ],
             'status' => [
